@@ -1,0 +1,33 @@
+//-CHANGESET-////////////////////////////////
+Date: 11/04/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding the project dependencies and modules.
+- Adding express dependencies and modeles as well as the server configuration
+- Adding nodemon dependencies and modules as well as configuration to run show changes on the files.
+- Adding basic component and route configuration
+- Adding Axios dependencies and modules as well as the initial configuration for the api requests
+
+//-CHANGESET-////////////////////////////////
+Date: 25/04/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding HTML and CSS of Main Page and his components
+
+//-CHANGESET-////////////////////////////////
+Date: 26/04/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding Main screen visibility rules
+- Adjusting routing issues
+
+//-CHANGESET-////////////////////////////////
+Date: 05/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adjusting API and internal function calls
+
+//-CHANGESET-////////////////////////////////
+Date: 08/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding CORS on server side api controllers and front side requests
+- Editing css and components placement
+* - Adding product api calls  *
+* - Creating base class of auth api controller  *
+
+//-CHANGESET-////////////////////////////////
+Date: 15/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding useEffect and useState for api calls and data passing through components
+- Adding main page and product page map function por json return
+- Fixing issues with component rendering
