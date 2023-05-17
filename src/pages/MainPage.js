@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import ProductController from "../controllers/ProductsController";
-import Presentation from './Presentation';
-import ProductPreviewsGroup from './ProductPreviewsGroup';
-import SimplifiedContactPage from './SimplifiedContactPage';
+import Presentation from '../components/Presentation';
+import ProductPreviewsGroup from '../components/ProductPreviewsGroup';
 
-export default function MainPageContent() {     
+export default function MainPage() {     
     const [productList, setProductList] = useState()    
     const api = new ProductController() 
 
@@ -14,19 +13,13 @@ export default function MainPageContent() {
         response.then(data => {
             setProductList(data)                        
         });                        
-    }, []);
-
-    //Styles
-    const MainPageStyle = {
-        backgroundColor: '#F3F3F3'
-    }
+    }, []);    
 
     //JSX
     return(
-        <div id='MainPageContent'>     
+        <div>     
             <Presentation></Presentation>                         
-            <ProductPreviewsGroup content={productList}></ProductPreviewsGroup>
-            <SimplifiedContactPage></SimplifiedContactPage>
+            <ProductPreviewsGroup content={productList}></ProductPreviewsGroup>             
         </div>  
     );    
 }

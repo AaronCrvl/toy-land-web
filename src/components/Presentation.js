@@ -27,7 +27,7 @@ export default function Presentation (){
     //JSX
     return(
         <ImageBackground
-            source='https://png.pngtree.com/png-clipart/20221025/ourmid/pngtree-lego-border-colorful-building-blocks-decoration-png-image_6293417.png'
+            source='https://i.pinimg.com/originals/03/ca/1b/03ca1bfae12314e7f66d66594bc7f140.jpg'
             style={{width: '100%', height: '100%'}}
         >             
             <div style={PresentationStyle}>                
@@ -35,22 +35,21 @@ export default function Presentation (){
                     <div style={PresentationTextStyle}>
                         <div>
                             <h1 style={{'fontSize': '100px', 'font-family': 'fantasy'}}>UNLOCK YOUR IMAGINATION</h1>                                                                                                             
-                            <h3 style={{'fontSize': '100px', 'font-family': 'fantasy'}}>Your mind is the limit!</h3>
+                            <h3 style={{'fontSize': '100px', 'font-family': '"Raleway", sans-serif'}}>Your mind is the limit!</h3>
                             <div style={{display:'inline-flex'}}>
                             <p style={PresStyle}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                                 In fermentum et sollicitudin ac orci. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin.                               
                             </p>
-                    </div>  
+                        </div>  
                         </div>
-                        <div style={{display: 'inline-flex'}}>
-                            <img
-                                src='https://www.pngall.com/wp-content/uploads/5/Lego-PNG-Pic.png'
-                                style={ToyImage}>                            
-                            </img>                        
-                        </div>
-                    </div>
-                    
+                            <div style={{display: 'inline-flex'}}>
+                                <img
+                                    src='https://www.pngall.com/wp-content/uploads/5/Lego-PNG-Pic.png'
+                                    style={ToyImage}>                            
+                                </img>                        
+                            </div>
+                        </div>                    
                 </div>                              
             </div>
         </ImageBackground>

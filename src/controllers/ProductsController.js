@@ -12,7 +12,7 @@ export default function ProductController(){
 
     this.GetProductById = (id) =>{        
         try{         
-            let path = 'https://localhost:44393/Product/GetProductById/' + id
+            let path = 'https://localhost:44393/Product/GetProductById/?id=' + id
             return Axios.get(path, _header).then(response => response.data)                      
         }
         catch(e) { console.error("Erro in GetProductById: " + e); }
@@ -28,7 +28,7 @@ export default function ProductController(){
 
     this.GetProductsByRegisterQuantity = async (registers) =>{
         try{
-            let path = 'https://localhost:44393/Product/GetProductsByRegisterQuantity/' + registers
+            let path = 'https://localhost:44393/Product/GetProductsByRegisterQuantity/?registers=' + registers
             return Axios.get(path, _header).then(response => response.data)  
         }
         catch(e) { console.error("Erro in GetProductsByRegisterQuantity: " + e); }

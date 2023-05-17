@@ -11,9 +11,15 @@ export default function ProductGrid({ content }){
         
     //Styles
     const ContainerStyles = {
-        backgroundColor: '#F3F3F3',
+        backgroundColor: 'rgb(228 228 228)',
         'display': 'grid',        
         width: 'max-content',
+        marginTop:'15px'
+    }
+    const spinnerStyle = {
+        width:  '100vh',
+        height:  '100vh',
+        padding: '300px'
     }
 
     //JSX
@@ -23,7 +29,7 @@ export default function ProductGrid({ content }){
                 {
                     products === undefined ?
                     (
-                        <Spinner animation="border" variant="success"/>
+                        <Spinner style={spinnerStyle} animation="border" variant="success"/>
                     )
                     :
                     (                                 

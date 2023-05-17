@@ -22,7 +22,7 @@ export default function ProductPage(){
     
     // JSX
     return (
-        <div style={ProductPageStyle}>
+        <div style={ProductPageStyle}>        
           {productList && <ProductGrid content={productList}/> }
         </div>
     );

@@ -32,6 +32,7 @@ export default function Product({ id, name, descripton, imageURL }){
         marginRight: '10px',
         width: '100%',  
         height: '100%',
+        
     }
     const ImageStyle = {
         width: '150px',
@@ -53,7 +54,7 @@ export default function Product({ id, name, descripton, imageURL }){
                             <Card.Img variant="top" src={imageURL} style={ImageStyle} />
                         </td>
                         <td>
-                            <Card.Body>
+                            <Card.Body style={{display: 'grid',}}>
                                 <Card.Title>
                                     <h3>
                                         {name}
@@ -78,7 +79,7 @@ export default function Product({ id, name, descripton, imageURL }){
                         marginRight: '50px',
                         display: 'contents',
                     }}>
-                        <Button onClick={navigateBuy} style={{backgroundColor:'red', 'border-color': 'red'}}>Buy it!</Button>
+                        <Button onClick={navigateBuy} style={{backgroundColor:'red', 'border-color': 'red'}}>See More</Button>
                     </tr>
                 </table>
             </Card>                            

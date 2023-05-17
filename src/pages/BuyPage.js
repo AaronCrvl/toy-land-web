@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
-import Product from "../components/Product";
+import BuyProductView from "../components/BuyProductView";
 import ProductController from "../controllers/ProductsController";
 
 export default function BuyPage(){
@@ -20,23 +20,32 @@ export default function BuyPage(){
         });                        
     }, []);   
 
+    //Styles
+    const spinnerStyle = {
+        width:  '100vh',
+        height:  '100vh',
+        padding: '300px'
+    }
+
     //JSX
     return(
         product === undefined ?
         (
             <div>
-                <Spinner animation="border" variant="success"/>
+                <Spinner style={spinnerStyle} animation="border" variant="success"/>
                 <h1>Loading Buy Page...</h1>
             </div>
         )
         :
-        (                                                              
-            <Product 
-                id={product.Response.idProduct}
-                name={product.Response.productName}
-                descripton ={product.Response.shortDescription}
-                imageURL={product.Response.imageUrl}
-            />                
+        (          
+            <div style={{width:'100%', height:'100vh'}}>
+                <BuyProductView 
+                    id={product.Response.idProduct}
+                    name={product.Response.productName}
+                    description={product.Response.shortDescription}
+                    imageURL={product.Response.imageUrl}
+                />   
+            </div>                                                                 
         )        
     );
 }

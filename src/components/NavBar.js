@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Navbar from 'react-bootstrap/Navbar';
-import MainPageContent from './MainPageContent';
-import AboutPage from '../pages/AboutPage'
+import Badge from 'react-bootstrap/Badge';
+import MainPage from '../pages/MainPage';
 import ProductPage from '../pages/ProductPage';
-import ContactPage from '../pages/ContactPage';
 import BuyPage from '../pages/BuyPage';
+import AboutPage from '../pages/AboutPage';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 export default function NavBar(){          
     //Styles
@@ -18,59 +18,72 @@ export default function NavBar(){
     }           
 
     //HTML
-    return(
+    return(        
         <div>
+            {/* KeyFramesAnimation */}
+            <style type="text/css">
+            {`
+                .PropText{                    
+                                         
+                }
+                
+                @keyframes mymove {
+                    0%   {color: #DE354C;}
+                    30%  {color: #932432;}
+                    60%  {color: orange;}
+                    85%  {color: #DE354C;}
+                    100% {color: #932432;}
+                }
+            `}
+            </style>
             <BrowserRouter>
-                <div style={RouterStyle}>
-                        <div style={{marginLeft: '400px'}}>
-                            <NavLink 
-                                to="/"
-                                style={{ color: 'white', textDecoration: 'none' }}                                
-                            >
-                                {
-                                    <Navbar.Brand href="#home">
-                                        <img
-                                            alt=""
-                                            src={MainLogoPath}
-                                            width="30"
-                                            height="30"
-                                            className="d-inline-block align-top"
-                                            style={{'marginTop': '10px'}}
-                                        />{' '}                                    
-                                    </Navbar.Brand>   
-                                }
-                            </NavLink>                             
-                        </div>
+                <div style={RouterStyle}>                        
                         <div style={{ margin: '10px', marginLeft: '30px' }}>
                             <NavLink 
                                 to="/products"
                                 style={{color:  '#F3F3F3',  textDecoration: 'none'}}
                             >
-                                <h3>Products</h3>                                
+                                Products                     
                             </NavLink>
-                        </div>
-                        <div style={{ margin: '10px', marginLeft: '30px'  }}>
+                        </div>   
+                        <div style={{ margin: '10px', marginLeft: '30px' }}>
                             <NavLink 
                                 to="/about"
                                 style={{color:  '#F3F3F3',  textDecoration: 'none'}}
                             >
-                                <h3>About</h3>                                
+                                About                     
                             </NavLink>
-                        </div>
-                        <div style={{ margin: '10px', marginLeft: '30px'  }}>
-                            <NavLink 
-                                to="/contact"                                
-                                style={{color:  '#F3F3F3',  textDecoration: 'none'}}                                
-                            >
-                                <h3>Contact</h3>                                
-                            </NavLink>
-                        </div>
+                        </div>    
+                        <div style={{ margin: '10px', marginLeft: '30px' }}>
+                            <NavDropdown style={{color:  '#F3F3F3',  textDecoration: 'none'}} title="Categories" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">
+                                    City
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">
+                                    Creator
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">
+                                    Heroes
+                                </NavDropdown.Item>                                
+                                <NavDropdown.Item href="#action/3.4">
+                                    Jurassic
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        </div>  
+                        <div>
+                                <Badge bg="" style={{'margin-left': '155vh', 'margin-right': '10px'}}>
+                                    <img
+                                        src='https://cdn3d.iconscout.com/3d/premium/thumb/basket-5590709-4652401.png'
+                                        style={{height: 'auto', width:'50px', }}
+                                    >
+                                    </img>   
+                                </Badge>{' '}                                        
+                        </div>   
                     </div>
                     <Routes>
-                        <Route exact path="/" element={<MainPageContent />} />
-                        <Route exact path="/products" element={<ProductPage />} />
-                        <Route exact path="/about" element={<AboutPage />} />
-                        <Route exact path="/contact"element={<ContactPage />} />
+                        <Route exact path="/home" element={<MainPage />} />
+                        <Route exact path="/products" element={<ProductPage />} />                     
+                        <Route exact path="/about" element={<AboutPage />} />  
                         <Route path="/buy" element={<BuyPage />} />
                     </Routes>
             </BrowserRouter>            
