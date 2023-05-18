@@ -81,7 +81,7 @@ export default function NavBar(){
                         </div>   
                     </div>
                     <Routes>
-                        <Route exact path="/home" element={<MainPage />} />
+                        <Route exact path="/" element={<MainPage />} />
                         <Route exact path="/products" element={<ProductPage />} />                     
                         <Route exact path="/about" element={<AboutPage />} />  
                         <Route path="/buy" element={<BuyPage />} />

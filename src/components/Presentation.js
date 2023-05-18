@@ -2,6 +2,7 @@ import React from "react"
 import {ImageBackground} from 'react-native';
 
 export default function Presentation (){     
+    
     //Styles
     const PresentationStyle = {
         'marginTop': '60px', 

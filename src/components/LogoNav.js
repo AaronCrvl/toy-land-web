@@ -14,7 +14,7 @@ export default function LogoNav(){
     return(
         <Navbar bg="danger" variant="dark">
             <Container style={{ width: 'max-content' }}>
-                <Navbar.Brand href="/home" >
+                <Navbar.Brand href="/" >
                     <div style={{ 'display': 'flex' }}>
                         <div>
                             <div style={{ fontFamily:'"Raleway", sans-serif', color:'khaki', 'font-variant': 'small-caps' }}>

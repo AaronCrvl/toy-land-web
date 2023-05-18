@@ -22,9 +22,12 @@ export default function BuyPage(){
 
     //Styles
     const spinnerStyle = {
-        width:  '100vh',
-        height:  '100vh',
-        padding: '300px'
+        width:  '70vh',
+        height:  '70vh',
+        padding: '300px',
+        marginTop:'150px',
+        marginBottom:'150px',
+        'text-align-last':'center',
     }
 
     //JSX
@@ -32,7 +35,7 @@ export default function BuyPage(){
         product === undefined ?
         (
             <div>
-                <Spinner style={spinnerStyle} animation="border" variant="success"/>
+                <Spinner style={spinnerStyle} animation="border" variant="warning"/>
                 <h1>Loading Buy Page...</h1>
             </div>
         )

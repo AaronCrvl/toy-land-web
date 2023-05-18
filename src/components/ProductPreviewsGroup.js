@@ -18,6 +18,14 @@ export default function ProductPreviewsGroup({ content }){
         textAlign: 'center',        
         fontVariant: 'small-caps',
     }
+    const spinnerStyle = {
+        width:  '5vh',
+        height:  '5vh',
+        padding: '100px',
+        marginTop:'10px',
+        marginBottom:'10px',
+        'text-align-last':'center',
+    }
     
     //JSX
     return(                            
@@ -33,7 +41,9 @@ export default function ProductPreviewsGroup({ content }){
                             {
                                 content === undefined ?
                                 (
-                                    <Spinner animation="border" variant="error"/>
+                                    <div>
+                                        <Spinner style={spinnerStyle} animation="border" variant="warning"/>                                    
+                                    </div>
                                 )
                                 :
                                 (
