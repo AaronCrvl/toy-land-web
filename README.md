@@ -18,6 +18,22 @@ public class ProductModel
         public string imageUrl;
     }
 ```
+```C#
+public class AccountModel
+    {
+        public int IdAccount;
+        public string AccountName;
+        public string Password;
+        public bool Active;
+    }
+```
+```C#
+public class AuthModel
+    {
+        public int IdAccount;
+        public string AccountName;
+    }
+```
 ## Execution
 
 Currently, I run this app with the Nodemon tool with the command below. Make sure to that in package.json scripts tag you have:
