@@ -1,16 +1,18 @@
 import Axios from 'axios';
 
-export default function AuthController(){
-    const _header = {
-        headers:{
-            "Access-Control-Allow-Headers": "*",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "*"   
-        }
-    }
+export default function AuthController(){    
+    const headers ={
+        "Content-Type" : "application/json",
+        "Access-Control-Allow-Credentials": "*",
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "*",  
+    }    
 
-    this.Auth = (Token) =>{
-        let path = '' + Token
-        return Axios.get(path, _header).then(response => response.status)  
+    this.Validate = async (username, password) =>{
+        try{         
+            let path = 'https://localhost:44393/Auth/Validate/?username=' + username + '&password=' + password
+            return Axios.get(path, headers).then(response => response.data)                      
+        }
+        catch(e) { console.error("Erro in AuthController.Validate: " + e); }
     }
 }

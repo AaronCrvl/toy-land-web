@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import Badge from 'react-bootstrap/Badge';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 import MainPage from '../pages/MainPage';
 import ProductPage from '../pages/ProductPage';
 import BuyPage from '../pages/BuyPage';
 import AboutPage from '../pages/AboutPage';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-export default function NavBar(){          
+export default function NavBar({ IdUser, userName }){          
     //Styles
     const MainLogoPath = 'https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png'
     const RouterStyle = {        
@@ -43,7 +44,7 @@ export default function NavBar(){
                                 to="/products"
                                 style={{color:  '#F3F3F3',  textDecoration: 'none'}}
                             >
-                                Products                     
+                                Products                                                   
                             </NavLink>
                         </div>   
                         <div style={{ margin: '10px', marginLeft: '30px' }}>
@@ -70,15 +71,22 @@ export default function NavBar(){
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </div>  
-                        <div>
-                                <Badge bg="" style={{'margin-left': '155vh', 'margin-right': '10px'}}>
+                        <div
+                            style={{ marginLeft: '100vh'}}
+                        >
+                            <Container>
+                                <Navbar.Brand href="#home">
                                     <img
-                                        src='https://cdn3d.iconscout.com/3d/premium/thumb/basket-5590709-4652401.png'
-                                        style={{height: 'auto', width:'50px', }}
-                                    >
-                                    </img>   
-                                </Badge>{' '}                                        
-                        </div>   
+                                    alt=""
+                                    src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
+                                    width="30"
+                                    height="30"
+                                    className="d-inline-block align-top"
+                                    />{' '}
+                                    {userName}
+                                </Navbar.Brand>
+                            </Container>
+                        </div>                         
                     </div>
                     <Routes>
                         <Route exact path="/" element={<MainPage />} />

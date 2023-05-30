@@ -65,14 +65,14 @@ export default function BuyPorductView({ id, name, description, imageURL }){
                                 </Badge>{' '}   
                             </strong>
                         </h1>
-                        <h2 style={{'font-variant': 'small-caps', marginBottom:'35px'}}>
+                        <h2 style={{'fontVariant': 'small-caps', marginBottom:'35px'}}>
                             <Badge bg="danger" text="light">
                                 <strong style={{fontSize:'30px'}}>
                                     $0,00
                                 </strong>
                             </Badge>{' '}                            
                         </h2>
-                        <h4 style={{'font-variant': 'small-caps', marginBottom:'25px', width:'450px', display:'inline-block'}}>{description}</h4>
+                        <h4 style={{'fontVariant': 'small-caps', marginBottom:'25px', width:'450px', display:'inline-block'}}>{description}</h4>
                         <p>
                             <div>Don't be slow! Our prices are low.</div>
                             <div>

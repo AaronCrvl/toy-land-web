@@ -17,7 +17,7 @@ export default function LogoNav(){
                 <Navbar.Brand href="/" >
                     <div style={{ 'display': 'flex' }}>
                         <div>
-                            <div style={{ fontFamily:'"Raleway", sans-serif', color:'khaki', 'font-variant': 'small-caps' }}>
+                            <div style={{ fontFamily:'"Raleway", sans-serif', color:'khaki', 'fontVariant': 'small-caps' }}>
                                 <h1>ToyLand</h1>
                             </div>                
                         </div>

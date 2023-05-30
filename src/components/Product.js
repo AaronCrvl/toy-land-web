@@ -79,7 +79,7 @@ export default function Product({ id, name, descripton, imageURL }){
                         marginRight: '50px',
                         display: 'contents',
                     }}>
-                        <Button onClick={navigateBuy} style={{backgroundColor:'red', 'border-color': 'red'}}>See More</Button>
+                        <Button onClick={navigateBuy} style={{backgroundColor:'red', 'borderColor': 'red'}}>See More</Button>
                     </tr>
                 </table>
             </Card>                            

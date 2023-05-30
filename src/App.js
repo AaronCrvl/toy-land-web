@@ -1,19 +1,15 @@
 import './App.css';
-import Footer from './components/Footer';
-import NavBar from './components/NavBar';
-import LogoNav from './components/LogoNav';
+import LoginPage from './pages/LoginPage';
 
 export default function App() {    
-  const AppStyle = {
-    backgroundColor: '#F3F3F3'
+  const AppStyle = {        
+    backgroundColor: '#932432'
   }
 
   return (
     <div className="App" style={AppStyle}>
       <header/>
-      <LogoNav></LogoNav>
-      <NavBar></NavBar>                
-      <Footer></Footer>
+      <LoginPage />
     </div>
   );
 }
