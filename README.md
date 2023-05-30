@@ -6,34 +6,6 @@ Once the product is returned, the user can go to the buy page and register a pre
 
 Soon, this project will be updated.
 
-
-## Model
-
-```C#
-public class ProductModel
-    {        
-        public string idProduct;
-        public string productName;
-        public string shortDescription;
-        public string imageUrl;
-    }
-```
-```C#
-public class AccountModel
-    {
-        public int IdAccount;
-        public string AccountName;
-        public string Password;
-        public bool Active;
-    }
-```
-```C#
-public class AuthModel
-    {
-        public int IdAccount;
-        public string AccountName;
-    }
-```
 ## Execution
 
 Currently, I run this app with the Nodemon tool with the command below. Make sure to that in package.json scripts tag you have:
