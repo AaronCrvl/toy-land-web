@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
 
-export default function Product({ id, name, descripton, imageURL }){  
+export default function Product({ idAcct, id, name, descripton, imageURL }){  
 
     //Navigation 
     const navigate = useNavigate();
@@ -12,6 +12,7 @@ export default function Product({ id, name, descripton, imageURL }){
         navigate('/buy', {
             state: {
               productId: id,
+              idAccount: idAcct,
             }
           });        
     }

@@ -31,4 +31,12 @@ export default function ProductController(){
         }
         catch(e) { console.error("Erro in ProductController.GetProductsByRegisterQuantity: " + e); }
     }
+
+    this.GetProductStock = async (id) =>{
+        try{
+            let path = 'https://localhost:44393/Product/GetProductStock/?id=' + id
+            return Axios.get(path, headers).then(response => response.data)  
+        }
+        catch(e) { console.error("Erro in ProductController.GetProductStock: " + e); }
+    }
 }

@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Spinner from 'react-bootstrap/Spinner';
 import Product from './Product';
 
-export default function ProductGrid({ content }){    
+export default function ProductGrid({ idAccount, content }){    
 
     //useStates & useEffect
     const [products, setProducts] = useState(content);         
@@ -36,6 +36,7 @@ export default function ProductGrid({ content }){
                         products.map((item) =>{    
                             return(                    
                                 <Product 
+                                    idAcct={idAccount}
                                     id={item.idProduct}
                                     name={item.productName}
                                     descripton ={item.shortDescription}

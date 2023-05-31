@@ -5,7 +5,10 @@ import Navbar from 'react-bootstrap/NavBar';
 export default function Footer (){    
     //Style
     const FooterStyle = {
-        backgroundColor: '#932432',        
+        backgroundColor: '#932432',    
+        width: '100%',
+        height : '60px',        
+        display: 'inline-block',    
     }
 
     // JSX

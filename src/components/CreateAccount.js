@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import AccountController from '../controllers/AccountController';
-import AccountModel from '../models/AccountModel';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -11,11 +10,13 @@ export default function CreateAccount() {
     const api = new AccountController();
     const [validated, setValidated] = useState(false);
 
+    // Functions
     const handleSubmit = () => {                       
         let firstName = document.querySelector('#validationCustom01').value
         let lastName = document.querySelector('#validationCustom02').value        
         let password = document.querySelector('#validationCustom03').value
         let userName = document.querySelector('#validationCustomUsername').value                        
+        
         const res = api.CreateNewAccount(firstName, lastName, password, userName)
         res.then((response) => {
             if(response.status === 200)
@@ -25,6 +26,7 @@ export default function CreateAccount() {
         })          
     }
 
+    // JSX
     return (
         validated ? 
         (
@@ -39,7 +41,7 @@ export default function CreateAccount() {
                         marginBottom:'40px'
                     }}
                 />
-                <h1>Account Create Sucessfully</h1> 
+                <h1>Account Created Sucessfully</h1> 
                 <Button>Log On!</Button>
             </div>
         )
@@ -74,8 +76,7 @@ export default function CreateAccount() {
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder="First name"
-                                defaultValue="Aaron"
+                                placeholder="First name"                                
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         </Form.Group>
@@ -84,8 +85,7 @@ export default function CreateAccount() {
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder="Last name"
-                                defaultValue="Carvalho"
+                                placeholder="Last name"                                
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>  
                         </Form.Group>
@@ -95,8 +95,7 @@ export default function CreateAccount() {
                                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                                 <Form.Control
                                 type="text"
-                                placeholder="Username"
-                                defaultValue="ArnCrvl"
+                                placeholder="Username"                                
                                 aria-describedby="inputGroupPrepend"
                                 required
                                 />

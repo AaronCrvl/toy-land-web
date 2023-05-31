@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ProductController from '../controllers/ProductsController'
 import ProductGrid from '../components/ProductGrid';
 
-export default function ProductPage(){                     
+export default function ProductPage({ idAcct }){                     
     const [productList, setProductList] = useState()    
     const api = new ProductController()        
 
@@ -23,7 +23,7 @@ export default function ProductPage(){
     // JSX
     return (
         <div style={ProductPageStyle}>        
-          {productList && <ProductGrid content={productList}/> }
+          {productList && <ProductGrid idAccount={idAcct} content={productList}/> }
         </div>
     );
 }

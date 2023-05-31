@@ -12,3 +12,20 @@
    - Adding CORS attributes on front end requests side
 
    //style={({ isActive }) => ({ color: isActive ? 'red' : 'white' })}                                
+
+   // Put in style tag to use keyframes in React
+   {/* KeyFramesAnimation */}
+            <style type="text/css">
+            {`
+                .PropText{                    
+                                         
+                }
+                
+                @keyframes mymove {
+                    0%   {color: #DE354C;}
+                    30%  {color: #932432;}
+                    60%  {color: orange;}
+                    85%  {color: #DE354C;}
+                    100% {color: #932432;}
+                }
+            `}

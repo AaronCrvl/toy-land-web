@@ -26,8 +26,24 @@ export default function AccountController(){
             })
 
             let path = 'https://localhost:44393/Account/CreateAccount/'
-            return Axios.post( path, json, headers )                                    
+            return Axios.post(path, json, headers)                                    
         }
-        catch(e) { console.error("Erro in AccountController.CreateAccount: " + e); }
+        catch(e) { console.error("Erro in AccountController.CreateNewAccount: " + e); }
+    }
+
+    this.AlterAccount = (idAccount, firstName, lastName, username, password) =>{
+        try{                
+            const json = JSON.stringify({
+                IdAccount: idAccount,
+                FirstName: firstName, 
+                LastName: lastName,
+                Username: username,                            
+                Password: password, 
+            })
+
+            let path = 'https://localhost:44393/Account/AlterAccount/'
+            return Axios.post(path, json, headers)                                    
+        }
+        catch(e) { console.error("Erro in AccountController.AlterAccount: " + e); }
     }
 }

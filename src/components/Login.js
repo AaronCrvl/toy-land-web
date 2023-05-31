@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AuthController from '../controllers/AuthController';
 import Footer from './Footer'
 import NavBar from './NavBar';
@@ -8,36 +9,53 @@ import Form from 'react-bootstrap/Form';
 import textValidator from '../validation/textValidator';
 
 export default function LoginComponent() {
+    const navigate = useNavigate()
     const authApi = new AuthController()
     const textValidator_ = new textValidator()
 
     // useState
     const [idUser, setIdUser] = useState(-1)
     const [userName, setUsername] = useState('')
-
     const [logggedInUser, setLoggedInUser] = useState(false)
-    const handleLogged = () => {setLoggedInUser(!logggedInUser)}          
+    const navigateToMainPage = () => {        
+        navigate('/main', {
+            state: {
+              accountId: idUser,
+            }
+          });        
+    }        
+    const handleLogged = () => {
+        setLoggedInUser(!logggedInUser)    
+        navigateToMainPage()    
+    }     
 
     // Function
     const navigateUserToHomePage = () => {
-        console.log('click')    
+        document.getElementsByClassName("LoginInfo")[0].innerHTML = ''
         let username = document.getElementsByTagName("input")[0].value
         let password = document.getElementsByTagName("input")[1].value
         // if(!textValidator_.ValidateParams(username, password))        
         //     return;    
 
-        const response = authApi.Validate(username, password)
-        response.then(data => {                       
-            setIdUser(data.IdAccount)                   
-            setUsername(data.AccountName)
-            handleLogged()
-        })          
+        const response = authApi.Validate(username, password)                
+        response.then(
+            data=>{                
+                if(data !== undefined)
+                {                    
+                    setIdUser(data.IdAccount)                   
+                    setUsername(data.UserName)
+                    handleLogged()       
+                }
+                else{
+                    document.getElementsByClassName("LoginInfo")[0].innerHTML = "Fail to login"            
+                }
+        })                                      
     }     
 
     // JSX
     return(
         logggedInUser ?
-        (
+        (            
             <div
                 style={{
                     width: 'fit-content', 
@@ -51,9 +69,10 @@ export default function LoginComponent() {
             >
                 <LogoNav></LogoNav>
                 <NavBar
-                    IdUser={idUser}
+                    idUser={idUser}
                     userName={userName}
-                ></NavBar>                
+                >
+                </NavBar>                
                 <Footer></Footer>
             </div>
         )
@@ -91,6 +110,10 @@ export default function LoginComponent() {
                                 marginBottom:'40px'
                             }}>
                             <h1>ToyLand</h1>
+                            <p 
+                                className='LoginInfo'
+                                style={{color: 'red'}}
+                            ></p>
                         </div>
                     </div>  
                     <Form.Group className="mb-3" controlId="formBasicEmail">

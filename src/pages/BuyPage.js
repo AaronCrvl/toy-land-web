@@ -6,19 +6,22 @@ import Spinner from 'react-bootstrap/Spinner';
 import BuyProductView from "../components/BuyProductView";
 import ProductController from "../controllers/ProductsController";
 
-export default function BuyPage(){
+export default function BuyPage(){    
     const location = useLocation();            
     const [product, setProduct] = useState()    
-    const api = new ProductController()        
+    const [account, setAccount] = useState(-1)    
+    const api = new ProductController()             
 
     //Funtions           
-    useEffect(() => {       
-        let Id = location.state.productId === undefined ? 1 : location.state.productId                      
-        const response = api.GetProductById(Id)     
+    useEffect(() => {               
+        let IdProduct = location.state.productId === undefined ? 1 : location.state.productId                      
+        let IdAccount = location.state.idAccount === undefined ? 1 : location.state.idAccount    
+        const response = api.GetProductById(IdProduct)     
         response.then(data => {
-            setProduct(data)                        
-        });                        
-    }, []);   
+            setProduct(data)     
+            setAccount(IdAccount)                   
+        })                        
+    }, [])  
 
     //Styles
     const spinnerStyle = {
@@ -32,23 +35,31 @@ export default function BuyPage(){
 
     //JSX
     return(
-        product === undefined ?
-        (
-            <div>
-                <Spinner style={spinnerStyle} animation="border" variant="warning"/>
-                <h1>Loading Buy Page...</h1>
-            </div>
-        )
-        :
-        (          
-            <div style={{width:'100%', height:'100vh'}}>
-                <BuyProductView 
-                    id={product.Response.idProduct}
-                    name={product.Response.productName}
-                    description={product.Response.shortDescription}
-                    imageURL={product.Response.imageUrl}
-                />   
-            </div>                                                                 
-        )        
-    );
+        <div
+            style={{                 
+                backgroundColor: 'rgb(88 38 38)',            
+        }}>   
+        {     
+            product === undefined ?
+            (
+                <div>
+                    <Spinner style={spinnerStyle} animation="border" variant="warning"/>
+                    <h1>Loading Buy Page...</h1>
+                </div>
+            )
+            :
+            (          
+                <div>
+                    <BuyProductView 
+                        idAcct = {account}
+                        id={product.Response.idProduct}
+                        name={product.Response.productName}
+                        description={product.Response.shortDescription}
+                        imageURL={product.Response.imageUrl}
+                    />   
+                </div>                                                                 
+            )  
+        }
+        </div>      
+    );    
 }

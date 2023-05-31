@@ -5,7 +5,7 @@ import Product from "./Product"
 import Button from "react-bootstrap/Button"
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 
-export default function ProductPreviewsGroup({ content }){    
+export default function ProductPreviewsGroup({ idAccount, content }){    
 
     //Styles
     const productsPreviewStyles = {        
@@ -51,6 +51,7 @@ export default function ProductPreviewsGroup({ content }){
                                         return(                    
                                             <ListGroupItem>
                                                 <Product 
+                                                    idAcct={idAccount}
                                                     id={item.idProduct}                                            
                                                     name={item.productName}
                                                     descripton ={item.shortDescription}
