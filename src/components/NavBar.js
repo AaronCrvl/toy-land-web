@@ -19,22 +19,24 @@ export default function NavBar({ idUser, userName }){
             state: {
               accountId: idUser,
             }
-          });        
+        })        
     }
 
-    // styles
-    const MainLogoPath = 'https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png'
-    const RouterStyle = {        
-        display: "flex",
-        backgroundColor: '#932432',
-        padding: '5px 0 5px 5px',
-        fontSize: '20px',        
-    }               
+    // styles   
+    const styles = {
+        RouterStyle : {        
+            display: "flex",
+            backgroundColor: '#932432',
+            padding: '5px 0 5px 5px',
+            fontSize: '20px',   
+            padding: '10px',
+        }       
+    }       
 
     // jsx
     return(        
         <div>                                    
-            <div style={RouterStyle}>                        
+            <div style={styles.RouterStyle}>                        
                      <div style={{ margin: '10px', marginLeft: '30px' }}>
                         <NavLink 
                             to="/main"
@@ -50,15 +52,7 @@ export default function NavBar({ idUser, userName }){
                         >
                             Products                                                   
                         </NavLink>
-                    </div>   
-                    <div style={{ margin: '10px', marginLeft: '30px' }}>
-                        <NavLink 
-                            to="/about"
-                            style={{color:  '#F3F3F3',  textDecoration: 'none'}}
-                        >
-                            About                     
-                        </NavLink>
-                    </div>    
+                    </div>                          
                     <div style={{ margin: '10px', marginLeft: '30px' }}>
                         <NavDropdown style={{color:  '#F3F3F3',  textDecoration: 'none'}} title="Categories" id="basic-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">
@@ -94,11 +88,10 @@ export default function NavBar({ idUser, userName }){
                 </div>
                 <Routes>
                     <Route exact path="/main" element={<MainPage id={idUser}/>} />
-                    <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                     
-                    <Route exact path="/about" element={<AboutPage />} />  
+                    <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           
                     <Route path="/buy" element={<BuyPage />} />
                     <Route path="/account" element={<AccountPage />} />
                 </Routes>                  
         </div>
-    );
+    )
 }

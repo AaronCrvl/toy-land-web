@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Product({ idAcct, id, name, descripton, imageURL }){  
 
-    //Navigation 
+    // navigation 
     const navigate = useNavigate();
     const navigateBuy = () => {        
         navigate('/buy', {
@@ -17,33 +17,37 @@ export default function Product({ idAcct, id, name, descripton, imageURL }){
           });        
     }
 
-    //Style
-    const RowStyle = {        
-        marginTop: '15px',
-        marginBottom: '30px',
-        merginLeft: '50px',
-        marginRight: '50px',
-    }
-    const CardStyle = {  
-        textAlign: 'right',
-        padding: '20px'      ,
-        marginTop: '5px',
-        marginBottom: '20px',
-        merginLeft: '10px',
-        marginRight: '10px',
-        width: '100%',  
-        height: '100%',
-        
-    }
-    const ImageStyle = {
-        width: '150px',
-        height: '150px',
+    // styles
+    const styles = {
+        RowStyle : {        
+            marginTop: '15px',
+            marginBottom: '30px',
+            merginLeft: '50px',
+            marginRight: '50px',
+        },
+
+        CardStyle : {  
+            textAlign: 'right',
+            padding: '20px'      ,
+            marginTop: '5px',
+            marginBottom: '20px',
+            merginLeft: '10px',
+            marginRight: '10px',
+            width: '100%',  
+            height: '100%',
+            
+        },
+
+        ImageStyle : {
+            width: '150px',
+            height: '150px',
+        }
     }
 
     //JSX
     return (
-        <Col style={RowStyle}>
-            <Card style={CardStyle}>
+        <Col style={styles.RowStyle}>
+            <Card style={styles.CardStyle}>
                 <table style={{display: 'grid'}}>
                     <tr style={{
                         marginTop: '30px',
@@ -52,7 +56,7 @@ export default function Product({ idAcct, id, name, descripton, imageURL }){
                         marginRight: '50px',
                     }}>
                         <td>
-                            <Card.Img variant="top" src={imageURL} style={ImageStyle} />
+                            <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
                         </td>
                         <td>
                             <Card.Body style={{display: 'grid',}}>

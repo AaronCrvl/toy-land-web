@@ -3,17 +3,20 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/NavBar';
 
 export default function Footer (){    
-    //Style
-    const FooterStyle = {
-        backgroundColor: '#932432',    
-        width: '100%',
-        height : '60px',        
-        display: 'inline-block',    
-    }
+    
+    // style
+    const styles = {
+        FooterStyle : {
+            backgroundColor: '#932432',    
+            width: '100%',
+            height : '60px',        
+            display: 'inline-block',    
+        }
+    }    
 
-    // JSX
+    // jsx
     return(
-        <div style={FooterStyle}>
+        <div style={styles.FooterStyle}>
             <Navbar>
                 <Container>
                     <Navbar.Brand href="#home">
@@ -23,7 +26,7 @@ export default function Footer (){
                             width="30"
                             height="30"
                             className="d-inline-block align-top"
-                        />{' '}                        
+                        />                     
                     </Navbar.Brand>
                 </Container>
             </Navbar>

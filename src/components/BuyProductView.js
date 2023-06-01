@@ -23,29 +23,34 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                 setStock(data)                                         
             }) 
         }
-    ,[])
+    )
 
     // styles
-    const tableStyle = {
-        display: 'list-item',        
-        padding:'70px',                
-        color:'#F3F3F3'
-    }
-    const imageStyle = {
-        width: '700px',
-        height: '600px',
-    }
-    const infoAreaStyle = {
-        textAlign:'right',        
-        padding: '150px',
-    }
-    const spinnerStyle = {
-        width:  '5vh',
-        height:  '5vh',
-        padding: '100px',
-        marginTop:'10px',
-        marginBottom:'10px',
-        'text-align-last':'center',
+    const styles = {
+        tableStyle : {
+            display: 'list-item',        
+            padding:'70px',                
+            color:'#F3F3F3'
+        },
+
+        imageStyle : {
+            width: '700px',
+            height: '600px',
+        },
+
+        infoAreaStyle : {
+            textAlign:'right',        
+            padding: '150px',
+        },
+
+        spinnerStyle : {
+            width:  '5vh',
+            height:  '5vh',
+            padding: '100px',
+            marginTop:'10px',
+            marginBottom:'10px',
+            'text-align-last':'center',
+        },
     }
 
     // jsx
@@ -53,7 +58,7 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
         stock === undefined?
         (
             <div>
-                <Spinner style={spinnerStyle} animation="border" variant="warning"/>                                    
+                <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
             </div>
         )     
         :
@@ -62,7 +67,7 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                 style={{                 
                     backgroundColor: 'rgb(88 38 38)',                    
                 }}>
-                <table style={tableStyle}>
+                <table style={styles.tableStyle}>
                     <thead
                         style={{
                             width: 'max-content',
@@ -72,14 +77,14 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                             <tr>
                                 <td>
                                     <Carousel>
-                                        <Carousel.Item style={imageStyle}>
+                                        <Carousel.Item style={styles.imageStyle}>
                                             <img
                                             className="d-block w-100"
                                             src={imageURL}                                 
                                             alt="First slide"
                                             />                               
                                         </Carousel.Item>
-                                        <Carousel.Item style={imageStyle}>
+                                        <Carousel.Item style={styles.imageStyle}>
                                             <img
                                             className="d-block w-100"
                                             src={imageURL}                                 
@@ -88,7 +93,7 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                         </Carousel.Item>                
                                     </Carousel>                        
                                 </td>
-                                <td style={infoAreaStyle}>
+                                <td style={styles.infoAreaStyle}>
                                     <h1 style={{fontSize:'70px'}}>
                                         <strong>
                                             <Badge bg="danger" text="light">
@@ -112,7 +117,14 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                             </strong>
                                         </Badge>{' '} 
                                     </h3>
-                                    <h4 style={{'fontVariant': 'small-caps', marginBottom:'25px', width:'450px', display:'inline-block'}}>{description}</h4>
+                                    <h4 style={{
+                                        'fontVariant': 'small-caps', 
+                                        marginBottom:'25px', 
+                                        width:'450px', 
+                                        display:'inline-block'
+                                    }}>
+                                        {description}
+                                    </h4>
                                     <p>
                                         <div>Don't be slow! Our prices are low.</div>
                                         <div>

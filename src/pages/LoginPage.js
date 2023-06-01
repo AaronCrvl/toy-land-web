@@ -6,21 +6,24 @@ import CreateAccount from '../components/CreateAccount';
 export default function LoginPage() {    
        
     // useState
-    const [showClientFields, setShowClientFields] = useState(false)
-    const handleLogInClick = () => {setShowClientFields(!showClientFields)}  
-    
+    const [showClientFields, setShowClientFields] = useState(false)        
     const [showCreate, setShowCreate] = useState(false)
+
+    // functions
+    const handleLogInClick = () => {setShowClientFields(!showClientFields)}  
+        
     const handleCreate = () => {
         handleLogInClick()
         setShowCreate(!showCreate)
     }  
 
-    // JSX
+    // jsx
     return(      
         <div 
             style={{
-                    width: '100vh', 
-                    height:'100%' ,                    
+                    width: '100%',                 
+                    height:'100%' ,
+                    backgroundColor:'firebrick',                   
                     position: 'absolute',
                     top: '50%',
                     left: '50%',

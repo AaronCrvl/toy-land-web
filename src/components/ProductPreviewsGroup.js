@@ -7,32 +7,37 @@ import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 
 export default function ProductPreviewsGroup({ idAccount, content }){    
 
-    //Styles
-    const productsPreviewStyles = {        
-        'borderTopStyle':'outset', 
-        textAlign:'center'        
-    }
-    const PropTextStyle= {
-        display: '-webkit-inline-box',
-        fontSize: '50px',                  
-        textAlign: 'center',        
-        fontVariant: 'small-caps',
-    }
-    const spinnerStyle = {
-        width:  '5vh',
-        height:  '5vh',
-        padding: '100px',
-        marginTop:'10px',
-        marginBottom:'10px',
-        'text-align-last':'center',
+    // styles
+    const styles = {
+        productsPreviewStyles : {  
+            backgroundColor: 'white',
+            'borderTopStyle':'outset', 
+            textAlign:'center'        
+        },
+
+        PropTextStyle : {
+            display: '-webkit-inline-box',
+            fontSize: '50px',                  
+            textAlign: 'center',        
+            fontVariant: 'small-caps',
+        },
+
+        spinnerStyle : {
+            width:  '5vh',
+            height:  '5vh',
+            padding: '100px',
+            marginTop:'10px',
+            marginBottom:'10px',
+            'text-align-last':'center',
+        }
     }
     
     //JSX
     return(                            
-        <div style={productsPreviewStyles}>              
+        <div style={styles.productsPreviewStyles}>              
             <div style={{display: 'inline-grid', textAlign:'center', 'marginTop': '35px', 'marginLeft':'80px'}}>
                 <div style={{textAlign:'center'}}>
-                    <p style={PropTextStyle}>
+                    <p style={styles.PropTextStyle}>
                         Staff Choices For the Month:
                     </p>
                 </div>
@@ -42,7 +47,7 @@ export default function ProductPreviewsGroup({ idAccount, content }){
                                 content === undefined ?
                                 (
                                     <div>
-                                        <Spinner style={spinnerStyle} animation="border" variant="warning"/>                                    
+                                        <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
                                     </div>
                                 )
                                 :

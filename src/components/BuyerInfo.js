@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from "react-router-dom";
 import AccountController from '../controllers/AccountController';
 import ClientOrderController from '../controllers/ClientOrderController';
 import Spinner from 'react-bootstrap/Spinner';
@@ -10,8 +9,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
-export default function BuyerInfo({ idProduct, idAccount }) {
-  const location = useLocation()                
+export default function BuyerInfo({ idProduct, idAccount }) {           
   const accountApi = new AccountController()
   const clientOrderApi = new ClientOrderController() 
   const [account, setAccount] = useState()   
@@ -38,17 +36,19 @@ export default function BuyerInfo({ idProduct, idAccount }) {
         setAccount(data)                                         
       })            
     }  
-  },[])
+  })
 
   // styles
-  const spinnerStyle = {
-    width:  '5vh',
-    height:  '5vh',
-    padding: '100px',
-    marginTop:'10px',
-    marginBottom:'10px',
-    'text-align-last':'center',
-  }
+  const styles = {
+    spinnerStyle : {
+      width:  '5vh',
+      height:  '5vh',
+      padding: '100px',
+      marginTop:'10px',
+      marginBottom:'10px',
+      'text-align-last':'center',
+    }
+  }  
 
   // jsx
   return (
@@ -75,7 +75,7 @@ export default function BuyerInfo({ idProduct, idAccount }) {
       account === undefined ?
       (
         <div>
-          <Spinner style={spinnerStyle} animation="border" variant="warning"/>                                    
+          <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
         </div>
       )
       :
@@ -106,6 +106,8 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                   type="text"
                   placeholder="First name"
                   defaultValue={account.FirstName}
+                  disabled
+                  readOnly
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
@@ -116,6 +118,8 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                   type="text"
                   placeholder="Last name"
                   defaultValue={account.LastName}
+                  disabled
+                  readOnly
                 />
                 <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               </Form.Group>
@@ -129,6 +133,8 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                     aria-describedby="inputGroupPrepend"
                     defaultValue={account.UserName}
                     required
+                    disabled
+                    readOnly
                   />
                   <Form.Control.Feedback type="invalid">
                     Please choose a username.
@@ -137,6 +143,10 @@ export default function BuyerInfo({ idProduct, idAccount }) {
               </Form.Group>
             </Row>
             <Row className="mb-3">
+              <Form.Group as={Col} md="6" controlId="validationCustom03">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control type="email" placeholder="name@example.com" />
+              </Form.Group>
               <Form.Group as={Col} md="6" controlId="validationCustom03">
                 <Form.Label>City</Form.Label>
                 <Form.Control type="text" placeholder="City" required />
@@ -173,7 +183,8 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                 color: 'black', 
                 backgroundColor:'khaki', 
                 'borderColor': 'khaki'
-                }}>Pre Order
+                }}>
+                  Pre Order
             </Button>
           </Form>
         </div>

@@ -13,7 +13,7 @@ export default function ProductController(){
             let path = 'https://localhost:44393/Product/GetProductById/?id=' + id
             return Axios.get(path, headers).then(response => response.data)                      
         }
-        catch(e) { console.error("Erro in ProductController.GetProductById: " + e); }
+        catch(e) { console.error("Erro in ProductController.GetProductById: " + e) }
     }
 
     this.GetAllProducts = async () =>{
@@ -21,7 +21,7 @@ export default function ProductController(){
             let path = 'https://localhost:44393/Product/GetAllProducts'
             return Axios.get(path, headers).then(response => response.data)  
         }
-        catch(e) { console.error("Erro in ProductController.GetAllProducts: " + e); }
+        catch(e) { console.error("Erro in ProductController.GetAllProducts: " + e) }
     }
 
     this.GetProductsByRegisterQuantity = async (registers) =>{
@@ -29,7 +29,7 @@ export default function ProductController(){
             let path = 'https://localhost:44393/Product/GetProductsByRegisterQuantity/?registers=' + registers
             return Axios.get(path, headers).then(response => response.data)  
         }
-        catch(e) { console.error("Erro in ProductController.GetProductsByRegisterQuantity: " + e); }
+        catch(e) { console.error("Erro in ProductController.GetProductsByRegisterQuantity: " + e) }
     }
 
     this.GetProductStock = async (id) =>{
@@ -37,6 +37,6 @@ export default function ProductController(){
             let path = 'https://localhost:44393/Product/GetProductStock/?id=' + id
             return Axios.get(path, headers).then(response => response.data)  
         }
-        catch(e) { console.error("Erro in ProductController.GetProductStock: " + e); }
+        catch(e) { console.error("Erro in ProductController.GetProductStock: " + e) }
     }
 }

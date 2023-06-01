@@ -13,7 +13,7 @@ export default function AccountController(){
             let path = 'https://localhost:44393/Account/GetAccount/?id=' + id
             return Axios.get(path, headers).then(response => response.data)                      
         }
-        catch(e) { console.error("Erro in AccountController.GetAccount: " + e); }
+        catch(e) { console.error("Erro in AccountController.GetAccount: " + e) }
     }
 
     this.CreateNewAccount = (firstName, lastName, username, password) =>{
@@ -28,7 +28,7 @@ export default function AccountController(){
             let path = 'https://localhost:44393/Account/CreateAccount/'
             return Axios.post(path, json, headers)                                    
         }
-        catch(e) { console.error("Erro in AccountController.CreateNewAccount: " + e); }
+        catch(e) { console.error("Erro in AccountController.CreateNewAccount: " + e) }
     }
 
     this.AlterAccount = (idAccount, firstName, lastName, username, password) =>{
@@ -44,6 +44,6 @@ export default function AccountController(){
             let path = 'https://localhost:44393/Account/AlterAccount/'
             return Axios.post(path, json, headers)                                    
         }
-        catch(e) { console.error("Erro in AccountController.AlterAccount: " + e); }
+        catch(e) { console.error("Erro in AccountController.AlterAccount: " + e) }
     }
 }

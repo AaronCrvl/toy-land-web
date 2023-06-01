@@ -3,7 +3,9 @@ import LoginPage from './pages/LoginPage';
 
 export default function App() {    
   const AppStyle = {        
-    backgroundColor: '#932432'
+    backgroundColor: 'red',
+    width: '100vh',
+    heigh: '100vh',
   }
 
   return (
@@ -11,5 +13,5 @@ export default function App() {
       <header/>
       <LoginPage />
     </div>
-  );
+  )
 }

@@ -4,13 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 
 export default function LogoNav(){    
-    const MainLogoPath = 'https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png'
-    const titleStyle = {
-        
-    }
-    //Functions
+    const MainLogoPath = 'https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png' 
 
-    //JSX
+    // jsx
     return(
         <Navbar bg="danger" variant="dark">
             <Container style={{ width: 'max-content' }}>
@@ -35,5 +31,5 @@ export default function LogoNav(){
                 </Navbar.Brand>
             </Container>
         </Navbar>
-    );
+    )
 }

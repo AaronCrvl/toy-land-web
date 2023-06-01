@@ -10,7 +10,7 @@ export default function CreateAccount() {
     const api = new AccountController();
     const [validated, setValidated] = useState(false);
 
-    // Functions
+    // functions
     const handleSubmit = () => {                       
         let firstName = document.querySelector('#validationCustom01').value
         let lastName = document.querySelector('#validationCustom02').value        
@@ -26,7 +26,7 @@ export default function CreateAccount() {
         })          
     }
 
-    // JSX
+    // jsx
     return (
         validated ? 
         (
