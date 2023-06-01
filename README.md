@@ -20,14 +20,16 @@ Soon, this project will be updated.
 
 ## Execution
 
-Currently, I run this app with the Nodemon tool with the command below. Make sure to that in package.json scripts tag you have:
+Currently, I run this app with the Nodemon tool and the command below. Go to package.json files in the scripts tag make sure to have:
 
 ```Javascript
 "dev": "nodemon Server.js",
 ```
+
 ```Javascript
-npm start dev
+npm: npm start dev
 ```
+
 ## [Back-end Application](https://github.com/AaronCrvl/toy-land-api)
 [![Dev.to](https://github-readme-stats.vercel.app/api/pin/?username=AaronCrvl&repo=toy-land-api&theme=dracula)](https://github.com/thepracticaldev/dev.to)
 
