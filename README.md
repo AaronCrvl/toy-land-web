@@ -28,3 +28,6 @@ Currently, I run this app with the Nodemon tool with the command below. Make sur
 ```Javascript
 npm start dev
 ```
+## [Back-end Application](https://github.com/AaronCrvl/toy-land-api)
+[![Dev.to](https://github-readme-stats.vercel.app/api/pin/?username=AaronCrvl&repo=toy-land-api&theme=dracula)](https://github.com/thepracticaldev/dev.to)
+
