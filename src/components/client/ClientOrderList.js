@@ -1,7 +1,7 @@
 import React, {usestate} from 'react';
 import { useEffect } from 'react';
-import Order from './Order';
-import ClientOrderController from '../controllers/ClientOrderController';
+import Order from './order/Order';
+import ClientOrderController from '../../controllers/ClientOrderController';
 import Spinner from 'react-bootstrap/Spinner';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -26,7 +26,7 @@ export default function ClientOrderList({ idAccout }) {
             padding: '100px',
             marginTop:'10px',
             marginBottom:'10px',
-            'text-align-last':'center',
+            'textAlignLast':'center',
         }
     }    
 

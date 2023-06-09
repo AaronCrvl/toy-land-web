@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import AccountController from '../controllers/AccountController';
-import ClientOrderController from '../controllers/ClientOrderController';
+import AccountController from '../../../controllers/AccountController';
+import ClientOrderController from '../../../controllers/ClientOrderController';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -46,7 +46,7 @@ export default function BuyerInfo({ idProduct, idAccount }) {
       padding: '100px',
       marginTop:'10px',
       marginBottom:'10px',
-      'text-align-last':'center',
+      'textAlignLast':'center',
     }
   }  
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Login from '../components/Login';
-import CreateAccount from '../components/CreateAccount';
+import Login from '../components/login/Login';
+import CreateAccount from '../components/login/CreateAccount';
 
 export default function LoginPage() {    
        
@@ -56,7 +56,7 @@ export default function LoginPage() {
                             top: '50%',
                             transform: 'translate(0, -50%)',
                             padding: '100px',
-                            marginLeft: '200px',
+                            marginLeft: '40%',
                             borderRadius: '25px',                                                            
                             backgroundColor: 'white' 
                         }}

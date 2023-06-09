@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import ListGroup from "react-bootstrap/ListGroup"
 import Spinner from 'react-bootstrap/Spinner';
 import Product from "./Product"
-import Button from "react-bootstrap/Button"
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 
 export default function ProductPreviewsGroup({ idAccount, content }){    
@@ -28,7 +27,7 @@ export default function ProductPreviewsGroup({ idAccount, content }){
             padding: '100px',
             marginTop:'10px',
             marginBottom:'10px',
-            'text-align-last':'center',
+            'textAlignLast':'center',
         }
     }
     

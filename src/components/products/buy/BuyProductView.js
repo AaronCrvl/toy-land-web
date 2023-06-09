@@ -5,15 +5,14 @@ import Carousel from 'react-bootstrap/Carousel';
 import Spinner from 'react-bootstrap/Spinner';
 import BuyerInfo from './BuyerInfo';
 import Badge from 'react-bootstrap/Badge';
-import ProductController from '../controllers/ProductsController';
+import ProductController from '../../../controllers/ProductsController';
 
 export default function BuyPorductView({ idAcct, id, name, description, imageURL }){    
     const api = new ProductController();
 
     // useState
-    const [stock, setStock] = useState();        
-    const [showBuyerInfo, setBuyerInfo] = useState(false);    
-    const toggleShowA = () => setBuyerInfo(!showBuyerInfo);        
+    const [stock, setStock] = useState() 
+    const [showBuyerInfo, setBuyerInfo] = useState(false)                
 
     // useEffect
     useEffect(
@@ -24,6 +23,10 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
             }) 
         }
     )
+
+    // functions
+    const showBuyerInfoView = () => setBuyerInfo(!showBuyerInfo) 
+    const closeBuyerInfoView = () => setBuyerInfo(!showBuyerInfo)
 
     // styles
     const styles = {
@@ -49,7 +52,7 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
             padding: '100px',
             marginTop:'10px',
             marginBottom:'10px',
-            'text-align-last':'center',
+            'textAlignLast':'center',
         },
     }
 
@@ -79,16 +82,16 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                     <Carousel>
                                         <Carousel.Item style={styles.imageStyle}>
                                             <img
-                                            className="d-block w-100"
-                                            src={imageURL}                                 
-                                            alt="First slide"
+                                                className="d-block w-100"
+                                                src={imageURL}                                 
+                                                alt="First slide"
                                             />                               
                                         </Carousel.Item>
                                         <Carousel.Item style={styles.imageStyle}>
                                             <img
-                                            className="d-block w-100"
-                                            src={imageURL}                                 
-                                            alt="Second slide"
+                                                className="d-block w-100"
+                                                src={imageURL}                                 
+                                                alt="Second slide"
                                             />
                                         </Carousel.Item>                
                                     </Carousel>                        
@@ -141,7 +144,7 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                     </p>
                                     <div style={{textAlign:'-webkit-right'}}>
                                         <Col md={6} className="mb-2" style={{ display: 'grid'}}>
-                                            <Button onClick={toggleShowA} className="mb-2">
+                                            <Button onClick={showBuyerInfoView} className="mb-2">
                                                 <strong>Buy</strong>
                                             </Button>                                
                                         </Col>
@@ -165,10 +168,24 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                     {
                                         showBuyerInfo ?
                                         (
-                                            <div>                                            
-                                                <BuyerInfo
-                                                    idAccount={idAcct}
-                                                ></BuyerInfo>
+                                            <div>
+                                                <div
+                                                    style={{
+                                                        padding: '10px',
+                                                    }}
+                                                >
+                                                    <Button
+                                                        variant="warning"                                                    
+                                                        onClick={()=>closeBuyerInfoView()}
+                                                    >
+                                                        Close Pre Order View
+                                                    </Button>
+                                                </div>
+                                                <div>                                            
+                                                    <BuyerInfo
+                                                        idAccount={idAcct}
+                                                    ></BuyerInfo>
+                                                </div>
                                             </div>
                                         )
                                         :

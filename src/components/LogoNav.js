@@ -1,7 +1,6 @@
 import React from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
 
 export default function LogoNav(){    
     const MainLogoPath = 'https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png' 

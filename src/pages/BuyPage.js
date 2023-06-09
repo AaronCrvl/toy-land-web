@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Spinner from 'react-bootstrap/Spinner';
-import BuyProductView from "../components/BuyProductView";
+import BuyProductView from "../components/products/buy/BuyProductView";
 import ProductController from "../controllers/ProductsController";
 
 export default function BuyPage(){    
@@ -30,7 +30,7 @@ export default function BuyPage(){
         padding: '300px',
         marginTop:'150px',
         marginBottom:'150px',
-        'text-align-last':'center',
+        'textAlignLast':'center',
     }
 
     //JSX

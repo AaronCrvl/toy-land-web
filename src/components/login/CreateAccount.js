@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AccountController from '../controllers/AccountController';
+import AccountController from '../../controllers/AccountController';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';

@@ -9,20 +9,14 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 
-
 export default function AccountPage(){
     const location = useLocation()                
     const api = new AccountController()   
+
+    // useState
     const [account, setAccount] = useState()        
-    const [validated, setValidated] = useState(false)   
+    const [validated, setValidated] = useState(false)           
     
-    // styles
-    const spinnerStyle = {
-        width:  '100vh',
-        height:  '100vh',
-        padding: '300px'
-    }
-             
     // useEffect             
     useEffect(() => {             
         let Id = location.state.accountId === undefined ? -1 : location.state.accountId                          
@@ -49,11 +43,36 @@ export default function AccountPage(){
                 alert('Failed to update account.');
         })  
     }
+
+    // styles
+    const styles = {
+        accountDivStyle: {
+            padding: '100px',                                                                                          
+            backgroundColor: 'white'   
+        },
+        spinnerStyle : {
+            width:  '100vh',
+            height:  '100vh',
+            padding: '300px'
+        },      
+        accountDivImageStyle:{           
+            textAlignLast: 'center',
+        },
+        accountimageStyle:{
+            marginBottom:'40px',
+            border: 'outset',
+            padding: '10px',
+        },
+        formStyle:{
+            padding: '10px',
+        }
+    }
     
     // jsx
     return(
         validated ? 
         (
+            // success updating account!
             <div>
                 <img
                     alt=""
@@ -72,31 +91,33 @@ export default function AccountPage(){
         (
             account === undefined ?                
             (
+                //loading...
                 <div>
-                    <Spinner style={spinnerStyle} animation="border" variant="success"/>
+                    <Spinner style={styles.spinnerStyle} animation="border" variant="success"/>
                 </div>
             )
             :        
             (
                 <div
-                    style={{                                                                      
-                        padding: '100px',                        
-                        borderRadius: '25px',                                                            
-                        backgroundColor: 'white'                                                 
-                    }}
+                    style={styles.accountDivStyle}
                 >
-                    <img
-                        alt=""
-                        src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                        width="300px"
-                        marginLeft="500px"
-                        height="300px"
-                        className="d-inline-block align-top"
-                        style={{
-                            marginBottom:'40px'
-                        }}
-                    />
-                    <Form noValidate validated={validated}>
+                    <div
+                        style={styles.accountDivImageStyle}
+                    >
+                        <img
+                            alt=""
+                            src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
+                            width="200px"                        
+                            height="200px"
+                            marginLeft="200px"
+                            className="d-inline-block align-top"     
+                            style={styles.accountimageStyle}                       
+                        />
+                    </div>
+                    <Form 
+                        styles={styles.formStyle}
+                        noValidate validated={validated}
+                    >
                         <Row className="mb-3">
                             <Form.Group as={Col} md="4" controlId="validationCustom01">
                                 <Form.Label>First name</Form.Label>
@@ -147,13 +168,18 @@ export default function AccountPage(){
                         </Row>
                         <Form.Group className="mb-3">
                             <Form.Check
-                            required
-                            label="Agree to terms and conditions"
-                            feedback="You must agree before submitting."
-                            feedbackType="invalid"
+                                required
+                                label="Agree to terms and conditions"
+                                feedback="You must agree before submitting."
+                                feedbackType="invalid"
                             />
                         </Form.Group>
-                        <Button type="button" onClick={()=>handleSave()}>Save</Button>
+                        <Button 
+                            type="button" 
+                            onClick={()=>handleSave()}
+                        >
+                            Save
+                        </Button>
                     </Form>
                 </div>
             )            

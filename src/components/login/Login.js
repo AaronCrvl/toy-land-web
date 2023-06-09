@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthController from '../controllers/AuthController';
-import Footer from './Footer'
-import NavBar from './NavBar';
-import LogoNav from './LogoNav';
+import AuthController from '../../controllers/AuthController';
+import Footer from '../Footer';
+import NavBar from '../NavBar';
+import LogoNav from '../LogoNav';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import textValidator from '../validation/textValidator';
+import textValidator from '../../validation/textValidator';
 
 export default function LoginComponent() {
     const navigate = useNavigate()
@@ -17,8 +17,9 @@ export default function LoginComponent() {
     // useState
     const [idUser, setIdUser] = useState(-1)
     const [userName, setUsername] = useState('')
-    const [logggedInUser, setLoggedInUser] = useState(false)
+    const [loginInfo, setLoginInfo] = useState('')            
     const [homePage, setHomePage] = useState(false)
+    const [logggedInUser, setLoggedInUser] = useState(false)
      
     // functions
     const navigateToMainPage = () => {        
@@ -28,15 +29,12 @@ export default function LoginComponent() {
             }
           })        
     }        
-
     const handleLogged = () => {
         setLoggedInUser(!logggedInUser)    
         navigateToMainPage()    
     }    
-
     const navigateUserToHomePage = () => {    
-        setHomePage(true)    
-        document.getElementsByClassName("LoginInfo")[0].innerHTML = ''
+        setHomePage(true)            
         let username = document.getElementsByTagName("input")[0].value
         let password = document.getElementsByTagName("input")[1].value
         // if(!textValidator_.ValidateParams(username, password))        
@@ -53,7 +51,7 @@ export default function LoginComponent() {
                 }
                 else{
                     setHomePage(false)
-                    document.getElementsByClassName("LoginInfo")[0].innerHTML = "Fail to login"            
+                    setLoginInfo("Fail to login")
                 }
         })                                      
     }   
@@ -66,8 +64,29 @@ export default function LoginComponent() {
             padding: '100px',
             marginTop:'10px',
             marginBottom:'10px',
-            'text-align-last':'center',
-        }
+            'textAlignLast':'center',
+        },
+
+        loginFormStyle:{
+            border: '5px solid #932432',
+            position: 'absolute',
+            top: '50%',
+            transform: 'translate(0, -50%)',
+            padding: '100px',
+            marginLeft: '35%',
+            borderRadius: '25px',                                                                
+            backgroundColor: 'white'    
+        },
+
+        loggedPageStyle:{
+            width: 'fit-content', 
+            height:'100vh' ,                    
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            padding: '10px',   
+        },
     }
 
     // jsx
@@ -75,15 +94,7 @@ export default function LoginComponent() {
         logggedInUser ?
         (            
             <div
-                style={{
-                    width: 'fit-content', 
-                    height:'100vh' ,                    
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    padding: '10px',                                                 
-                }}
+                style={styles.loggedPageStyle}
             >
                 <LogoNav></LogoNav>
                 <NavBar
@@ -98,7 +109,7 @@ export default function LoginComponent() {
         (
             homePage ?
             (
-                <div>
+                <div style={styles.loginFormStyle}>
                     <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
                 </div>
             )
@@ -106,16 +117,7 @@ export default function LoginComponent() {
             (
                 <div>                         
                     <Form
-                        style={{
-                            border: '5px solid #932432',
-                            position: 'absolute',
-                            top: '50%',
-                            transform: 'translate(0, -50%)',
-                            padding: '100px',
-                            marginLeft: '200px',
-                            borderRadius: '25px',                                                                
-                            backgroundColor: 'white'                                                 
-                        }}
+                        style={styles.loginFormStyle}
                     >
                         <div>
                             <img
@@ -136,23 +138,27 @@ export default function LoginComponent() {
                                     marginBottom:'40px'
                                 }}>
                                 <h1>ToyLand</h1>
-                                <p 
-                                    className='LoginInfo'
-                                    style={{color: 'red'}}
-                                ></p>
+                                <p                                     
+                                    style={{color: 'red'}}                                
+                                >
+                                    {loginInfo}
+                                </p>
                             </div>
                         </div>  
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Username</Form.Label>
                             <Form.Control type="text" placeholder="Enter username" />
                             <Form.Text className="text-muted">
-                                We'll never share your user name with anyone else.
+                                TesteUser: Teste
                             </Form.Text>
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" />
+                            <Form.Text>
+                                TestsUserPassword:1
+                            </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />

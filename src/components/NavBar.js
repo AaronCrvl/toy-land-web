@@ -6,7 +6,6 @@ import MainPage from '../pages/MainPage';
 import ProductPage from '../pages/ProductPage';
 import BuyPage from '../pages/BuyPage';
 import AccountPage from '../pages/AccountPage';
-import AboutPage from '../pages/AboutPage';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 
@@ -28,8 +27,7 @@ export default function NavBar({ idUser, userName }){
             display: "flex",
             backgroundColor: '#932432',
             padding: '5px 0 5px 5px',
-            fontSize: '20px',   
-            padding: '10px',
+            fontSize: '20px',               
         }       
     }       
 
@@ -72,15 +70,22 @@ export default function NavBar({ idUser, userName }){
                     <div
                         style={{ marginLeft: '100vh', color: 'white'}}
                     >
-                        <Container>
-                            <Navbar.Brand onClick={navigateToAccountPage}>
+                        <Container
+                            style={{
+                                marginTop: '10px',
+                                marginRight: '20px',
+                            }}
+                        >
+                            <Navbar.Brand 
+                                onClick={navigateToAccountPage}
+                            >
                                 <img
                                     alt=""
                                     src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
                                     width="30"
                                     height="30"
                                     className="d-inline-block align-top"                                    
-                                />
+                                />                                
                                 {userName}
                             </Navbar.Brand>
                         </Container>

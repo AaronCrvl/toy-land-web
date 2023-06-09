@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import ClientOrderController from '../controllers/ClientOrderController';
+import ClientOrderController from '../../../controllers/ClientOrderController';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import ProductController from '../controllers/ProductsController'
-import ProductGrid from '../components/ProductGrid';
+import ProductGrid from '../components/products/ProductGrid';
 
 export default function ProductPage({ idAcct }){                     
     const [productList, setProductList] = useState()    
@@ -12,8 +12,8 @@ export default function ProductPage({ idAcct }){
         const response = api.GetAllProducts()     
         response.then(data => {
             setProductList(data)                        
-        });                        
-    }, []);
+        })
+    })
 
     // Styles    
     const ProductPageStyle = {
