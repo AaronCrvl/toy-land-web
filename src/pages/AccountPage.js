@@ -48,7 +48,8 @@ export default function AccountPage(){
     const styles = {
         accountDivStyle: {
             padding: '100px',                                                                                          
-            backgroundColor: 'white'   
+            backgroundColor: 'rgb(88 38 38)',    
+            color: 'white'
         },
         spinnerStyle : {
             width:  '100vh',

@@ -17,7 +17,8 @@ export default function ProductPage({ idAcct }){
 
     // Styles    
     const ProductPageStyle = {
-        backgroundColor: '#F3F3F3'
+        backgroundColor: 'rgb(88 38 38)',  
+        padding: '5px',
     }
     
     // JSX

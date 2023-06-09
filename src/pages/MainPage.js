@@ -10,7 +10,7 @@ export default function MainPage({ id }) {
 
     // useEffect
     useEffect(() => {                               
-        const response = api.GetProductsByRegisterQuantity(3)     
+        const response = api.GetProductsByRegisterQuantity(4)     
         response.then(data => {
             setProductList(data)                        
         })                        
@@ -22,7 +22,9 @@ export default function MainPage({ id }) {
             <Presentation></Presentation>                         
             <ProductPreviewsGroup 
                 idAccount={id} 
-                content={productList}></ProductPreviewsGroup>             
+                content={productList}
+            >
+            </ProductPreviewsGroup>             
         </div>  
     );    
 }

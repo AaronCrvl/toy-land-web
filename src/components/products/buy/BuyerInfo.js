@@ -53,7 +53,8 @@ export default function BuyerInfo({ idProduct, idAccount }) {
   // jsx
   return (
     order !== undefined ?
-    (
+    (  
+      // order create successfully!  
       <div>
         <div>
           <img
@@ -74,6 +75,7 @@ export default function BuyerInfo({ idProduct, idAccount }) {
     (
       account === undefined ?
       (
+        // loading...
         <div>
           <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
         </div>
@@ -183,8 +185,9 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                 color: 'black', 
                 backgroundColor:'khaki', 
                 'borderColor': 'khaki'
-                }}>
-                  Pre Order
+                }}
+              >
+                Pre Order
             </Button>
           </Form>
         </div>

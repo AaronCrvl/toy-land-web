@@ -1,24 +1,24 @@
 import React from "react"
 import {ImageBackground} from 'react-native';
+import unlockYouerImagination from '../sources/unlockYourImaginationLetter.png'
 
 export default function Presentation (){     
     
     // styles
     const styles = {
         PresentationStyle : {
-            'marginTop': '60px', 
-            'background-image': "", 
+            'marginTop': '10px',                         
         },
 
         PresStyle : {    
-            'textAlign': 'left',
-            'marginTop': '30px', 
+            'textAlign': 'left',            
             'marginBottom': '30px', 
-            color: '#283747',
+            color: 'white',
             width: '700px'
         },
 
         PresentationTextStyle : {
+            padding: '10px',
             marginLeft: '400px',
             color: '#DE354C',   
             'display': 'flex'       
@@ -33,19 +33,31 @@ export default function Presentation (){
     // jsx
     return(
         <ImageBackground
-            source='https://i.pinimg.com/originals/03/ca/1b/03ca1bfae12314e7f66d66594bc7f140.jpg'
+            source='https://image.slidesdocs.com/responsive-images/background/creative-black-business-red-fluid-abstract-powerpoint-background_0785289040__960_540.jpg'
             style={{width: '100%', height: '100%'}}
         >             
             <div style={styles.PresentationStyle}>                
                 <div>                
                     <div style={styles.PresentationTextStyle}>
-                        <div>
-                            <h1 style={{'fontSize': '100px', 'font-family': 'fantasy'}}>UNLOCK YOUR IMAGINATION</h1>                                                                                                             
-                            <h3 style={{'fontSize': '100px', 'font-family': '"Raleway", sans-serif'}}>Your mind is the limit!</h3>
+                        <div
+                            style={{
+                                padding: '10px',
+                            }}
+                        >
+                            <h1><img 
+                                    src={unlockYouerImagination}
+                                    style={{
+                                        width: '800px',
+                                        height: '400px',
+                                    }}
+                                >
+                                </img></h1>                                                                                                                                         
                             <div style={{display:'inline-flex'}}>
                             <p style={styles.PresStyle}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                In fermentum et sollicitudin ac orci. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin.                               
+                                Making toys is a kind of way to make our mark in the world, explore different products, and pre-order whatever you want.
+                                We'll be happy to realize your dreams with you and unlock the deepest areas of your imagination.
+                                
+                                Come change the world with us!
                             </p>
                         </div>  
                         </div>

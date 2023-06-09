@@ -8,6 +8,7 @@ import BuyPage from '../pages/BuyPage';
 import AccountPage from '../pages/AccountPage';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
+import LogoNav from './LogoNav';
 
 export default function NavBar({ idUser, userName }){              
     const navigate = useNavigate()
@@ -67,6 +68,13 @@ export default function NavBar({ idUser, userName }){
                             </NavDropdown.Item>
                         </NavDropdown>
                     </div>  
+                    <div
+                        style={{
+                            height: '80px',
+                        }}
+                    >
+                        <LogoNav></LogoNav>
+                    </div>
                     <div
                         style={{ marginLeft: '100vh', color: 'white'}}
                     >

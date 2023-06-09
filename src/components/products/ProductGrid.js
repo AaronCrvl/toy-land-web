@@ -12,7 +12,7 @@ export default function ProductGrid({ idAccount, content }){
     // styles
     const styles = {
         ContainerStyles : {
-            backgroundColor: 'rgb(228 228 228)',
+            backgroundColor: 'rgb(88 38 38)',  
             'display': 'grid',        
             width: 'max-content',        
         },
@@ -21,13 +21,17 @@ export default function ProductGrid({ idAccount, content }){
             width:  '100vh',
             height:  '100vh',
             padding: '300px'
+        },
+        
+        rowStyle: {
+            backgroundColor: 'rgb(88 38 38)',  
         }
     }
 
     // jsx
     return (        
             <Container style={styles.ContainerStyles}>  
-                <Row>
+                <Row style={styles.rowStyle}>
                 {
                     products === undefined ?
                     (

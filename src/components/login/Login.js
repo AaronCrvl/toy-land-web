@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import textValidator from '../../validation/textValidator';
+import toyLandLetterLogo from '../../sources/toyland-logo-black.png'
 
 export default function LoginComponent() {
     const navigate = useNavigate()
@@ -72,7 +73,8 @@ export default function LoginComponent() {
             position: 'absolute',
             top: '50%',
             transform: 'translate(0, -50%)',
-            padding: '100px',
+            padding: '90px',
+            height: '95%',
             marginLeft: '35%',
             borderRadius: '25px',                                                                
             backgroundColor: 'white'    
@@ -95,8 +97,7 @@ export default function LoginComponent() {
         (            
             <div
                 style={styles.loggedPageStyle}
-            >
-                <LogoNav></LogoNav>
+            >                
                 <NavBar
                     idUser={idUser}
                     userName={userName}
@@ -115,7 +116,9 @@ export default function LoginComponent() {
             )
             :
             (
-                <div>                         
+                <div
+                    sttle={{padding: '15px'}}
+                >                         
                     <Form
                         style={styles.loginFormStyle}
                     >
@@ -137,7 +140,7 @@ export default function LoginComponent() {
                                     'fontVariant': 'small-caps',
                                     marginBottom:'40px'
                                 }}>
-                                <h1>ToyLand</h1>
+                                <h1><img src={toyLandLetterLogo}></img></h1>
                                 <p                                     
                                     style={{color: 'red'}}                                
                                 >
