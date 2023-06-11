@@ -41,7 +41,7 @@ export default function LoginComponent() {
         // if(!textValidator_.ValidateParams(username, password))        
         //     return;    
 
-        const response = authApi.Validate(username, password)                
+        const response = authApi.Validate('Test', '1')                
         response.then(
             data=>{                
                 if(data !== undefined)

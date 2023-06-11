@@ -2,188 +2,146 @@ import React, { useState } from 'react'
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AccountController from '../controllers/AccountController';
-import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
+import ClientAccount from '../components/client/account/ClientAccount';
+import ClientOrderList from '../components/client/ClientOrderList';
+import Nav from 'react-bootstrap/Nav';
 
 export default function AccountPage(){
     const location = useLocation()                
     const api = new AccountController()   
 
-    // useState
-    const [account, setAccount] = useState()        
-    const [validated, setValidated] = useState(false)           
+    // useState   
+    const [id, setId] = useState(-1)
+    const [account_, setAccount] = useState()                 
+    const [isTabAccount, setisTabAccount] = useState(true)   
+    const [isHover1, setHover1] = useState()
+    const [isHover2, setHover2] = useState()
     
     // useEffect             
     useEffect(() => {             
-        let Id = location.state.accountId === undefined ? -1 : location.state.accountId                          
-        if(Id !== -1){
-            const response = api.GetAccount(Id)
-            response.then(data => {
-                setAccount(data)                                         
-            })            
+        setId(location.state.accountId === undefined ? -1 : location.state.accountId)
+        if(id !== -1){
+            if(account_ === undefined)
+            {
+                const response = api.GetAccount(id)
+                response.then(data => {
+                    setAccount(data)                                         
+                })
+            }              
         }            
-    }, [])
+    })    
 
     // functions
-    const handleSave = () => {
-        let firstName = document.querySelector('#validationCustom01').value
-        let lastName = document.querySelector('#validationCustom02').value        
-        let password = document.querySelector('#validationCustom03').value
-        let userName = document.querySelector('#validationCustomUsername').value  
-
-        const res = api.AlterAccount(account.IdAccount, firstName, lastName, userName, password)
-        res.then((response) => {
-            if(response.status === 200)
-                setValidated(true)
-            else
-                alert('Failed to update account.');
-        })  
+    const handleTabChange = (tab) => 
+    {
+        if(tab === 1 && isTabAccount !== true)
+            setisTabAccount(true)
+        if(tab === 2 && isTabAccount !== false)
+            setisTabAccount(false)
+    }
+    const handleHover1 = () =>{
+        setHover1(!isHover1)
+    }
+    const handleHover2 = () =>{
+        setHover2(!isHover2)
     }
 
     // styles
-    const styles = {
-        accountDivStyle: {
-            padding: '100px',                                                                                          
-            backgroundColor: 'rgb(88 38 38)',    
-            color: 'white'
-        },
+    const styles = {        
         spinnerStyle : {
             width:  '100vh',
             height:  '100vh',
             padding: '300px'
-        },      
-        accountDivImageStyle:{           
-            textAlignLast: 'center',
+        },   
+        
+        tabAccountStyle : {
+            padding: '15px',
+            borderBottom: 'solid',
+            borderBottomColor: (isTabAccount ? 'white': 'rgb(88 38 38)'),
+            color: (isHover1 ? 'black': 'white'),
+            backgroundColor: (isHover1 ? '#ffff10': 'rgb(88 38 38)'),
         },
-        accountimageStyle:{
-            marginBottom:'40px',
-            border: 'outset',
-            padding: '10px',
-        },
-        formStyle:{
-            padding: '10px',
+
+        tabOrdersStyle : {
+            padding: '15px',
+            borderBottom: 'solid',
+            borderBottomColor: (!isTabAccount ? 'white': 'rgb(88 38 38)'),
+            color: (isHover2 ? 'black': 'white'),
+            backgroundColor: (isHover2 ? '#ffff10': 'rgb(88 38 38)'),
         }
     }
     
     // jsx
-    return(
-        validated ? 
+    return(       
+        account_ === undefined ?                
         (
-            // success updating account!
+            // loading...
             <div>
-                <img
-                    alt=""
-                    src="https://cdn-icons-png.flaticon.com/512/179/179372.png"
-                    width="300px"
-                    height="300px"
-                    className="d-inline-block align-top"
-                    style={{
-                        marginBottom:'40px'
-                    }}
-                />
-                <h1>Account Updated Sucessfully</h1>                 
+                <Spinner style={styles.spinnerStyle} animation="border" variant="success"/>
             </div>
         )
-        :
+        :        
         (
-            account === undefined ?                
-            (
-                //loading...
-                <div>
-                    <Spinner style={styles.spinnerStyle} animation="border" variant="success"/>
-                </div>
-            )
-            :        
-            (
+            // tab selection
+            <div>
                 <div
-                    style={styles.accountDivStyle}
+                    style={{
+                        borderTop: 'ridge',
+                        borderTopColor: '#ffff10',
+                        backgroundColor: '#932432',
+                    }}
                 >
-                    <div
-                        style={styles.accountDivImageStyle}
+                    <table
+                        style={{
+                            display: 'grid',
+                            color: 'white',
+                        }}
                     >
-                        <img
-                            alt=""
-                            src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                            width="200px"                        
-                            height="200px"
-                            marginLeft="200px"
-                            className="d-inline-block align-top"     
-                            style={styles.accountimageStyle}                       
-                        />
-                    </div>
-                    <Form 
-                        styles={styles.formStyle}
-                        noValidate validated={validated}
-                    >
-                        <Row className="mb-3">
-                            <Form.Group as={Col} md="4" controlId="validationCustom01">
-                                <Form.Label>First name</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="First name"
-                                    defaultValue={account.FirstName}
-                                />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                            </Form.Group>
-                            <Form.Group as={Col} md="4" controlId="validationCustom02">
-                                <Form.Label>Last name</Form.Label>
-                                <Form.Control
-                                    required
-                                    type="text"
-                                    placeholder="Last name"
-                                    defaultValue={account.LastName}
-                                />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>  
-                            </Form.Group>
-                            <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                                <Form.Label>Username</Form.Label>
-                                <InputGroup hasValidation>
-                                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                    <Form.Control
-                                    type="text"
-                                    placeholder="Username"
-                                    defaultValue={account.UserName}
-                                    aria-describedby="inputGroupPrepend"
-                                    required
-                                    />
-                                    <Form.Control.Feedback type="invalid">
-                                    Please choose a username.
-                                    </Form.Control.Feedback>
-                                </InputGroup>
-                            </Form.Group>
-                        </Row>
-                        <Row className="mb-3">
-                            <Form.Group as={Col} md="6" controlId="validationCustom03">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    placeholder="Password" 
-                                    defaultValue={account.Password}
-                                    required />                        
-                            </Form.Group>                    
-                        </Row>
-                        <Form.Group className="mb-3">
-                            <Form.Check
-                                required
-                                label="Agree to terms and conditions"
-                                feedback="You must agree before submitting."
-                                feedbackType="invalid"
-                            />
-                        </Form.Group>
-                        <Button 
-                            type="button" 
-                            onClick={()=>handleSave()}
+                        <thead
+                            style={{
+                                display: 'flex'
+                            }}
                         >
-                            Save
-                        </Button>
-                    </Form>
+                            <tr
+                                style={styles.tabAccountStyle}                                
+                                onClick={()=>handleTabChange(1)}
+                                onMouseEnter={()=>handleHover1()}
+                                onMouseLeave={()=>handleHover1()}
+                            >
+                                <td> Account </td>
+                            </tr>
+                            <tr
+                                style={styles.tabOrdersStyle}
+                                onClick={()=>handleTabChange(2)}
+                                onMouseEnter={()=>handleHover2()}
+                                onMouseLeave={()=>handleHover2()}
+                            >
+                                <td> Orders </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>                    
+                <div>  
+                    {                  
+                        isTabAccount ?
+                        (
+                            <ClientAccount
+                                account={account_}
+                            >                    
+                            </ClientAccount>
+                        )
+                        :
+                        (
+                            <ClientOrderList
+                                idAccout={id}
+                            >                            
+                            </ClientOrderList>
+                        )
+                    }
                 </div>
-            )            
-        )
-    )
+            </div>
+            
+        )            
+    )    
 }

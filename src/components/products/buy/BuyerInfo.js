@@ -12,9 +12,21 @@ import Row from 'react-bootstrap/Row';
 export default function BuyerInfo({ idProduct, idAccount }) {           
   const accountApi = new AccountController()
   const clientOrderApi = new ClientOrderController() 
-  const [account, setAccount] = useState()   
+
+  // useState  
   const [order, setOrder] = useState()  
-  const [validated, setValidated] = useState(false);
+  const [account, setAccount] = useState()     
+  const [validated, setValidated] = useState(false)
+
+  // useEffect
+  useEffect(()=>{    
+    if(idAccount !== -1){
+      const response = accountApi.GetAccount(idAccount)
+      response.then(data => {        
+        setAccount(data)                                         
+      })            
+    }  
+  })
 
   // functions
   const handleSubmit = () => {    
@@ -26,17 +38,7 @@ export default function BuyerInfo({ idProduct, idAccount }) {
     }
     else
       alert("Something went wrong!")
-  }
-
-  // useEffect
-  useEffect(()=>{    
-    if(idAccount !== -1){
-      const response = accountApi.GetAccount(idAccount)
-      response.then(data => {
-        setAccount(data)                                         
-      })            
-    }  
-  })
+  }  
 
   // styles
   const styles = {
@@ -67,7 +69,7 @@ export default function BuyerInfo({ idProduct, idAccount }) {
                   marginBottom:'40px'
               }}
           />
-          <h1>Order Created Sucessfully</h1>                 
+          <h1>{order}</h1>                 
         </div>
       </div>
     )

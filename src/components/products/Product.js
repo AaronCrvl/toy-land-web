@@ -50,48 +50,50 @@ export default function Product({ idAcct, id, name, descripton, imageURL }){
     return (
         <Col style={styles.RowStyle}>            
             <table>
-                <tr style={{                        
-                    marginTop: '30px',
-                    marginBottom: '5px',
-                    merginLeft: '50px',
-                    marginRight: '50px',
-                }}>                                                
-                    <td>
-                        <Card style={styles.CardStyle}>
-                            <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
-                            <Card.Body
-                                style={{
-                                    width: '100%'
-                                }}
-                            >
-                                <Card.Title>
-                                    <h3
-                                        style={{
-                                            textAlignLast: 'start',
-                                        }}
-                                    >
-                                        {name}
-                                    </h3>
-                                </Card.Title>
-                                <Card.Text style={{width: '250px', textAlign:'justify'}}>
-                                    <p>
-                                        <div>{descripton}</div>                                                                            
-                                        <div>Price:<p style={{color: '#DE354C'}}>$0,00</p></div>                                        
-                                    </p>                                    
-                                </Card.Text>   
-                                <Button 
-                                    onClick={navigateBuy} 
+                <tbody>
+                    <tr style={{                        
+                        marginTop: '30px',
+                        marginBottom: '5px',
+                        merginLeft: '50px',
+                        marginRight: '50px',
+                    }}>                                                
+                        <td>
+                            <Card style={styles.CardStyle}>
+                                <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
+                                <Card.Body
                                     style={{
-                                        backgroundColor:'red', 
-                                        'borderColor': 'red', 
-                                        display: 'grid'}}
-                                    >
-                                        See More
-                                    </Button>                                
-                            </Card.Body>
-                        </Card>
-                    </td>                        
-                </tr>                   
+                                        width: '100%'
+                                    }}
+                                >
+                                    <Card.Title>
+                                        <h3
+                                            style={{
+                                                textAlignLast: 'start',
+                                            }}
+                                        >
+                                            {name}
+                                        </h3>
+                                    </Card.Title>
+                                    <Card.Text style={{width: '250px', textAlign:'justify'}}>
+                                        <p>
+                                            <div>{descripton}</div>                                                                            
+                                            <div>Price:<p style={{color: '#DE354C'}}>$0,00</p></div>                                        
+                                        </p>                                    
+                                    </Card.Text>   
+                                    <Button 
+                                        onClick={navigateBuy} 
+                                        style={{
+                                            backgroundColor:'red', 
+                                            'borderColor': 'red', 
+                                            display: 'grid'}}
+                                        >
+                                            See More
+                                        </Button>                                
+                                </Card.Body>
+                            </Card>
+                        </td>                        
+                    </tr>   
+                </tbody>                
             </table>                                   
         </Col>
     );

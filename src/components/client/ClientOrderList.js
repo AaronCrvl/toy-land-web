@@ -1,5 +1,5 @@
-import React, {usestate} from 'react';
-import { useEffect } from 'react';
+import React from 'react';
+import { useEffect, useState } from 'react';
 import Order from './order/Order';
 import ClientOrderController from '../../controllers/ClientOrderController';
 import Spinner from 'react-bootstrap/Spinner';
@@ -8,14 +8,17 @@ import Row from 'react-bootstrap/Row';
 
 export default function ClientOrderList({ idAccout }) {
     const ordersApi = new ClientOrderController()    
-    const [orders, setOrders] = useState(0)
+    const [orders, setOrders] = useState()
 
     // useEffect
     useEffect(() => {
-        const res = ordersApi.GetClientOrders(idAccout)    
-        res.then(data => {
-            setOrders(data)
-        })
+        if(orders === undefined)
+        {
+            const res = ordersApi.GetOrdersByClient(idAccout)    
+            res.then(data => {
+                setOrders(data)
+            })
+        }        
     })        
 
     // styles
@@ -27,6 +30,12 @@ export default function ClientOrderList({ idAccout }) {
             marginTop:'10px',
             marginBottom:'10px',
             'textAlignLast':'center',
+        },
+        containerStyle: {
+            padding: '25px',
+            backgroundColor: '#582626',            
+            display: 'flex',
+            'minWidth': '-webkit-fill-available',
         }
     }    
 
@@ -45,23 +54,25 @@ export default function ClientOrderList({ idAccout }) {
                     </div>
                 )
                 :
-                (
-                    <div>
-                        <Container>
-                            <Row>
-                                {
-                                    orders.map((order)=>{
-                                        return(
-                                            <Order
-                                                idAcct = {idAccout}
-                                                idProduct={order.idProduct}
-                                            ></Order>
-                                        )
-                                    })
-                                }
-                            </Row>
-                        </Container>
-                    </div>
+                (                    
+                    <Container
+                        style={styles.containerStyle}
+                    >
+                        <Row
+                            style={{padding: '10px'}}
+                        >
+                            {
+                                orders.map((order)=>{
+                                    return(
+                                        <Order
+                                            idAcct = {idAccout}
+                                            idProduct={order.idProduct}
+                                        ></Order>
+                                    )
+                                })
+                            }
+                        </Row>
+                    </Container>                 
                 )
             }
         </div>

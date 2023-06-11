@@ -3,28 +3,56 @@ import { useEffect } from 'react';
 import ProductController from '../controllers/ProductsController'
 import ProductGrid from '../components/products/ProductGrid';
 
-export default function ProductPage({ idAcct }){                     
-    const [productList, setProductList] = useState()    
+export default function ProductPage({ idAcct }){                         
     const api = new ProductController()        
 
-    //Funtions           
-    useEffect(() => {                               
-        const response = api.GetAllProducts()     
-        response.then(data => {
-            setProductList(data)                        
-        })
+    // useState
+    const [productList, setProductList] = useState()    
+
+    // functions
+    useEffect(() => {   
+        if(productList === undefined){
+            const response = api.GetAllProducts()     
+            response.then(data => {
+                setProductList(data)                        
+            })
+        }
     })
 
-    // Styles    
-    const ProductPageStyle = {
-        backgroundColor: 'rgb(88 38 38)',  
-        padding: '5px',
-    }
+    // styles 
+    const styles = {
+        ProductPageStyle : {
+            backgroundColor: 'rgb(88 38 38)',  
+            padding: '5px',
+        },
+
+        spinnerStyle : {
+            width:  '5vh',
+            height:  '5vh',
+            padding: '100px',
+            marginTop:'10px',
+            marginBottom:'10px',
+            'textAlignLast':'center',
+        },
+    }       
     
-    // JSX
+    // jsx
     return (
-        <div style={ProductPageStyle}>        
-          {productList && <ProductGrid idAccount={idAcct} content={productList}/> }
+        <div style={styles.ProductPageStyle}>  
+            {
+                productList === undefined ?
+                (
+                    <div>
+
+                    </div>
+                )
+                :
+                (
+                    <div>
+                        <ProductGrid idAccount={idAcct} content={productList}/>
+                    </div>
+                )
+            }
         </div>
-    );
+    )
 }

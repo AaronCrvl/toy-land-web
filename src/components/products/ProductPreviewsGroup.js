@@ -44,7 +44,7 @@ export default function ProductPreviewsGroup({ idAccount, content }){
                         ></img>                    
                 </div>
                 <div style={{display: 'inline-grid', padding: '40px'}}>
-                    <ListGroup horizontal style={{display: 'flex', 'overflow-x': 'auto'}}>                        
+                    <ListGroup horizontal style={{display: 'flex', ' overflowX': 'auto'}}>                        
                             {
                                 content === undefined ?
                                 (
