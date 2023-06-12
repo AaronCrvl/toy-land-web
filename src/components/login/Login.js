@@ -6,9 +6,11 @@ import NavBar from '../NavBar';
 import LogoNav from '../LogoNav';
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import textValidator from '../../validation/textValidator';
-import toyLandLetterLogo from '../../sources/toyland-logo-black.png'
+import toyLandLetterLogo from '../../assets/toyland-logo-black.png';
+import monsterLogo from '../../assets/scary-monster.png';
 
 export default function LoginComponent() {
     const navigate = useNavigate()
@@ -56,6 +58,7 @@ export default function LoginComponent() {
                 }
         })                                      
     }   
+    const closeLoginInfo = () => setLoginInfo('')
 
     // styles
     const styles = {
@@ -66,115 +69,91 @@ export default function LoginComponent() {
             marginTop:'10px',
             marginBottom:'10px',
             'textAlignLast':'center',
-        },
-
-        loginFormStyle:{
-            border: '5px solid #932432',
-            position: 'absolute',
-            top: '50%',
-            transform: 'translate(0, -50%)',
-            padding: '90px',
-            height: '95%',
-            marginLeft: '35%',
-            borderRadius: '25px',                                                                
-            backgroundColor: 'white'    
-        },
-
-        loggedPageStyle:{
-            width: 'fit-content', 
-            height:'100vh' ,                    
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            padding: '10px',   
-        },
+        },     
     }
 
     // jsx
     return(
-        logggedInUser ?
-        (            
-            <div
-                style={styles.loggedPageStyle}
-            >                
-                <NavBar
-                    idUser={idUser}
-                    userName={userName}
-                >
-                </NavBar>                
-                <Footer></Footer>
-            </div>
-        )
-        :
-        (
-            homePage ?
-            (
-                <div style={styles.loginFormStyle}>
-                    <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
-                </div>
-            )
-            :
-            (
-                <div
-                    sttle={{padding: '15px'}}
-                >                         
-                    <Form
-                        style={styles.loginFormStyle}
-                    >
+        <div>
+            {
+                logggedInUser ?
+                (            
+                    <div>                
+                        <NavBar
+                            idUser={idUser}
+                            userName={userName}
+                        >
+                        </NavBar>                
+                        <Footer></Footer>
+                    </div>
+                )
+                :
+                (
+                    homePage ?
+                    (
                         <div>
-                            <img
-                                alt=""
-                                src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                                width="300px"
-                                height="300px"
-                                className="d-inline-block align-top"
-                                style={{
-                                    marginBottom:'40px'
-                                }}
-                            />
-                            <div 
-                                style={{ 
-                                    fontFamily:'"Raleway", sans-serif', 
-                                    color:'#932432', 
-                                    'fontVariant': 'small-caps',
-                                    marginBottom:'40px'
-                                }}>
-                                <h1><img src={toyLandLetterLogo}></img></h1>
-                                <p                                     
-                                    style={{color: 'red'}}                                
-                                >
-                                    {loginInfo}
-                                </p>
+                            <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
+                        </div>
+                    )
+                    :
+                    (                                    
+                        <div className='container bg-white rounded-lg p-10'>                           
+                            <div className='flex h-30 w-30'>
+                                <img
+                                    className='d-inline-block align-top' 
+                                    src={toyLandLetterLogo}>                                
+                                </img>
+                                <img
+                                    alt=""
+                                    width="80px"
+                                    height="80px"
+                                    src={monsterLogo}
+                                    className="d-inline-block align-top p-1"                                    
+                                />
+                            </div>                                                                                            
+                            <div className='p-3'> 
+                                {
+                                    loginInfo !== '' ?
+                                    (                               
+                                        <Alert variant='danger'>
+                                            {loginInfo}
+                                        </Alert>                                                                 
+                                    )
+                                    :
+                                    (
+                                        <div></div>
+                                    )
+                                }
                             </div>
-                        </div>  
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="text" placeholder="Enter username" />
-                            <Form.Text className="text-muted">
-                                TesteUser: Teste
-                            </Form.Text>
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                            <Form.Text>
-                                TestsUserPassword:1
-                            </Form.Text>
-                        </Form.Group>
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
-                        </Form.Group>
-                        <Button onClick={()=>navigateUserToHomePage()} 
-                            variant="primary" 
-                            type="button" 
-                            style={{backgroundColor:'black', 'borderColor': 'red'}}>
-                            Submit
-                        </Button>
-                    </Form>
-                </div>  
-            )
-        )
-    )
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control type="text" placeholder="Enter username" />
+                                <Form.Text className="text-muted">
+                                    user: Test
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Text>
+                                    password: 1
+                                </Form.Text>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Check me out" />
+                            </Form.Group>
+                            <div                                 
+                                className='btn text-white bg-black flex justify-center items-center' 
+                                onClick={()=>navigateUserToHomePage()} 
+                                variant="primary" 
+                                type="button" 
+                            >
+                                Submit
+                            </div>
+                        </div>                
+                    )
+                )
+            }
+        </div>
+    );    
 }

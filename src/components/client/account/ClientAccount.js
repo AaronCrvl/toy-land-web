@@ -25,27 +25,7 @@ export default function ClientAccount({ account }){
             else
                 alert('Failed to update account.');
         })  
-    }
-
-    // styles
-    const styles = {
-        accountDivStyle: {
-            padding: '100px',                                                                                          
-            backgroundColor: 'rgb(88 38 38)',    
-            color: 'white'
-        },
-        accountDivImageStyle:{           
-            textAlignLast: 'center',
-        },
-        accountimageStyle:{
-            marginBottom:'40px',
-            border: 'outset',
-            padding: '10px',
-        },
-        formStyle:{
-            padding: '10px',
-        }
-    }
+    }   
 
     // jsx
     return(
@@ -68,24 +48,17 @@ export default function ClientAccount({ account }){
         )
         :
         (
-            <div
-                style={styles.accountDivStyle}
-            >
-                <div
-                    style={styles.accountDivImageStyle}
-                >
+            <div className='flex bg-red-900 w-full h-screen p-10'>
+                <div>
                     <img
                         alt=""
                         src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
                         width="200px"                        
-                        height="200px"
-                        marginLeft="200px"
+                        height="200px"                        
                         className="d-inline-block align-top"     
-                        style={styles.accountimageStyle}                       
                     />
                 </div>
-                <Form 
-                    styles={styles.formStyle}
+                <div className='container w-screen text-white'                   
                     noValidate validated={validated}
                 >
                     <Row className="mb-3">
@@ -144,13 +117,13 @@ export default function ClientAccount({ account }){
                             feedbackType="invalid"
                         />
                     </Form.Group>
-                    <Button 
+                    <div className='btn bg-black text-white' 
                         type="button" 
                         onClick={()=>handleSave()}
                     >
                         Save
-                    </Button>
-                </Form>
+                    </div>
+                </div>
             </div>
         )
     );    

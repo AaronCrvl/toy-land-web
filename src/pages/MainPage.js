@@ -4,19 +4,23 @@ import ProductController from "../controllers/ProductsController"
 import Presentation from '../components/Presentation';
 import ProductPreviewsGroup from '../components/products/ProductPreviewsGroup';
 
-export default function MainPage({ id }) {     
-    const [productList, setProductList] = useState()    
+export default function MainPage({ id }) {         
     const api = new ProductController() 
 
-    // useEffect
-    useEffect(() => {                               
-        const response = api.GetProductsByRegisterQuantity(4)     
-        response.then(data => {
-            setProductList(data)                        
-        })                        
-    }, [])    
+    // useState
+    const [productList, setProductList] = useState()    
 
-    //JSX
+    // useEffect
+    useEffect(() => {          
+        if(productList === undefined){
+            const response = api.GetProductsByRegisterQuantity(4)     
+            response.then(data => {            
+                setProductList(data)                        
+            })                        
+        }
+    })    
+
+    // jsx
     return(
         <div>     
             <Presentation></Presentation>                         

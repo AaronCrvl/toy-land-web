@@ -2,7 +2,7 @@ import React from "react";
 import Spinner from 'react-bootstrap/Spinner';
 
 export default function AboutPage(){
-    //Style
+    // styles
     const spinnerStyle = {
         width:  '70vh',
         height:  '70vh',
@@ -13,7 +13,7 @@ export default function AboutPage(){
         'text-align':'center',
     }
     
-    //JSX
+    // jsx
     return(
         <Spinner  animation="border" role="status" style={spinnerStyle}>
             <span className="visually-hidden" >Loading About Page...</span>

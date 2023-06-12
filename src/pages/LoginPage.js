@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Login from '../components/login/Login';
 import CreateAccount from '../components/login/CreateAccount';
+import monsterLogo from '../assets/scary-monster.png'
 
 export default function LoginPage() {    
        
@@ -19,85 +20,55 @@ export default function LoginPage() {
 
     // jsx
     return(      
-        <div 
-            style={{
-                    width: '100%',                 
-                    height:'100%' ,
-                    backgroundColor:'firebrick',                   
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    padding: '10px',                                      
-                }}
-            >
+        <div className='flex h-screen w-screen items-center justify-center'>
             {                
                 showClientFields ?  
                 (
                     showCreate ?
                     (
-                        <div>
+                        <div className='m-auto flex items-center justify-center'>
                             <CreateAccount></CreateAccount>
                         </div>
                     )
                     :
                     (
-                        <div>                                       
+                        <div className='m-auto flex items-center justify-center'>                                       
                             <Login></Login>
                         </div>
                     )
                 )
                 :
-                (                               
-                    <div
-                        style={{
-                            border: '5px solid #932432',
-                            position: 'absolute',
-                            top: '50%',
-                            transform: 'translate(0, -50%)',
-                            padding: '100px',
-                            marginLeft: '40%',
-                            borderRadius: '25px',                                                            
-                            backgroundColor: 'white' 
-                        }}
-                    >                                         
-                        <div>                                  
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img
-                                                alt=""
-                                                src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                                                width="30"
-                                                height="30"
-                                                className="d-inline-block align-top"                                        
-                                            />{' '}  
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <Button 
-                                                onClick={handleLogInClick}
-                                                style={{backgroundColor:'black', 'borderColor': 'red'}}
-                                            >
-                                                Log On
-                                            </Button>
-                                        </td>
-                                    </tr>  
-                                    <tr>
-                                        <td>
-                                            <Button 
-                                                onClick={handleCreate}
-                                                style={{backgroundColor:'black', 'borderColor': 'red'}}
-                                            >
-                                                Create Account
-                                            </Button>
-                                        </td>
-                                    </tr>                                   
-                                </tbody>
-                            </table>                                                                                                    
-                        </div>                                              
+                (                    
+                    <div className='w-50%'>           
+                        <div className='container rounded bg-white p-10 flex items-center justify-center'>                                                                                       
+                            <div>                                
+                                <div>
+                                    <div className='p-3'>
+                                        <img
+                                            alt=""
+                                            src={monsterLogo}
+                                            width="30"
+                                            height="30"
+                                            className="d-inline-block align-top"                                        
+                                        />{' '}  
+                                    </div>
+                                </div>
+                                <div className='p-1'>                                
+                                    <div className='btn bg-black text-white'
+                                        onClick={handleLogInClick}                                            
+                                    >
+                                        Log On
+                                    </div>                                
+                                </div>  
+                                <div className='p-1'>                                
+                                    <div className='btn bg-black text-white'
+                                        onClick={handleCreate}                                                
+                                    >
+                                        Create Account
+                                    </div>                                
+                                </div>                                                                   
+                            </div>                                                                                                                                                                    
+                        </div>
                     </div>
                 )                                                
             }

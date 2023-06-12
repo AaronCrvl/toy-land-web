@@ -29,82 +29,80 @@ export default function NavBar({ idUser, userName }){
             backgroundColor: '#932432',
             padding: '5px 0 5px 5px',
             fontSize: '20px',               
-        }       
+        },        
     }       
 
     // jsx
     return(        
-        <div>                                    
-            <div style={styles.RouterStyle}>                        
-                     <div style={{ margin: '10px', marginLeft: '30px' }}>
+        <div className="hidden w-full md:block md:w-auto">                                                           
+            <ul className="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white red:bg-red-800 md:dark:bg-red-900 red:border-red-700">
+                <li style={{marginRight:'550px'}}>                                            
+                    <LogoNav></LogoNav>                                            
+                </li>
+                <li>
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
                         <NavLink 
-                            to="/main"
-                            style={{color:  '#F3F3F3',  textDecoration: 'none'}}
+                            className="text-white no-underline"
+                            to="/main"                            
                         >
                             Main                                                   
                         </NavLink>
-                    </div>   
-                    <div style={{ margin: '10px', marginLeft: '30px' }}>
+                    </div>
+                </li>
+                <li>
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
                         <NavLink 
                             to="/products"
-                            style={{color:  '#F3F3F3',  textDecoration: 'none'}}
+                            className="text-white no-underline"
                         >
                             Products                                                   
                         </NavLink>
-                    </div>                          
-                    <div style={{ margin: '10px', marginLeft: '30px' }}>
-                        <NavDropdown style={{color:  '#F3F3F3',  textDecoration: 'none'}} title="Categories" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">
-                                City
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Creator
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">
-                                Heroes
-                            </NavDropdown.Item>                                
-                            <NavDropdown.Item href="#action/3.4">
-                                Jurassic
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </div>  
-                    <div
-                        style={{
-                            height: '80px',
-                        }}
-                    >
-                        <LogoNav></LogoNav>
                     </div>
-                    <div
-                        style={{ marginLeft: '100vh', color: 'white'}}
-                    >
-                        <Container
-                            style={{
-                                marginTop: '10px',
-                                marginRight: '20px',
-                            }}
-                        >
-                            <Navbar.Brand 
-                                onClick={navigateToAccountPage}
-                            >
-                                <img
-                                    alt=""
-                                    src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
-                                    width="30"
-                                    height="30"
-                                    className="d-inline-block align-top"                                    
-                                />                                
-                                {userName}
-                            </Navbar.Brand>
-                        </Container>
-                    </div>                         
-                </div>
-                <Routes>
-                    <Route exact path="/main" element={<MainPage id={idUser}/>} />
-                    <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           
-                    <Route path="/buy" element={<BuyPage />} />
-                    <Route path="/account" element={<AccountPage />} />
-                </Routes>                  
+                </li>
+                <li>
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
+                        <div>
+                            <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="#action/3.1">
+                                    City
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.2">
+                                    Creator
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#action/3.3">
+                                    Heroes
+                                </NavDropdown.Item>                                
+                                <NavDropdown.Item href="#action/3.4">
+                                    Jurassic
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        </div>  
+                    </div>
+                </li>   
+                <li style={{marginLeft: '700px'}}></li>             
+                <li className='text-white'>                    
+                    <Navbar.Brand 
+                        onClick={navigateToAccountPage}
+                    >                            
+                        <div className='container flex p-2 hover:bg-red-700'>
+                            <img
+                                alt=""
+                                src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
+                                width="30px"
+                                height="30px"
+                                className="d-inline-block align-top"                                    
+                            /> 
+                            {userName}
+                        </div>                           
+                    </Navbar.Brand>                    
+                </li>                                             
+            </ul>                                                                                                                                                         
+            <Routes>
+                <Route exact path="/main" element={<MainPage id={idUser}/>} />
+                <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           
+                <Route path="/buy" element={<BuyPage />} />
+                <Route path="/account" element={<AccountPage />} />
+            </Routes>                  
         </div>
     )
 }

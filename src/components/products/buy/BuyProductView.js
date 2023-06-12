@@ -7,8 +7,8 @@ import BuyerInfo from './BuyerInfo';
 import Badge from 'react-bootstrap/Badge';
 import ProductController from '../../../controllers/ProductsController';
 
-export default function BuyPorductView({ idAcct, id, name, description, imageURL }){    
-    const api = new ProductController();
+export default function BuyProductView({ idAcct, id, name, description, imageURL }){    
+    const api = new ProductController()
 
     // useState
     const [stock, setStock] = useState() 
@@ -17,10 +17,12 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
     // useEffect
     useEffect(
         ()=>{
-            const response = api.GetProductStock(id)
-            response.then(data => {
-                setStock(data)                                         
-            }) 
+            if(stock === undefined){
+                const response = api.GetProductStock(id)
+                response.then(data => {                
+                    setStock(data)                                         
+                }) 
+            }
         }
     )
 
@@ -57,79 +59,67 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
     }
 
     // jsx
-    return(   
-        stock === undefined?
-        (
-            <div>
-                <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
-            </div>
-        )     
-        :
-        (
-            <div 
-                style={{                 
-                    backgroundColor: 'rgb(88 38 38)',                    
-                }}>
-                <table style={styles.tableStyle}>
-                    <thead
-                        style={{
-                            width: 'max-content',
-                        }}
-                    >
-                        <th>    
-                            <tr>
-                                <td>
-                                    <Carousel>
-                                        <Carousel.Item style={styles.imageStyle}>
-                                            <img
-                                                className="d-block w-100"
-                                                src={imageURL}                                 
-                                                alt="First slide"
-                                            />                               
-                                        </Carousel.Item>
-                                        <Carousel.Item style={styles.imageStyle}>
-                                            <img
-                                                className="d-block w-100"
-                                                src={imageURL}                                 
-                                                alt="Second slide"
-                                            />
-                                        </Carousel.Item>                
-                                    </Carousel>                        
-                                </td>
-                                <td style={styles.infoAreaStyle}>
-                                    <h1 style={{fontSize:'70px'}}>
+    return( 
+        <div 
+            style={{                 
+                backgroundColor: 'rgb(88 38 38)',                    
+            }}
+        >
+            {
+                stock === undefined?
+                (
+                    <div>
+                        <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
+                    </div>
+                )     
+                :
+                (
+                    <div>
+                        <div className='flex p-10 w-full'>
+                            <div className='p-10'>
+                                <Carousel>
+                                    <Carousel.Item style={styles.imageStyle}>
+                                        <img
+                                            className="d-block w-100"
+                                            src={imageURL}                                 
+                                            alt="First slide"
+                                        />                               
+                                    </Carousel.Item>
+                                    <Carousel.Item style={styles.imageStyle}>
+                                        <img
+                                            className="d-block w-100"
+                                            src={imageURL}                                 
+                                            alt="Second slide"
+                                        />
+                                    </Carousel.Item>                
+                                </Carousel>                        
+                            </div>
+                            <div className='container w-full text-right p-10 items-right justify-center'>
+                                <div className='text-8xl text-white p-1'>
+                                    <strong>
+                                        <Badge bg="danger" text="light">
+                                            <strong>
+                                                {name}
+                                            </strong>
+                                        </Badge>{' '}   
+                                    </strong>
+                                </div>
+                                <div className='text-4xl text-white p-1'>
+                                    <Badge bg="danger" text="light">
                                         <strong>
-                                            <Badge bg="danger" text="light">
-                                                <strong>
-                                                    {name}
-                                                </strong>
-                                            </Badge>{' '}   
+                                            Available Qtd: {stock.Qtd}
                                         </strong>
-                                    </h1>
-                                    <h2 style={{'fontVariant': 'small-caps', marginBottom:'35px'}}>
-                                        <Badge bg="danger" text="light">
-                                            <strong style={{fontSize:'30px'}}>
-                                                $0,00
-                                            </strong>
-                                        </Badge>{' '}                                                             
-                                    </h2>
-                                    <h3>
-                                        <Badge bg="danger" text="light">
-                                            <strong style={{fontSize:'30px'}}>
-                                                Available Qtd: {stock.Qtd}
-                                            </strong>
-                                        </Badge>{' '} 
-                                    </h3>
-                                    <h4 style={{
-                                        'fontVariant': 'small-caps', 
-                                        marginBottom:'25px', 
-                                        width:'450px', 
-                                        display:'inline-block'
-                                    }}>
-                                        {description}
-                                    </h4>
-                                    <p>
-                                        <div>Don't be slow! Our prices are low.</div>
+                                    </Badge>{' '} 
+                                </div>
+                                <div className='text-4xl text-white p-1'>
+                                    <Badge bg="danger" text="light">
+                                        <strong>
+                                            $0,00
+                                        </strong>
+                                    </Badge>{' '}                                                             
+                                </div>  
+                                <div className='container mt-40'>                                
+                                    <div className='text-2xl text-white p-1'>                                    
                                         <div>
                                             <Badge bg="primary">
                                                 Free Shipping
@@ -141,64 +131,36 @@ export default function BuyPorductView({ idAcct, id, name, description, imageURL
                                                 Great Feedback
                                             </Badge>{' '}                               
                                         </div>                            
-                                    </p>
-                                    <div style={{textAlign:'-webkit-right'}}>
-                                        <Col md={6} className="mb-2" style={{ display: 'grid'}}>
-                                            <Button onClick={showBuyerInfoView} className="mb-2">
-                                                <strong>Buy</strong>
-                                            </Button>                                
-                                        </Col>
-                                    </div>                        
-                                </td>
-                            </tr>                                                                                                
-                        </th>  
-                    </thead>
-                    <tbody
-                        style={{
-                            width: 'max-content',
-                        }}
-                    >  
-                        <tr
-                            style={{
-                                display: 'contents',
-                            }}
-                        >
-                            <td>
-                                <div>
-                                    {
-                                        showBuyerInfo ?
-                                        (
-                                            <div>
-                                                <div
-                                                    style={{
-                                                        padding: '10px',
-                                                    }}
-                                                >
-                                                    <Button
-                                                        variant="warning"                                                    
-                                                        onClick={()=>closeBuyerInfoView()}
-                                                    >
-                                                        Close Pre Order View
-                                                    </Button>
-                                                </div>
-                                                <div>                                            
-                                                    <BuyerInfo
-                                                        idAccount={idAcct}
-                                                    ></BuyerInfo>
-                                                </div>
-                                            </div>
-                                        )
-                                        :
-                                        (
-                                            <div></div>
-                                        )
-                                    }
-                                </div>  
-                            </td>               
-                        </tr>                                                  
-                    </tbody>                                                                
-                </table>                     
-            </div>  
-        )                       
+                                    </div>
+                                    <div className='text-white text-2xl ml-auto w-50 p-1'>
+                                        {description}
+                                    </div>
+                                    <div className='p-1'>
+                                        <div 
+                                            onClick={showBuyerInfoView} 
+                                            className="btn bg-primary text-white mb-2"
+                                        >
+                                            <strong>Buy</strong>
+                                        </div>                                                                
+                                    </div> 
+                                </div>                                                 
+                            </div>                            
+                        </div>    
+                        {
+                            showBuyerInfo ?
+                            (                                                              
+                                <BuyerInfo
+                                    idAccount={idAcct}
+                                ></BuyerInfo>                                           
+                            )
+                            :
+                            (
+                                <div></div>
+                            )
+                        }                    
+                    </div>                            
+                )       
+            }
+        </div>                  
     );
 }

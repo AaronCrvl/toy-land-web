@@ -1,35 +1,16 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/NavBar';
+import LogoNav from '../components/LogoNav'
 
-export default function Footer (){    
-    
-    // style
-    const styles = {
-        FooterStyle : {
-            backgroundColor: '#932432',    
-            width: '100%',
-            height : '60px',        
-            display: 'inline-block',    
-        }
-    }    
+export default function Footer (){             
 
     // jsx
     return(
-        <div style={styles.FooterStyle}>
-            <Navbar>
-                <Container>
-                    <Navbar.Brand href="#home">
-                        <img
-                            alt=""
-                            src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-top"
-                        />                     
-                    </Navbar.Brand>
-                </Container>
-            </Navbar>
+        <div className='navbar flex bg-red-800 w-full'>
+            <div className='flex p-2'>
+                <LogoNav></LogoNav>   
+            </div>
         </div>
     ); 
 }

@@ -2,8 +2,7 @@ import './App.css';
 import LoginPage from './pages/LoginPage';
 
 export default function App() {    
-  const AppStyle = {        
-    backgroundColor: 'red',
+  const AppStyle = {            
     width: '100vh',
     heigh: '100vh',
   }

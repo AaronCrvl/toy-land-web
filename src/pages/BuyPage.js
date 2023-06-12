@@ -7,23 +7,28 @@ import BuyProductView from "../components/products/buy/BuyProductView";
 import ProductController from "../controllers/ProductsController";
 
 export default function BuyPage(){    
-    const location = useLocation();            
+    const location = useLocation()
+    const api = new ProductController()         
+
+    // useState
     const [product, setProduct] = useState()    
-    const [account, setAccount] = useState(-1)    
-    const api = new ProductController()             
+    const [account, setAccount] = useState(-1)            
 
-    //Funtions           
+    // functions           
     useEffect(() => {               
-        let IdProduct = location.state.productId === undefined ? 1 : location.state.productId                      
-        let IdAccount = location.state.idAccount === undefined ? 1 : location.state.idAccount    
-        const response = api.GetProductById(IdProduct)     
-        response.then(data => {
-            setProduct(data)     
-            setAccount(IdAccount)                   
-        })                        
-    }, [])  
+        if(product === undefined)
+        {
+            let IdProduct = location.state.productId === undefined ? 1 : location.state.productId                      
+            let IdAccount = location.state.idAccount === undefined ? 1 : location.state.idAccount    
+            const response = api.GetProductById(IdProduct)     
+            response.then(data => {
+                setProduct(data)     
+                setAccount(IdAccount)                   
+            })                        
+        }
+    })  
 
-    //Styles
+    // styles
     const spinnerStyle = {
         width:  '70vh',
         height:  '70vh',
@@ -33,12 +38,12 @@ export default function BuyPage(){
         'textAlignLast':'center',
     }
 
-    //JSX
+    // jsx
     return(
         <div
             style={{                 
                 backgroundColor: 'rgb(88 38 38)',            
-        }}>   
+            }}>   
         {     
             product === undefined ?
             (
@@ -49,7 +54,7 @@ export default function BuyPage(){
             )
             :
             (          
-                <div>
+                <div className="w-screen">
                     <BuyProductView 
                         idAcct = {account}
                         id={product.Response.idProduct}

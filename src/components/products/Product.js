@@ -46,55 +46,34 @@ export default function Product({ idAcct, id, name, descripton, imageURL }){
         }
     }
 
-    //JSX
+    // jsx
     return (
-        <Col style={styles.RowStyle}>            
-            <table>
-                <tbody>
-                    <tr style={{                        
-                        marginTop: '30px',
-                        marginBottom: '5px',
-                        merginLeft: '50px',
-                        marginRight: '50px',
-                    }}>                                                
-                        <td>
-                            <Card style={styles.CardStyle}>
-                                <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
-                                <Card.Body
-                                    style={{
-                                        width: '100%'
-                                    }}
-                                >
-                                    <Card.Title>
-                                        <h3
-                                            style={{
-                                                textAlignLast: 'start',
-                                            }}
-                                        >
-                                            {name}
-                                        </h3>
-                                    </Card.Title>
-                                    <Card.Text style={{width: '250px', textAlign:'justify'}}>
-                                        <p>
-                                            <div>{descripton}</div>                                                                            
-                                            <div>Price:<p style={{color: '#DE354C'}}>$0,00</p></div>                                        
-                                        </p>                                    
-                                    </Card.Text>   
-                                    <Button 
-                                        onClick={navigateBuy} 
-                                        style={{
-                                            backgroundColor:'red', 
-                                            'borderColor': 'red', 
-                                            display: 'grid'}}
-                                        >
-                                            See More
-                                        </Button>                                
-                                </Card.Body>
-                            </Card>
-                        </td>                        
-                    </tr>   
-                </tbody>                
-            </table>                                   
-        </Col>
+        <div className="container grid p-1 w-100 h-100">
+            <div className='bg-red-800 text-white p-3 rounded'>
+                <div className='p-5 w-70 h-70 bg-white rounded'>
+                    <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
+                </div>
+                <div>
+                    <div className='p-3'>
+                        <div className='text-4xl text-left'
+                        >
+                            {name}
+                        </div>
+                    </div>
+                    <div className='p-3'>                        
+                        <div className='p-1 w-50 text-left'>
+                            {descripton}
+                        </div>                                                                                                    
+                    </div>             
+                    <div className='p-3'>
+                        <div className='btn bg-primary text-white p-2'
+                            onClick={navigateBuy}                        
+                        >
+                            See More
+                        </div>                                
+                    </div>    
+                </div>
+            </div>                                                                      
+        </div>
     );
 }

@@ -20,11 +20,7 @@ export default function ProductPage({ idAcct }){
     })
 
     // styles 
-    const styles = {
-        ProductPageStyle : {
-            backgroundColor: 'rgb(88 38 38)',  
-            padding: '5px',
-        },
+    const styles = {      
 
         spinnerStyle : {
             width:  '5vh',
@@ -38,12 +34,11 @@ export default function ProductPage({ idAcct }){
     
     // jsx
     return (
-        <div style={styles.ProductPageStyle}>  
+        <div className='bg-red-950 p-1 w-screen'>
             {
                 productList === undefined ?
                 (
                     <div>
-
                     </div>
                 )
                 :

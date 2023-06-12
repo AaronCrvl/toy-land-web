@@ -3,26 +3,12 @@ import ListGroup from "react-bootstrap/ListGroup"
 import Spinner from 'react-bootstrap/Spinner';
 import Product from "./Product"
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
-import staffChoices from '../../sources/staffChoicesLetter.png'
+import sugestions from '../../assets/staffChoicesLetter.png'
 
 export default function ProductPreviewsGroup({ idAccount, content }){    
 
     // styles
-    const styles = {
-        productsPreviewStyles : {  
-            backgroundColor: 'rgb(88 38 38)',     
-            color: 'white',
-            'borderTopStyle':'outset', 
-            textAlign:'center'        
-        },
-
-        PropTextStyle : {
-            display: '-webkit-inline-box',
-            fontSize: '50px',                  
-            textAlign: 'center',        
-            fontVariant: 'small-caps',
-        },
-
+    const styles = {        
         spinnerStyle : {
             width:  '5vh',
             height:  '5vh',
@@ -33,18 +19,18 @@ export default function ProductPreviewsGroup({ idAccount, content }){
         }
     }
     
-    //JSX
+    // jsx
     return(                            
-        <div style={styles.productsPreviewStyles}>              
-            <div style={{textAlign:'center', 'marginTop': '35px', 'marginLeft':'80px'}}>
-                <div style={{textAlign:'center', marginTop:'80px'}}>                    
+        <div className="bg-red-950 p-17">
+            <div className="p-10">
+                <div>                    
                         <img 
-                            src={staffChoices}
-                            style={{width: '400px', height: '150px'}}
+                            src={sugestions}          
+                            className='p-10'                  
                         ></img>                    
                 </div>
-                <div style={{display: 'inline-grid', padding: '40px'}}>
-                    <ListGroup horizontal style={{display: 'flex', ' overflowX': 'auto'}}>                        
+                <div>
+                    <div className="flex">                        
                             {
                                 content === undefined ?
                                 (
@@ -56,11 +42,7 @@ export default function ProductPreviewsGroup({ idAccount, content }){
                                 (
                                     content.map((item) =>{    
                                         return(                    
-                                            <ListGroupItem
-                                                style={{
-                                                    backgroundColor: 'rgb(97 46 46)',   
-                                                }}
-                                            >
+                                            <div style={{padding: '25px', border: 'solid', borderColor:'firebrick', borderWidth: '1px'}}>
                                                 <Product 
                                                     idAcct={idAccount}
                                                     id={item.idProduct}                                            
@@ -68,12 +50,12 @@ export default function ProductPreviewsGroup({ idAccount, content }){
                                                     descripton ={item.shortDescription}
                                                     imageURL={item.imageUrl}
                                                 />  
-                                            </ListGroupItem>   
+                                            </div>   
                                         )                   
                                     })
                                 )
                             }                        
-                    </ListGroup>                                                          
+                    </div>                                                          
                 </div>
             </div>
         </div>
