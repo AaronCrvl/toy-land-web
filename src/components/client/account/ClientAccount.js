@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import AccountController from '../../../controllers/AccountController'; 
 
 export default function ClientAccount({ account }){
@@ -48,16 +47,7 @@ export default function ClientAccount({ account }){
         )
         :
         (
-            <div className='flex bg-red-900 w-full h-screen p-10'>
-                <div>
-                    <img
-                        alt=""
-                        src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
-                        width="200px"                        
-                        height="200px"                        
-                        className="d-inline-block align-top"     
-                    />
-                </div>
+            <div className='p-5 overflow-y-scroll bg-red-900'>                              
                 <div className='container w-screen text-white'                   
                     noValidate validated={validated}
                 >

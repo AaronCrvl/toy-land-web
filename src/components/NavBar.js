@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route, NavLink } from "react-router-dom";
-import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import MainPage from '../pages/MainPage';
 import ProductPage from '../pages/ProductPage';
@@ -11,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import LogoNav from './LogoNav';
 
 export default function NavBar({ idUser, userName }){              
-    const navigate = useNavigate()
+    const navigate = useNavigate()    
 
     // navigation     
     const navigateToAccountPage = () => {        
@@ -22,25 +21,15 @@ export default function NavBar({ idUser, userName }){
         })        
     }
 
-    // styles   
-    const styles = {
-        RouterStyle : {        
-            display: "flex",
-            backgroundColor: '#932432',
-            padding: '5px 0 5px 5px',
-            fontSize: '20px',               
-        },        
-    }       
-
     // jsx
     return(        
-        <div className="hidden w-full md:block md:w-auto">                                                           
-            <ul className="font-medium flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white red:bg-red-800 md:dark:bg-red-900 red:border-red-700">
-                <li style={{marginRight:'550px'}}>                                            
+        <div>                                            
+            <ul className="sticky top-0 font-medium flex font-sans font-bold text-lg flex-col p-4 md:p-0 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white red:bg-red-800 md:dark:bg-red-900 red:border-red-700">
+                <li className='mr-auto hover:animate-bounce'>                                            
                     <LogoNav></LogoNav>                                            
                 </li>
                 <li>
-                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700 hover:rounded" aria-current="page">
                         <NavLink 
                             className="text-white no-underline"
                             to="/main"                            
@@ -50,7 +39,7 @@ export default function NavBar({ idUser, userName }){
                     </div>
                 </li>
                 <li>
-                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700 hover:rounded" aria-current="page">
                         <NavLink 
                             to="/products"
                             className="text-white no-underline"
@@ -60,7 +49,7 @@ export default function NavBar({ idUser, userName }){
                     </div>
                 </li>
                 <li>
-                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700" aria-current="page">
+                    <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700 hover:rounded" aria-current="page">
                         <div>
                             <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown">
                                 <NavDropdown.Item href="#action/3.1">
@@ -83,8 +72,8 @@ export default function NavBar({ idUser, userName }){
                 <li className='text-white'>                    
                     <Navbar.Brand 
                         onClick={navigateToAccountPage}
-                    >                            
-                        <div className='container flex p-2 hover:bg-red-700'>
+                    >                                                    
+                        <div className='container flex p-1 hover:bg-red-700 hover:animate-pulse'>                                                      
                             <img
                                 alt=""
                                 src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
@@ -95,14 +84,16 @@ export default function NavBar({ idUser, userName }){
                             {userName}
                         </div>                           
                     </Navbar.Brand>                    
-                </li>                                             
-            </ul>                                                                                                                                                         
-            <Routes>
-                <Route exact path="/main" element={<MainPage id={idUser}/>} />
-                <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           
-                <Route path="/buy" element={<BuyPage />} />
-                <Route path="/account" element={<AccountPage />} />
-            </Routes>                  
-        </div>
+                </li>                                                        
+            </ul>      
+            <div className='p-0 mb-0'>
+                <Routes>
+                    <Route exact path="/main" element={<MainPage id={idUser}/>} />
+                    <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           
+                    <Route path="/buy" element={<BuyPage />} />
+                    <Route path="/account" element={<AccountPage />} />
+                </Routes>                  
+            </div>                                                                                                                                                               
+        </div>        
     )
 }

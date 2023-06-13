@@ -61,7 +61,7 @@ export default function CreateAccount() {
             >
                 <img
                     alt=""
-                    src="https://seeklogo.com/images/S/spitfire-logo-1DD11D1CFB-seeklogo.com.png"
+                    src="../src/assets/scary-monster-white.png"
                     width="300px"
                     height="300px"
                     className="d-inline-block align-top"

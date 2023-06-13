@@ -1,14 +1,9 @@
 import './App.css';
 import LoginPage from './pages/LoginPage';
 
-export default function App() {    
-  const AppStyle = {            
-    width: '100vh',
-    heigh: '100vh',
-  }
-
+export default function App() {      
   return (
-    <div className="App" style={AppStyle}>
+    <div className="App w-screen h-screen">
       <header/>
       <LoginPage />
     </div>

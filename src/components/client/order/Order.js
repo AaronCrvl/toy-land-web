@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import ClientOrderController from '../../../controllers/ClientOrderController';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
 
 export default function Order({ idAcct, idProduct }){
     const orderApi = new ClientOrderController()
@@ -16,7 +15,7 @@ export default function Order({ idAcct, idProduct }){
         {
             const response = orderApi.GetClientOrder(idAcct, idProduct)
             response.then((data)=>{
-                if(data != undefined)
+                if(data !== undefined)
                 {
                     setOrder(data)
                     switch(data.idStatus)
@@ -51,13 +50,18 @@ export default function Order({ idAcct, idProduct }){
 
     // jsx
     return(
-        <div
-            style={{padding: '10px',}}
-        >
+        <div className='p-3 w-full'>
             {
                 order === undefined ?
                 (
-                    <div>
+                    <div className='w-screen h-screen'>
+                        <span class="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
+                            <p className='ml-10'>
+                                Loading...
+                            </p>
+                        </span>                                   
                     </div>
                 )
                 :

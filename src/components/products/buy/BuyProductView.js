@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
 import Carousel from 'react-bootstrap/Carousel';
-import Spinner from 'react-bootstrap/Spinner';
 import BuyerInfo from './BuyerInfo';
 import Badge from 'react-bootstrap/Badge';
 import ProductController from '../../../controllers/ProductsController';
@@ -27,8 +24,7 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
     )
 
     // functions
-    const showBuyerInfoView = () => setBuyerInfo(!showBuyerInfo) 
-    const closeBuyerInfoView = () => setBuyerInfo(!showBuyerInfo)
+    const showBuyerInfoView = () => setBuyerInfo(!showBuyerInfo)     
 
     // styles
     const styles = {
@@ -47,15 +43,6 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
             textAlign:'right',        
             padding: '150px',
         },
-
-        spinnerStyle : {
-            width:  '5vh',
-            height:  '5vh',
-            padding: '100px',
-            marginTop:'10px',
-            marginBottom:'10px',
-            'textAlignLast':'center',
-        },
     }
 
     // jsx
@@ -68,8 +55,14 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
             {
                 stock === undefined?
                 (
-                    <div>
-                        <Spinner style={styles.spinnerStyle} animation="border" variant="warning"/>                                    
+                    <div className='w-screen h-screen'>
+                        <span class="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
+                            <p className='ml-10'>
+                                Loading...
+                            </p>
+                        </span>                                   
                     </div>
                 )     
                 :
@@ -94,32 +87,28 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                                     </Carousel.Item>                
                                 </Carousel>                        
                             </div>
-                            <div className='container w-full text-right p-10 items-right justify-center'>
-                                <div className='text-8xl text-white p-1'>
-                                    <strong>
-                                        <Badge bg="danger" text="light">
+                            <div className='w-full'>
+                            </div>
+                            <div className='w-screen text-left mr-auto p-10 items-left justify-left'>
+                                <div className='text-8xl text-white p-1 mb-4'>
+                                    <strong>                                    
                                             <strong>
                                                 {name}
-                                            </strong>
-                                        </Badge>{' '}   
+                                            </strong>                                        
                                     </strong>
                                 </div>
-                                <div className='text-4xl text-white p-1'>
-                                    <Badge bg="danger" text="light">
+                                <div className='text-4xl text-white p-1 mb-2'>                                    
                                         <strong>
-                                            Available Qtd: {stock.Qtd}
-                                        </strong>
-                                    </Badge>{' '} 
+                                            In stock: {stock.Qtd}
+                                        </strong>                                    
                                 </div>
-                                <div className='text-4xl text-white p-1'>
-                                    <Badge bg="danger" text="light">
+                                <div className='text-4xl text-white p-1'>                                    
                                         <strong>
                                             $0,00
-                                        </strong>
-                                    </Badge>{' '}                                                             
+                                        </strong>                                
                                 </div>  
-                                <div className='container mt-40'>                                
-                                    <div className='text-2xl text-white p-1'>                                    
+                                <div className='container mt-20'>                                
+                                    <div className='text-2xl text-white p-1 mb-1'>                                    
                                         <div>
                                             <Badge bg="primary">
                                                 Free Shipping
@@ -132,7 +121,7 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                                             </Badge>{' '}                               
                                         </div>                            
                                     </div>
-                                    <div className='text-white text-2xl ml-auto w-50 p-1'>
+                                    <div className='text-white text-2xl text-left justify-left items-left w-50 p-1'>
                                         {description}
                                     </div>
                                     <div className='p-1'>

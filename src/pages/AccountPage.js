@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import AccountController from '../controllers/AccountController';
-import Spinner from 'react-bootstrap/Spinner';
 import ClientAccount from '../components/client/account/ClientAccount';
 import ClientOrderList from '../components/client/ClientOrderList';
 import Tab from 'react-bootstrap/Tab';
@@ -30,30 +29,25 @@ export default function AccountPage(){
         }            
     })    
 
-    // styles
-    const styles = {        
-        spinnerStyle : {
-            width:  '100vh',
-            height:  '100vh',
-            padding: '300px'
-        },      
-    }
-    
     // jsx
     return(     
         <div className='w-screen'>
             {
                 account_ === undefined ?                
                 (
-                    // loading...
-                    <div>
-                        <Spinner style={styles.spinnerStyle} animation="border" variant="success"/>
+                    <div className='w-screen h-screen'>
+                        <span class="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
+                            <p className='ml-10'>
+                                Loading...
+                            </p>
+                        </span>                                   
                     </div>
                 )
                 :        
-                (
-                    // tab selection                                      
-                    <div className='p-10'>                              
+                (                                                      
+                    <div className='w-screen h-screen p-10'>                              
                         <Tabs
                             defaultActiveKey="profile"
                             id="uncontrolled-tab-example"

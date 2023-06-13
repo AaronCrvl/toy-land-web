@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import Spinner from 'react-bootstrap/Spinner';
 import BuyProductView from "../components/products/buy/BuyProductView";
 import ProductController from "../controllers/ProductsController";
 
@@ -28,16 +27,6 @@ export default function BuyPage(){
         }
     })  
 
-    // styles
-    const spinnerStyle = {
-        width:  '70vh',
-        height:  '70vh',
-        padding: '300px',
-        marginTop:'150px',
-        marginBottom:'150px',
-        'textAlignLast':'center',
-    }
-
     // jsx
     return(
         <div
@@ -47,9 +36,14 @@ export default function BuyPage(){
         {     
             product === undefined ?
             (
-                <div>
-                    <Spinner style={spinnerStyle} animation="border" variant="warning"/>
-                    <h1>Loading Buy Page...</h1>
+                <div className='w-screen h-screen'>
+                    <span class="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
+                        <p className='ml-10'>
+                            Loading...
+                        </p>
+                    </span>                                   
                 </div>
             )
             :

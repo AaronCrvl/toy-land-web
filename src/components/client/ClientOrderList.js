@@ -2,9 +2,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Order from './order/Order';
 import ClientOrderController from '../../controllers/ClientOrderController';
-import Spinner from 'react-bootstrap/Spinner';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 
 export default function ClientOrderList({ idAccout }) {
     const ordersApi = new ClientOrderController()    
@@ -21,58 +18,39 @@ export default function ClientOrderList({ idAccout }) {
         }        
     })        
 
-    // styles
-    const styles = {
-        spinnerStyle : {
-            width:  '5vh',
-            height:  '5vh',
-            padding: '100px',
-            marginTop:'10px',
-            marginBottom:'10px',
-            'textAlignLast':'center',
-        },
-        containerStyle: {
-            padding: '25px',
-            backgroundColor: '#582626',            
-            display: 'flex',
-            'minWidth': '-webkit-fill-available',
-        }
-    }    
-
     // jsx        
     return(
         <div>
             {
                 orders === undefined ?
                 (
-                    <div>
-                      <Spinner 
-                            style={styles.spinnerStyle} 
-                            animation="border" 
-                            variant="warning"
-                        />                                    
+                    <div className='w-screen h-screen'>
+                        <span class="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
+                            <p className='ml-10'>
+                                Loading...
+                            </p>
+                        </span>                                   
                     </div>
                 )
                 :
                 (                    
-                    <Container
-                        style={styles.containerStyle}
-                    >
-                        <Row
-                            style={{padding: '10px'}}
-                        >
+                    <div className='p-5 overflow-y-scroll bg-red-900'>                        
+                        <div className='list-group'>
                             {
                                 orders.map((order)=>{
                                     return(
                                         <Order
+                                            key={idAccout}                     
                                             idAcct = {idAccout}
                                             idProduct={order.idProduct}
                                         ></Order>
                                     )
                                 })
                             }
-                        </Row>
-                    </Container>                 
+                        </div>
+                    </div>                 
                 )
             }
         </div>

@@ -8,11 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render( 
-  <div
-    style={{
-      backgroundColor: 'firebrick'
-    }}
-  >
+  <div className='bg-red-800 w-full overflow-x-hidden'>
     <BrowserRouter>
       <App/>
     </BrowserRouter>

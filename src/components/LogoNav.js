@@ -1,6 +1,4 @@
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import toyLandLogo from '../assets/toyland-logo.png'
 import monsterLogo from '../assets/scary-monster-white.png'
 
