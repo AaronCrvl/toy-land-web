@@ -19,7 +19,7 @@ export default function LoginPage() {
 
     // jsx
     return(      
-        <div className='flex h-screen w-screen items-center justify-center'>
+        <div className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-red-950 from-10% via-black-500 via-50% via-orange-500 via-70% to-yellow-500 to-100% '>
             {                
                 showClientFields ?  
                 (

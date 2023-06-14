@@ -2,13 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import AccountController from '../../../controllers/AccountController';
 import ClientOrderController from '../../../controllers/ClientOrderController';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
-import Row from 'react-bootstrap/Row';
 
-export default function BuyerInfo({ idProduct, idAccount }) {           
+export default function ({ idProduct, idAccount }) {           
   const accountApi = new AccountController()
   const clientOrderApi = new ClientOrderController() 
 
@@ -30,13 +25,24 @@ export default function BuyerInfo({ idProduct, idAccount }) {
   // functions
   const handleSubmit = () => {    
     if(idAccount !== undefined){
-      const response = clientOrderApi.CreateProductOrder(idProduct, idAccount)
-      response.then(data => {
-        setOrder(data)                                         
-      }) 
+
+      let email = (document.querySelector("#grid-email").value.trim() === undefined ? "" : document.querySelector("#grid-email").value)
+      let city = (document.querySelector("#grid-city").value.trim() === undefined ? "" : document.querySelector("#grid-city").value)
+      let state = (document.querySelector("#grid-state").value.trim() === undefined ? "" : document.querySelector("#grid-state").value)
+      let zip =  (document.querySelector("#grid-zip").value.trim() === undefined ? "" : document.querySelector("#grid-zip").value)
+
+      if(email !== "" && city !== "" && state !== "" && zip !== "")
+      {
+        let location = `${city} - ${state} / Zip: ${zip}`
+        const response = clientOrderApi.CreateProductOrder(idProduct, idAccount, email, location)
+        response.then(data => {
+          setOrder(data)                                         
+        }) 
+      }      
     }
-    else
-      alert("Something went wrong!")
+    else{
+      alert("Something went wrong! Check if all the fields are filled correctly")
+    }
   }  
 
   // jsx
@@ -44,21 +50,14 @@ export default function BuyerInfo({ idProduct, idAccount }) {
     <div>
       {
         order !== undefined ?
-        (  
-          // order created successfully!  
-          <div>
-            <div>
-              <img
-                  alt=""
-                  src="https://cdn-icons-png.flaticon.com/512/179/179372.png"
-                  width="300px"
-                  height="300px"
-                  className="d-inline-block align-top"
-                  style={{
-                      marginBottom:'40px'
-                  }}
-              />
-              <h1>{order}</h1>                 
+        (            
+          <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 p-10 py-3 shadow-md" role="alert">
+            <div class="flex">
+                <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                <div>
+                <p class="font-bold">Order created sucessfully on our system.</p>
+                <p class="text-sm">Make sure to check your account order status at the account page for more info and status.</p>
+                </div>
             </div>
           </div>
         )
@@ -78,98 +77,111 @@ export default function BuyerInfo({ idProduct, idAccount }) {
           )
           :
           (            
-            <div className="w-full text-white">                              
-              <Row className="p-5 rounded grid bg-yellow-800 p-10">
-                <div className='mb-10 text-4xl'>
-                    <strong>Pre-Order:</strong> Fill Personal Info
-                </div>
-                <Form.Group as={Col} md="4" controlId="validationCustom01">
-                  <Form.Label>First name</Form.Label>
-                  <Form.Control 
-                    disabled
-                    readOnly                     
-                    type="text"
-                    placeholder="First name"
-                    defaultValue={account.FirstName}
-                    
-                  />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationCustom02">
-                  <Form.Label>Last name</Form.Label>
-                  <Form.Control                      
-                    type="text"
-                    disabled
+            <form class="w-screen p-40 bg-yellow-950 text-white font-sans rounded">
+              <p className='text-4xl text-white font-bold mb-10'>Pre Order</p>
+              <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-first-name">
+                    First Name
+                  </label>
+                  <input 
+                    class="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
+                    id="grid-first-name" 
+                    type="text"                     
                     readOnly
-                    placeholder="Last name"
-                    defaultValue={account.LastName}                      
-                  />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                  <Form.Label>Username</Form.Label>
-                  <InputGroup hasValidation>
-                    <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                    <Form.Control
-                      type="text"
-                      placeholder="Username"
-                      aria-describedby="inputGroupPrepend"
-                      defaultValue={account.UserName}
-                      required
-                      disabled
-                      readOnly
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Please choose a username.
-                    </Form.Control.Feedback>
-                  </InputGroup>
-                </Form.Group>
-                <Form.Group as={Col} md="6" controlId="validationCustom03">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" placeholder="name@example.com" />
-                </Form.Group>
-                <Form.Group as={Col} md="6" controlId="validationCustom03">
-                  <Form.Label>City</Form.Label>
-                  <Form.Control type="text" placeholder="City" required />
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a valid city.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="3" controlId="validationCustom04">
-                  <Form.Label>State</Form.Label>
-                  <Form.Control type="text" placeholder="State" required />
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a valid state.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group as={Col} md="3" className='mb-5' controlId="validationCustom05">
-                  <Form.Label>Zip</Form.Label>
-                  <Form.Control type="text" placeholder="Zip" required />
-                  <Form.Control.Feedback type="invalid">
-                    Please provide a valid zip.
-                  </Form.Control.Feedback>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Check
+                    disabled
+                    value={account.FirstName}                
+                  ></input>
+                  <p class="text-yellow-500 text-xl italic">Please fill out this field.</p>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-last-name">
+                    Last Name
+                  </label>
+                  <input 
+                    class="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
+                    id="grid-last-name" 
+                    type="text"                     
+                    readOnly
+                    disabled
+                    value={account.LastName}     
+                  ></input>
+                </div>
+              </div>
+              <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                    Password
+                  </label>
+                  <input 
+                    class="appearance-none block w-full bg-black-200 text-white border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="grid-password" 
+                    type="password"                     
+                    readOnly
+                    disabled
+                    value={account.Password} 
+                  ></input>
+                  <p class="text-yellow-600 text-xl italic">Make it as long and as crazy as you'd like</p>
+                </div>
+              </div>
+              <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                    Email
+                  </label>
+                  <input 
+                    class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="grid-email" 
+                    type="email"     
+                    required                                                        
+                    placeholder="toyland@gmail.com"
+                  ></input>                  
+                </div>
+              </div>
+              <div class="flex flex-wrap -mx-3 mb-2">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                    City
+                  </label>
+                  <input 
+                    class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="grid-city" 
+                    type="text" 
                     required
-                    label="Agree to terms and conditions"
-                    feedback="You must agree before submitting."
-                    feedbackType="invalid"
-                  />
-                </Form.Group>
-                <Button 
-                  onClick={()=>handleSubmit()}
-                  type="button" 
-                  style={{ 
-                      color: 'black', 
-                      backgroundColor:'khaki', 
-                      'borderColor': 'khaki'
-                    }}
-                  >
-                    Pre Order
-                </Button>
-              </Row>                
-            </div>            
+                    placeholder="Albuquerque"
+                ></input>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                    State
+                  </label>
+                  <input 
+                    class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="grid-state" 
+                    type="text" 
+                    required
+                    placeholder='New Mexico'                    
+                  ></input>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <label class="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-zip">
+                    Zip
+                  </label>
+                  <input 
+                    class="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                    id="grid-zip" 
+                    type="text" 
+                    required
+                    placeholder="90210"></input>
+                </div>
+              </div>
+              <div 
+                className='btn mt-10 bg-danger text-white hover:bounce p-10'
+                onClick={()=>handleSubmit()}
+              >
+                Send!
+              </div>
+            </form>         
           )
         )
       }    

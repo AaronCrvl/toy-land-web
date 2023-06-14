@@ -4,7 +4,7 @@ import ClientOrderController from '../../../controllers/ClientOrderController';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function Order({ idAcct, idProduct }){
+export default function Order({ idClientOrder, idAcct, idProduct }){
     const orderApi = new ClientOrderController()
     const [order, setOrder] = useState()   
     const [color, setColor]  = useState('darkgreen')
@@ -13,7 +13,7 @@ export default function Order({ idAcct, idProduct }){
     useEffect(() => {
         if(order === undefined)
         {
-            const response = orderApi.GetClientOrder(idAcct, idProduct)
+            const response = orderApi.GetClientOrder(idClientOrder)
             response.then((data)=>{
                 if(data !== undefined)
                 {
@@ -80,8 +80,9 @@ export default function Order({ idAcct, idProduct }){
                                 <Card.Title><strong>Product: </strong> {order.productName} - <strong>Validation Hash Code: </strong> {order.orderHashCode}</Card.Title>
                                 <Card.Text>
                                     <div><strong>Status Detail: </strong> {order.statusDetail}</div>                                    
-                                </Card.Text>
-                                <Button variant="warning">See Details</Button>
+                                    <div><strong>Location: </strong> {order.location}</div>                                    
+                                    <div><strong>Email: </strong> {order.email}</div>                                    
+                                </Card.Text>                                
                             </Card.Body>
                         </Card>
                     </div>

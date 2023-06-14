@@ -31,7 +31,7 @@ export default function AccountPage(){
 
     // jsx
     return(     
-        <div className='w-screen'>
+        <div className='w-screen h-screen bg-red-900'>
             {
                 account_ === undefined ?                
                 (
@@ -47,19 +47,19 @@ export default function AccountPage(){
                 )
                 :        
                 (                                                      
-                    <div className='w-screen h-screen p-10'>                              
+                    <div className='w-screen h-screen p-5'>                              
                         <Tabs
                             defaultActiveKey="profile"
                             id="uncontrolled-tab-example"
-                            className="mb-3"
+                            className="mb-3 no-underline font-bold text-xl font-sans"
                         >
-                            <Tab eventKey="home" title="Home">
+                            <Tab eventKey="profile" title="Profile">
                                 <ClientAccount
                                     account={account_}
                                 >                    
                                 </ClientAccount>
                             </Tab>
-                            <Tab eventKey="profile" title="Profile">
+                            <Tab eventKey="orders" title="Orders" >
                                 <ClientOrderList
                                     idAccout={id}
                                 >                            

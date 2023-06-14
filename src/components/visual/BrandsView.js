@@ -13,19 +13,19 @@ export default function BrandsView(){
             <Carousel className='p-5 border-solid w-screen'>
                 <Carousel.Item>
                     <img
-                    className="d-block w-100"
+                    className="d-block w-100 p-10"
                     src={banner1}
                     />                 
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                    className="d-block w-100"
+                    className="d-block w-100 p-10"
                     src={banner2}
                     />            
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
-                    className="d-block w-100"
+                    className="d-block w-100 p-10"
                     src={banner3}
                     />                 
                 </Carousel.Item>

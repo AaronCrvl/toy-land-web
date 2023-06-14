@@ -8,9 +8,9 @@ export default function ClientOrderController(){
         "Access-Control-Allow-Origin": "*",  
     }
 
-    this.GetClientOrder = async (idAccount_, idProduct_) =>{        
+    this.GetClientOrder = async (idClientOrder) =>{        
         try{                           
-            let path = 'https://localhost:44393/ClientOrder/GetClientOrder/?idAccount_=' + idAccount_ + '&idProduct_=' + idProduct_
+            let path = 'https://localhost:44393/ClientOrder/GetClientOrder/?idClientOrder=' + idClientOrder
             return Axios.get(path, headers).then(response => response.data)                                              
         }
         catch(e) { console.error("Erro in ClientOrderController.GetClientOrder: " + e) }
@@ -24,11 +24,13 @@ export default function ClientOrderController(){
         catch(e) { console.error("Erro in ClientOrderController.GetOrdersByClient: " + e) }
     }  
 
-    this.CreateProductOrder = async (idProduct_, idAccount_) =>{        
+    this.CreateProductOrder = async (idProduct_, idAccount_, email_, location_) =>{        
         try{                
             const json = JSON.stringify({                
                 idProduct: idProduct_,
-                idAccount: idAccount_,                                            
+                idAccount: idAccount_,                             
+                email: email_,   
+                location: location_,            
             })
 
             let path = 'https://localhost:44393/ClientOrder/CreateProductOrder/'

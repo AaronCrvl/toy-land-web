@@ -140,6 +140,7 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                             (                                                              
                                 <BuyerInfo
                                     idAccount={idAcct}
+                                    idProduct={id}
                                 ></BuyerInfo>                                           
                             )
                             :
