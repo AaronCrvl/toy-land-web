@@ -86,7 +86,7 @@ export default function NavBar({ idUser, userName }){
                     </Navbar.Brand>                    
                 </li>                                                        
             </ul>      
-            <div className='p-0 mb-0'>
+            <div className='p-0 mb-auto'>
                 <Routes>
                     <Route exact path="/main" element={<MainPage id={idUser}/>} />
                     <Route exact path="/products" element={<ProductPage idAcct={idUser}/>} />                                           

@@ -21,7 +21,7 @@ export default function ProductPage({ idAcct }){
     
     // jsx
     return (
-        <div className='bg-red-950 p-1 w-screen'>
+        <div className='bg-red-950 p-1'>
             {
                 productList === undefined ?
                 (                    
@@ -37,7 +37,7 @@ export default function ProductPage({ idAcct }){
                 )
                 :
                 (
-                    <div>
+                    <div className='h-full'>
                         <ProductGrid idAccount={idAcct} content={productList}/>
                     </div>
                 )

@@ -9,7 +9,7 @@ export default function ProductGrid({ idAccount, content }){
     // jsx
     return (    
         <div className='w-full'>            
-            <div className='grid grid-cols-3 gap-3 pl-80 pr-80 pt-20 pb-20'>
+            <div className='h-full grid grid-cols-3 gap-3 pl-80 pr-80 pt-20 pb-20'>
             {
                 products === undefined ?
                 (

@@ -24,8 +24,8 @@ export default function ({ idProduct, idAccount }) {
 
   // functions
   const handleSubmit = () => {    
-    if(idAccount !== undefined){
-
+    if(idAccount !== undefined)
+    {
       let email = (document.querySelector("#grid-email").value.trim() === undefined ? "" : document.querySelector("#grid-email").value)
       let city = (document.querySelector("#grid-city").value.trim() === undefined ? "" : document.querySelector("#grid-city").value)
       let state = (document.querySelector("#grid-state").value.trim() === undefined ? "" : document.querySelector("#grid-state").value)
@@ -38,10 +38,13 @@ export default function ({ idProduct, idAccount }) {
         response.then(data => {
           setOrder(data)                                         
         }) 
-      }      
+      }  
+      else{
+        alert("Please fill all fields before submit.")
+      }    
     }
     else{
-      alert("Something went wrong! Check if all the fields are filled correctly")
+      alert("Something went wrong! Try to log in again!")
     }
   }  
 

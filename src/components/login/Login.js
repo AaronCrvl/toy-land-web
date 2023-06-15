@@ -63,7 +63,7 @@ export default function LoginComponent() {
                 logggedInUser ?
                 (            
                     <div>                
-                        <NavBar 
+                        <NavBar className='mb-auto'
                             idUser={idUser}
                             userName={userName}
                         />                        
