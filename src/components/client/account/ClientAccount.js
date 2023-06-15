@@ -7,7 +7,8 @@ import Row from 'react-bootstrap/Row';
 import AccountController from '../../../controllers/AccountController'; 
 
 export default function ClientAccount({ account }){
-    const [validated, setValidated] = useState(false)      
+    const [validated, setValidated] = useState(false) 
+    const [clientInfo, setClientInfo] = useState('')     
     const apiAccount = new AccountController()
 
     // functions
@@ -18,27 +19,49 @@ export default function ClientAccount({ account }){
         let userName = document.querySelector('#validationCustomUsername').value  
 
         const res = apiAccount.AlterAccount(account.IdAccount, firstName, lastName, userName, password)
-        res.then((response) => {
-            if(response.status === 200)
-                setValidated(true)
-            else
-                alert('Failed to update account.');
-        })  
-    }   
+        res.then((response) => {            
+                setValidated(true)            
+        }).catch(err =>{
+            setValidated(true)
+            setClientInfo('Error: ' + err.response.data)
+        }) 
+    } 
+    const reset = () => {
+        setValidated(false)
+        setClientInfo('')
+    }  
 
     // jsx
     return(
         validated ? 
         (
-            // success updating account!
-            <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 p-10 py-3 shadow-md" role="alert">
-            <div class="flex">
-                <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-                <div>
-                <p class="font-bold">Profile updated sucessfully on our system.</p>                
+            clientInfo === '' ?
+            (
+                // success updating account!
+                <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 p-10 py-3 shadow-md" role="alert">
+                    <div className="flex">
+                        <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                        <div>
+                        <p className="font-bold">Profile updated sucessfully on our system.</p>                          
+                        <div className='btn bg-success text-white' onClick={()=>reset()}>Retry</div>              
+                        </div>
+                    </div>
                 </div>
-            </div>
-          </div>
+            )
+            :
+            (
+                // a problem happened
+                <div className="bg-orange-100 border-t-4 border-orange-500 rounded-b text-orange-900 px-4 p-10 py-3 shadow-md" role="alert">
+                    <div className="flex">
+                        <div className="py-1"><svg className="fill-current h-6 w-6 text-orange  -500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                        <div>
+                        <p className="font-bold">Error!</p>
+                        <p className="text-sm">{clientInfo}</p>
+                        <div className='btn bg-danger text-white' onClick={()=>reset()}>Retry</div>              
+                        </div>
+                    </div>
+                </div>
+            )
         )
         :
         (

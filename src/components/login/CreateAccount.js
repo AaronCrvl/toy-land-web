@@ -17,7 +17,7 @@ export default function CreateAccount() {
         let password = document.querySelector('#validationCustom03').value
         let userName = document.querySelector('#validationCustomUsername').value                        
         
-        const res = api.CreateNewAccount(firstName, lastName, password, userName)
+        const res = api.CreateNewAccount(firstName, lastName, userName, password)
         res.then((response) => {
             if(response.status === 200)
                 setValidated(true)

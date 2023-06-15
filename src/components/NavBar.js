@@ -13,7 +13,7 @@ export default function NavBar({ idUser, userName }){
     const navigate = useNavigate()    
 
     // navigation     
-    const navigateToAccountPage = () => {        
+    const navigateToAccountPage = () => {             
         navigate('/account', {
             state: {
               accountId: idUser,
@@ -51,19 +51,7 @@ export default function NavBar({ idUser, userName }){
                 <li>
                     <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700 hover:rounded" aria-current="page">
                         <div>
-                            <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">
-                                    City
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">
-                                    Creator
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">
-                                    Heroes
-                                </NavDropdown.Item>                                
-                                <NavDropdown.Item href="#action/3.4">
-                                    Jurassic
-                                </NavDropdown.Item>
+                            <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown">                                
                             </NavDropdown>
                         </div>  
                     </div>

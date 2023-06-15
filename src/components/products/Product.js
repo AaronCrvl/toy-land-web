@@ -2,7 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 
-export default function Product({ key, idAcct, id, name, descripton, imageURL }){  
+export default function Product({ idAcct, id, name, descripton, imageURL }){  
 
     // navigation 
     const navigate = useNavigate();

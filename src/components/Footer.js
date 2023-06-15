@@ -12,7 +12,7 @@ export default function Footer (){
                     <div className='flex p-2 ml-5 hover:animate-bounce'>
                         <LogoNav></LogoNav>   
                     </div>
-                    <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                    <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
                         <li>
                             <a href='https://github.com/AaronCrvl/toy-land-web.git'>
                                 <img className='w-10 h-10 mr-0 p-1' src={gitHubLogo} />
