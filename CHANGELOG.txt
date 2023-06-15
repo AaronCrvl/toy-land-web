@@ -31,3 +31,69 @@ Date: 15/05/2023 - Type: CHECK-IN - Autor: Aaron
 - Adding useEffect and useState for api calls and data passing through components
 - Adding main page and product page map function por json return
 - Fixing issues with component rendering
+
+//-CHANGESET-////////////////////////////////
+Date: 17/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Finishing the buy product page.
+- Adding and altering CSS in all pages
+- Adding new API method
+
+//-CHANGESET-////////////////////////////////
+Date: 18/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding BuyerInfo page
+- Altering style on existing components
+
+//-CHANGESET-////////////////////////////////
+Date: 30/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding Auth and Account controller for validaton and account creation
+Updating the documentation.
+
+//-CHANGESET-////////////////////////////////
+Date: 31/05/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding creation of an account
+- Updating Login page and functions
+- Adding client product pre order
+
+//-CHANGESET-////////////////////////////////
+Date: 01/06/2023 - Type: CHECK-IN - Autor: Aaron
+- Adding client order list
+- Adding new api methods calls
+- Editing pages styles in single object for each file
+
+//-CHANGESET-////////////////////////////////
+Date: 09/06/2023 - Type: CHECK-IN - Autor: Aaron
+- adjusting css in files
+- adding Photoshop custom images
+- organizing file directories
+- adjusting CSS in pages and components
+
+//-CHANGESET-////////////////////////////////
+Date: 11/06/2023 - Type: CHECK-IN - Autor: Aaron
+- updating account page to support account client orders
+- 🐛  adjusting css and fixing bugs
+
+//-CHANGESET-////////////////////////////////
+Date: 12/06/2023 - Type: CHECK-IN - Autor: Aaron
+- fixing  loop on api call
+- remodeling css with tailWind css
+- 🌠 adding tailwind css
+- 💾 adding new assets
+
+//-CHANGESET-////////////////////////////////
+Date: 13/06/2023 - Type: CHECK-IN - Autor: Aaron
+- adding tailwind css animations
+- adding a sticky navbar
+- reestructuring components style
+- adding new components
+- github logos and photoshop edits
+
+//-CHANGESET-////////////////////////////////
+Date: 14/06/2023 - Type: CHECK-IN - Autor: Aaron
+- adjustment on pre-order solicitation
+-  adjustment on client orders return
+- adjustment in cases where there is no client order data to return
+- basic css changes
+
+- update on some pages css
+- change in footer component structure
+- pages and functionalities
