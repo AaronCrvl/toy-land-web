@@ -11,8 +11,7 @@ import monsterLogo from '../../assets/scary-monster.png';
 
 export default function LoginComponent() {
     const navigate = useNavigate()
-    const authApi = new AuthController()
-    const textValidator_ = new textValidator()
+    const authApi = new AuthController()    
 
     // useState
     const [idUser, setIdUser] = useState(-1)
@@ -37,10 +36,11 @@ export default function LoginComponent() {
         setHomePage(true)            
         let username = document.getElementsByTagName("input")[0].value
         let password = document.getElementsByTagName("input")[1].value
-        // if(!textValidator_.ValidateParams(username, password))        
-        //     return;    
+        if(username === undefined || password === undefined){
+            alert('Please enter a username and password');
+        }
 
-        const response = authApi.Validate('Bot', '1')                
+        const response = authApi.Validate(username, password)                  
         response.then(
             data=>{                
                 if(data !== undefined)

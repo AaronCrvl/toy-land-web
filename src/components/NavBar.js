@@ -51,7 +51,7 @@ export default function NavBar({ idUser, userName }){
                 <li>
                     <div className="block py-2 pl-3 pr-4 text-white hover:bg-red-700 hover:rounded" aria-current="page">
                         <div>
-                            <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown">                                
+                            <NavDropdown className='text-white no-underline' title="Categories" id="basic-nav-dropdown" disabled>                                
                             </NavDropdown>
                         </div>  
                     </div>
