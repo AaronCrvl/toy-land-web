@@ -42,7 +42,7 @@ export default function AccountController(){
             })
 
             let path = 'https://localhost:44393/Account/AlterAccount/'
-            return Axios.post(path, json, headers)                                    
+            return Axios.put(path, json, headers)                                    
         }
         catch(e) { console.error("Erro in AccountController.AlterAccount: " + e) }
     }
