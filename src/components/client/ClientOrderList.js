@@ -50,12 +50,10 @@ export default function ClientOrderList({ idAccout }) {
                         <div className='p-5 w-full h-full '>                        
                             <div className='list-group p-10 overflow-y-scroll'>
                                 {                                
-                                    orders.map((order)=>{
-                                        console.log(order)
-                                        console.log(order.idClientOrder)
+                                    orders.map((order)=>{                       
                                         return(
                                             <Order
-                                                key={idAccout}                     
+                                                key={order.idClientOrder}                     
                                                 idClientOrder={order.idClientOrder}
                                                 idAcct = {idAccout}
                                                 idProduct={order.idProduct}

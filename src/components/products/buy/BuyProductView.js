@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Carousel from 'react-bootstrap/Carousel';
 import BuyerInfo from './BuyerInfo';
 import Badge from 'react-bootstrap/Badge';
 import ProductController from '../../../controllers/ProductsController';
+import ClientCartController from '../../../controllers/ClientCartController';
 
 export default function BuyProductView({ idAcct, id, name, description, imageURL }){    
     const api = new ProductController()
+    const cartApi = new ClientCartController()
+    const navigate = new useNavigate()
+    const [isAddedToCart, setIsAddedToCart] = useState(false)
 
     // useState
     const [stock, setStock] = useState() 
@@ -15,16 +20,38 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
     useEffect(
         ()=>{
             if(stock === undefined){
-                const response = api.GetProductStock(id)
-                response.then(data => {                
-                    setStock(data)                                         
-                }) 
+                try{
+                    const response = api.GetProductStock(id)
+                    response.then(data => {                
+                        setStock(data)                                         
+                    }) 
+                }
+                catch(e){
+                    console.error(e)
+                }
             }
         }
     )
 
     // functions
     const showBuyerInfoView = () => setBuyerInfo(!showBuyerInfo)     
+    const addProductToCart = ()=> {
+        let data = cartApi.StoreInCart(idAcct, id)
+        setIsAddedToCart(!isAddedToCart)
+
+        data.then((result) =>{
+            console.log(result)
+            setTimeout(navigateToProductPage, 10000)
+        })
+    }
+
+    const navigateToProductPage = () => {
+        navigate('/products', {
+            state: {
+              accountId: idAcct,
+            }
+        }) 
+    }
 
     // styles
     const styles = {    
@@ -110,16 +137,41 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                                             </Badge>{' '}                               
                                         </div>                            
                                     </div>
-                                    <div className='text-white text-2xl text-left justify-left items-left w-50 p-1'>
+                                    <div className='text-white text-2xl text-left justify-left items-left w-full p-1'>
                                         {description}
                                     </div>
-                                    <div className='p-1'>
-                                        <div 
-                                            onClick={showBuyerInfoView} 
-                                            className="btn bg-primary text-white mb-2"
-                                        >
-                                            <strong>Buy</strong>
-                                        </div>                                                                
+                                    <div className='p-1 mt-10 items-center justify-center'>
+                                        {
+                                            isAddedToCart ?
+                                            (
+                                                <div>
+                                                    <div class="bg-indigo-900 text-center py-4 lg:px-4">
+                                                    <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none animate-pulse lg:rounded-full flex lg:inline-flex" role="alert">
+                                                        <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Done!</span>
+                                                        <span class="font-semibold mr-2 text-left flex-auto">Product added to cart, redirecting to products page.</span>
+                                                        <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                            :
+                                            (
+                                                <div>
+                                                    <button 
+                                                        className='rounded p-3 bg-sky-500 text-lg text-white font-semibold w-1/2 hover:bg-sky-700'
+                                                        onClick={showBuyerInfoView}                                             
+                                                    >
+                                                        Pre Order
+                                                    </button>               
+                                                    <button 
+                                                        className='rounded p-3 bg-orange-500 text-lg text-white font-semibold w-1/2 hover:bg-orange-700'
+                                                        onClick={addProductToCart}                                             
+                                                    >
+                                                        Add to Cart
+                                                    </button>   
+                                                </div>
+                                            )
+                                        }
                                     </div> 
                                 </div>                                                 
                             </div>                            

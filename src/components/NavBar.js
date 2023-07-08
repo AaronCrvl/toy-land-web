@@ -1,5 +1,7 @@
 import React from 'react';
-import { Routes, Route, NavLink } from "react-router-dom";
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Routes, Route, NavLink, createRoutesFromChildren } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import MainPage from '../pages/MainPage';
 import ProductPage from '../pages/ProductPage';
@@ -8,9 +10,13 @@ import AccountPage from '../pages/AccountPage';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
 import LogoNav from './LogoNav';
+import ClientCartController from '../controllers/ClientCartController';
 
 export default function NavBar({ idUser, userName }){              
     const navigate = useNavigate()    
+    const [cartCount, setCartCount] = useState() 
+    const [cartProducts, setCartProducts] = useState()
+    const api = new ClientCartController()
 
     // navigation     
     const navigateToAccountPage = () => {             
@@ -20,6 +26,25 @@ export default function NavBar({ idUser, userName }){
             }
         })        
     }
+
+    // useEffect
+    useEffect(()=>{
+        if(cartCount === undefined)
+        {
+            let data = api.GetCartCount(idUser)
+            data.then((result)=>{
+                setCartCount(result)
+            })         
+        }
+
+        if(cartProducts === undefined)
+        {
+            let data = api.GetCartProducts(idUser)
+            data.then((result)=>{
+                setCartProducts(result)
+            })         
+        }
+    })
 
     // jsx
     return(        
@@ -58,20 +83,53 @@ export default function NavBar({ idUser, userName }){
                 </li>   
                 <li style={{marginLeft: '700px'}}></li>             
                 <li className='text-white'>                    
-                    <Navbar.Brand 
-                        onClick={navigateToAccountPage}
-                    >                                                    
-                        <div className='container flex p-1 hover:bg-red-700 hover:animate-pulse'>                                                      
+                    <div className='flex'>                                                    
+                        <button 
+                            className='container rounded flex p-1 hover:animate-pulse hover:bg-red-700'
+                        >                                                      
+                            <div className='text-lg rounded p-1 mr-1 text-white bg-red-500'>
+                                {cartCount}
+                            </div>
                             <img
                                 alt=""
                                 src="https://www.svgrepo.com/show/80543/shopping-cart-outline.svg"
                                 width="30px"
                                 height="30px"
-                                className="d-inline-block align-top"                                    
+                                className="d-inline-block align-top mr-3"                                    
                             /> 
+                        </button>  
+                        <NavDropdown>
+                            {
+                                cartProducts !== undefined ? 
+                                (                                    
+                                    cartProducts.map((product)=>{                                           
+                                        return(
+                                            <NavDropdown.Item
+                                                key={product.idProduct}
+                                            >
+                                                <div className='flex'>                                            
+                                                    <div>                                                        
+                                                        <div className='h-12 w-12'><img src={product.imageUrl}></img></div>                                                        
+                                                    </div>        
+                                                    <div className='card-text p-1'>{product.productName}</div>                                                    
+                                                </div>
+                                            </NavDropdown.Item>
+                                        )                                        
+                                    })
+                                )
+                                :
+                                (
+                                    <NavDropdown.Item>No items to show</NavDropdown.Item>
+                                )
+                            }
+                        </NavDropdown>    
+                        <button 
+                            className='rounded p-1 mt-1 hover:bg-red-700'
+                            onClick={navigateToAccountPage}
+                        >
                             {userName}
-                        </div>                           
-                    </Navbar.Brand>                    
+                        </button>                                                           
+                    </div>                    
                 </li>                                                        
             </ul>      
             <div className='p-0 mb-auto'>

@@ -1,17 +1,21 @@
 import Axios from 'axios';
 
 export default function ClientCartController(){    
-    const headers ={
+    const headers = {
         "Content-Type" : "application/json",
         "Access-Control-Allow-Credentials": "*",
         "Access-Control-Allow-Headers" : "Content-Type",
-        "Access-Control-Allow-Origin": "*",  
+        "Access-Control-Allow-Origin": "*",          
     }    
 
     this.StoreInCart = async (idAccount, idProduct) =>{
         try{         
+            const json = JSON.stringify({
+                idProduct: idProduct                                                        
+            })
+
             let path = 'https://localhost:44393/ClientCart/StoreInCart/?idAccount=' + idAccount + '&idProduct=' + idProduct
-            return await Axios.post(path, headers).then(response => response.data)                      
+            return await Axios.post(path, json, headers).then(response => response.data)                      
         }
         catch(e) { console.error("Erro in ClientCartController.StoreInCart: " + e) }
     }
