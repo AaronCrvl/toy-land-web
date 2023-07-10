@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import AccountController from '../controllers/AccountController';
 import ClientAccount from '../components/client/account/ClientAccount';
 import ClientOrderList from '../components/client/ClientOrderList';
+import ClientCart from '../components/client/cart/ClientCart';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
@@ -64,6 +65,12 @@ export default function AccountPage(){
                                     idAccout={id}
                                 >                            
                                 </ClientOrderList>
+                            </Tab>   
+                            <Tab eventKey="cart" title="Cart" >
+                                <ClientCart
+                                    idUser={id}
+                                >                            
+                                </ClientCart>
                             </Tab>                                  
                         </Tabs>                                                                 
                     </div>                              

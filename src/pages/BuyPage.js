@@ -29,10 +29,7 @@ export default function BuyPage(){
 
     // jsx
     return(
-        <div
-            style={{                 
-                backgroundColor: 'rgb(88 38 38)',            
-            }}>   
+        <div className='w-screen h-screen'>        
         {     
             product === undefined ?
             (
@@ -48,7 +45,7 @@ export default function BuyPage(){
             )
             :
             (          
-                <div className="w-screen">
+                <div className="w-full h-full">
                     <BuyProductView 
                         idAcct = {account}
                         id={product.Response.idProduct}

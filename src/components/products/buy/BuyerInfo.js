@@ -54,7 +54,7 @@ export default function ({ idProduct, idAccount }) {
 
   // jsx
   return (
-    <div>
+    <div className=''>
       {
         order !== undefined ?
         (         
@@ -98,112 +98,114 @@ export default function ({ idProduct, idAccount }) {
             </div>
           )
           :
-          (            
-            <form className="w-screen p-40 bg-yellow-950 text-white font-sans rounded">
-              <p className='text-4xl text-white font-bold mb-10'>Pre Order</p>
-              <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-first-name">
-                    First Name
-                  </label>
-                  <input 
-                    className="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
-                    id="grid-first-name" 
-                    type="text"                     
-                    readOnly
-                    disabled
-                    value={account.FirstName}                
+          ( 
+            <div className='sticky w-full h-full'>           
+              <div className="w-screen p-40 bg-yellow-950 text-white font-sans rounded">
+                <p className='text-4xl text-white font-bold mb-10'>Pre Order</p>
+                <div className="flex flex-wrap -mx-3 mb-6">
+                  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-first-name">
+                      First Name
+                    </label>
+                    <input 
+                      className="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
+                      id="grid-first-name" 
+                      type="text"                     
+                      readOnly
+                      disabled
+                      value={account.FirstName}                
+                    ></input>
+                    <p className="text-yellow-500 text-xl italic">Please fill out this field.</p>
+                  </div>
+                  <div className="w-full md:w-1/2 px-3">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-last-name">
+                      Last Name
+                    </label>
+                    <input 
+                      className="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
+                      id="grid-last-name" 
+                      type="text"                     
+                      readOnly
+                      disabled
+                      value={account.LastName}     
+                    ></input>
+                  </div>
+                </div>
+                <div className="flex flex-wrap -mx-3 mb-6">
+                  <div className="w-full px-3">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                      Password
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-black-200 text-white border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="grid-password" 
+                      type="password"                     
+                      readOnly
+                      disabled
+                      value={account.Password} 
+                    ></input>
+                    <p className="text-yellow-600 text-xl italic">Make it as long and as crazy as you'd like</p>
+                  </div>
+                </div>
+                <div className="flex flex-wrap -mx-3 mb-6">
+                  <div className="w-full px-3">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                      Email
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="grid-email" 
+                      type="email"     
+                      required                                                        
+                      placeholder="toyland@gmail.com"
+                    ></input>                  
+                  </div>
+                </div>
+                <div className="flex flex-wrap -mx-3 mb-2">
+                  <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                      City
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="grid-city" 
+                      type="text" 
+                      required
+                      placeholder="Albuquerque"
                   ></input>
-                  <p className="text-yellow-500 text-xl italic">Please fill out this field.</p>
+                  </div>
+                  <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                      State
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="grid-state" 
+                      type="text" 
+                      required
+                      placeholder='New Mexico'                    
+                    ></input>
+                  </div>
+                  <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-zip">
+                      Zip
+                    </label>
+                    <input 
+                      className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
+                      id="grid-zip" 
+                      type="text" 
+                      required
+                      placeholder="90210"></input>
+                  </div>
                 </div>
-                <div className="w-full md:w-1/2 px-3">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-last-name">
-                    Last Name
-                  </label>
-                  <input 
-                    className="text-black text-lg appearance-none block w-full bg-black-200 text-white border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-black" 
-                    id="grid-last-name" 
-                    type="text"                     
-                    readOnly
-                    disabled
-                    value={account.LastName}     
-                  ></input>
+                <div 
+                  className='btn mt-10 bg-danger text-white hover:bounce p-10'
+                  onClick={()=>handleSubmit()}
+                >
+                  Send!
                 </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
-                    Password
-                  </label>
-                  <input 
-                    className="appearance-none block w-full bg-black-200 text-white border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                    id="grid-password" 
-                    type="password"                     
-                    readOnly
-                    disabled
-                    value={account.Password} 
-                  ></input>
-                  <p className="text-yellow-600 text-xl italic">Make it as long and as crazy as you'd like</p>
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-6">
-                <div className="w-full px-3">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
-                    Email
-                  </label>
-                  <input 
-                    className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                    id="grid-email" 
-                    type="email"     
-                    required                                                        
-                    placeholder="toyland@gmail.com"
-                  ></input>                  
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-2">
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
-                    City
-                  </label>
-                  <input 
-                    className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                    id="grid-city" 
-                    type="text" 
-                    required
-                    placeholder="Albuquerque"
-                ></input>
-                </div>
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
-                    State
-                  </label>
-                  <input 
-                    className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                    id="grid-state" 
-                    type="text" 
-                    required
-                    placeholder='New Mexico'                    
-                  ></input>
-                </div>
-                <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                  <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-zip">
-                    Zip
-                  </label>
-                  <input 
-                    className="appearance-none block w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" 
-                    id="grid-zip" 
-                    type="text" 
-                    required
-                    placeholder="90210"></input>
-                </div>
-              </div>
-              <div 
-                className='btn mt-10 bg-danger text-white hover:bounce p-10'
-                onClick={()=>handleSubmit()}
-              >
-                Send!
-              </div>
-            </form>         
+              </div>  
+            </div>       
           )
         )
       }    

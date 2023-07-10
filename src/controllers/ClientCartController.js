@@ -29,9 +29,13 @@ export default function ClientCartController(){
     }
 
     this.RemoveProductFromCart = async (idAccount, idProduct) =>{
-        try{         
+        try{   
+            const json = JSON.stringify({
+                idProduct: idProduct                                                        
+            })
+
             let path = 'https://localhost:44393/ClientCart/RemoveProductFromCart/?idAccount=' + idAccount + '&idProduct=' + idProduct
-            return await Axios.delete(path, headers).then(response => response.data)                      
+            return await Axios.post(path, json, headers).then(response => response.data)  
         }
         catch(e) { console.error("Erro in ClientCartController.RemoveProductFromCart: " + e) }
     }
