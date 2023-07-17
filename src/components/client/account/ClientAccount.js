@@ -42,7 +42,7 @@ export default function ClientAccount({ account }){
                     <div className="flex">
                         <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                         <div>
-                        <p className="font-bold">Profile updated sucessfully on our system.</p>                          
+                        <div className="font-bold">Profile updated sucessfully on our system.</div>                          
                         <div className='btn bg-success text-white' onClick={()=>reset()}>Retry</div>              
                         </div>
                     </div>
@@ -55,8 +55,8 @@ export default function ClientAccount({ account }){
                     <div className="flex">
                         <div className="py-1"><svg className="fill-current h-6 w-6 text-orange  -500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                         <div>
-                        <p className="font-bold">Error!</p>
-                        <p className="text-sm">{clientInfo}</p>
+                        <div className="font-bold">Error!</div>
+                        <div className="text-sm">{clientInfo}</div>
                         <div className='btn bg-danger text-white' onClick={()=>reset()}>Retry</div>              
                         </div>
                     </div>
@@ -67,7 +67,7 @@ export default function ClientAccount({ account }){
         (
             <div className='p-5 overflow-y-scroll bg-red-900'>                              
                 <div className='container w-screen text-white'                   
-                    noValidate validated={validated}
+                    // noValidate validated={validated}
                 >
                     <Row className="mb-3">
                         <Form.Group as={Col} md="4" controlId="validationCustom01">

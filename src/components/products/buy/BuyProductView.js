@@ -71,9 +71,9 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                         <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                            <p className='ml-10'>
+                            <div className='ml-10'>
                                 Loading...
-                            </p>
+                            </div>
                         </span>                                   
                     </div>
                 )     
@@ -141,11 +141,11 @@ export default function BuyProductView({ idAcct, id, name, description, imageURL
                                             isAddedToCart ?
                                             (
                                                 <div>
-                                                    <div class="bg-indigo-900 text-center py-4 lg:px-4">
-                                                    <div class="p-2 bg-indigo-800 items-center text-indigo-100 leading-none animate-pulse lg:rounded-full flex lg:inline-flex" role="alert">
-                                                        <span class="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Done!</span>
-                                                        <span class="font-semibold mr-2 text-left flex-auto">Product added to cart, see others products on our page.</span>
-                                                        <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+                                                    <div className="bg-indigo-900 text-center py-4 lg:px-4">
+                                                    <div className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none animate-pulse lg:rounded-full flex lg:inline-flex" role="alert">
+                                                        <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">Done!</span>
+                                                        <span className="font-semibold mr-2 text-left flex-auto">Product added to cart, see others products on our page.</span>
+                                                        <svg className="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
                                                     </div>
                                                     </div>
                                                 </div>

@@ -64,8 +64,8 @@ export default function ({ idProduct, idAccount }) {
               <div className="flex">
                   <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                   <div>
-                  <p className="font-bold">Order created sucessfully on our system.</p>
-                  <p className="text-sm">Make sure to check your account order status at the account page for more info and status.</p>
+                  <div className="font-bold">Order created sucessfully on our system.</div>
+                  <div className="text-sm">Make sure to check your account order status at the account page for more info and status.</div>
                   </div>
               </div>
             </div>
@@ -76,8 +76,8 @@ export default function ({ idProduct, idAccount }) {
               <div className="flex">
                   <div className="py-1"><svg className="fill-current h-6 w-6 text-orange-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
                   <div>
-                  <p className="font-bold">Error!</p>
-                  <p className="text-sm">{clientInfo}</p>
+                  <div className="font-bold">Error!</div>
+                  <div className="text-sm">{clientInfo}</div>
                   </div>
               </div>
             </div>
@@ -91,9 +91,9 @@ export default function ({ idProduct, idAccount }) {
                 <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                    <p className='ml-10'>
+                    <div className='ml-10'>
                         Loading...
-                    </p>
+                    </div>
                 </span>                                   
             </div>
           )
@@ -101,10 +101,10 @@ export default function ({ idProduct, idAccount }) {
           ( 
             <div className='sticky w-full h-full'>           
               <div className="w-screen p-40 bg-yellow-950 text-white font-sans rounded">
-                <p className='text-4xl text-white font-bold mb-10'>Pre Order</p>
+                <div className='text-4xl text-white font-bold mb-10'>Pre Order</div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-first-name">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-first-name">
                       First Name
                     </label>
                     <input 
@@ -115,10 +115,10 @@ export default function ({ idProduct, idAccount }) {
                       disabled
                       value={account.FirstName}                
                     ></input>
-                    <p className="text-yellow-500 text-xl italic">Please fill out this field.</p>
+                    <div className="text-yellow-500 text-xl italic">Please fill out this field.</div>
                   </div>
                   <div className="w-full md:w-1/2 px-3">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-last-name">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-last-name">
                       Last Name
                     </label>
                     <input 
@@ -133,7 +133,7 @@ export default function ({ idProduct, idAccount }) {
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-password">
                       Password
                     </label>
                     <input 
@@ -144,12 +144,12 @@ export default function ({ idProduct, idAccount }) {
                       disabled
                       value={account.Password} 
                     ></input>
-                    <p className="text-yellow-600 text-xl italic">Make it as long and as crazy as you'd like</p>
+                    <div className="text-yellow-600 text-xl italic">Make it as long and as crazy as you'd like</div>
                   </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-password">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-password">
                       Email
                     </label>
                     <input 
@@ -163,7 +163,7 @@ export default function ({ idProduct, idAccount }) {
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-2">
                   <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-city">
                       City
                     </label>
                     <input 
@@ -175,7 +175,7 @@ export default function ({ idProduct, idAccount }) {
                   ></input>
                   </div>
                   <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-city">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-city">
                       State
                     </label>
                     <input 
@@ -187,7 +187,7 @@ export default function ({ idProduct, idAccount }) {
                     ></input>
                   </div>
                   <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" for="grid-zip">
+                    <label className="block uppercase tracking-wide text-white text-xl font-bold mb-2" htmlFor="grid-zip">
                       Zip
                     </label>
                     <input 

@@ -1,37 +1,28 @@
 # toy-land-web
 
-This is a *React Js* project that implements a sales web site. The main intention was to consume the other project, which is an API made with C# that returns product information to fill the web page.
-
-Once the product is returned, the user can go to the buy page and register a pre-order for the project based on the available quantity of it in the database. The information return is complete, but the order requests are still in development.
-
-Soon, this project will be updated.
-
-## Libraries & Tools
-- Api calls: [Axios](https://axios-http.com/ptbr/docs/intro)
-- Pre load actions: [useEffect](https://pt-br.legacy.reactjs.org/docs/hooks-effect.html)
-- Data: [useState](https://pt-br.legacy.reactjs.org/docs/hooks-state.html)
+This is a E-commerce website, made using *React Js (Javascript)*. The main goal on this project is the integration with two other project, the [api that retieve data to this website](https://github.com/AaronCrvl/toy-land-api)*(C# / Razor)* and [the wbesite chatbot](https://github.com/AaronCrvl/toy-land-chatbot).
 
 ## Running Features
-- See products lists
-- Create your own account
-- Create products pre-orders
-- Create a account orders list
+- Create account
 - Edit account details
+- See product lists.
+- See product details and stock.
+- Add product to cart
+- Edit product in account cart
+- Create products for pre-orders.
+- See your account for product pre-orders.
 
 ## Execution
-First, this api project needs to be running for this application to succeed on the data calls: [Back-end Application](https://github.com/AaronCrvl/toy-land-api)
-
-Currently, I run this app with the Nodemon tool and the command below. Go to package.json files in the scripts tag make sure to have:
-
+The api mentioned earlier need to bee active if you want to try it out, on the code it is running on port 44393.
+To debug run this app with the Nodemon tool and the command below.
 
 ```Javascript
-"dev": "nodemon Server.js",
+package.json:  "..."scripts": { "dev": "nodemon Server.js", ... }",
 ```
 
 ```Javascript
-npm: npm start dev
+on the npm terminal: npm start dev
 ```
-
 
 # Prints
 ## Main Page
