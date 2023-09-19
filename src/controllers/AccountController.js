@@ -1,10 +1,10 @@
 import Axios from 'axios';
 
-export default function AccountController(){    
+export default function AccountController() {    
     const headers = {
-        "Content-Type" : "text/json",
+        "Content-Type" : "application/json",
         "Access-Control-Allow-Credentials": "*",
-        "Access-Control-Allow-Headers" : "*",
+        "Access-Control-Allow-Headers" : "Content-Type",
         "Access-Control-Allow-Origin": "*",  
     }    
 

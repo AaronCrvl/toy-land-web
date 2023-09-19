@@ -1,0 +1,20 @@
+#letterLogoStyle {
+    width: '150px';
+    height: '50px';
+}
+
+#ImageStyle {
+    width: '100';
+    height: '180px';
+}
+
+#carStyle {
+    padding: '10px';
+    color: 'white';
+    background-color: 'firebrick';
+}
+
+#cardHeaderStyle {
+    color: 'white';
+    background-color: color;
+}

@@ -3,8 +3,7 @@ import LogoNav from '../components/LogoNav'
 import gitHubLogo from '../assets/github-mark-white.svg';
 
 export default function Footer (){             
-
-    // jsx
+    // Jsx ------------------------------>
     return(        
         <div className='bottom-0 mt-auto'>
             <footer className="bg-red-950 mb-auto w-screen md:bg-white red:bg-red-800 md:dark:bg-red-900 red:border-red-700">

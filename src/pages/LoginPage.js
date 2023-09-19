@@ -3,23 +3,24 @@ import Login from '../components/login/Login';
 import CreateAccount from '../components/login/CreateAccount';
 import monsterLogo from '../assets/scary-monster.png'
 
-export default function LoginPage() {    
-       
-    // useState
+export default function LoginPage() {           
+    // Hooks ------------------------------>
     const [showClientFields, setShowClientFields] = useState(false)        
     const [showCreate, setShowCreate] = useState(false)
 
-    // functions
-    const handleLogInClick = () => {setShowClientFields(!showClientFields)}  
+    // Functions ------------------------------>
+    function handleLogInClick () {setShowClientFields(!showClientFields)}  
         
-    const handleCreate = () => {
+    function handleCreate () {
         handleLogInClick()
         setShowCreate(!showCreate)
     }  
 
-    // jsx
+    // Jsx ------------------------------>
     return(      
-        <div className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-red-950 from-10% via-black-500 via-50% via-orange-500 via-70% to-yellow-500 to-100% '>
+        <div 
+            className='flex h-screen w-screen items-center justify-center bg-gradient-to-r from-red-950 from-10% via-black-500 via-50% via-orange-500 via-70% to-yellow-500 to-100% '
+        >
             {                
                 showClientFields ?  
                 (
@@ -40,8 +41,8 @@ export default function LoginPage() {
                 (                    
                     <div className='w-50%'>           
                         <div className='container rounded bg-white p-10 flex items-center justify-center'>                                                                                       
-                            <div>                                
-                                <div>
+                            <React.Fragment>                                
+                                <React.Fragment>
                                     <div className='p-3'>
                                         <img
                                             alt=""
@@ -51,7 +52,7 @@ export default function LoginPage() {
                                             className="d-inline-block align-top"                                        
                                         />{' '}  
                                     </div>
-                                </div>
+                                </React.Fragment>
                                 <div className='p-1'>                                
                                     <div className='btn bg-black text-white'
                                         onClick={handleLogInClick}                                            
@@ -66,7 +67,7 @@ export default function LoginPage() {
                                         Create Account
                                     </div>                                
                                 </div>                                                                   
-                            </div>                                                                                                                                                                    
+                            </React.Fragment>                                                                                                                                                                    
                         </div>
                     </div>
                 )                                                

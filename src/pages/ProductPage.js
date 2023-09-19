@@ -3,25 +3,39 @@ import { useEffect } from 'react';
 import ProductController from '../controllers/ProductsController'
 import ProductGrid from '../components/products/ProductGrid';
 
-export default function ProductPage({ idAcct }){                         
-    const api = new ProductController()        
+export default function ProductPage({ idAcct }) {                         
+    const api = new ProductController()         
 
-    // useState
-    const [productList, setProductList] = useState()    
-
-    // functions
+    // Hooks ------------------------------>
+    const [productList, setProductList] = useState()        
+    const [searchBoxContent, setSearchBoxContent] = useState('')
+        
     useEffect(() => {   
-        if(productList === undefined){
+        if(productList === undefined) {
             const response = api.GetAllProducts()     
             response.then(data => {
                 setProductList(data)                        
             })
         }
-    })    
+    }, [productList])    
     
-    // jsx
+    const filteredProductList = searchBoxContent.length > 0 ? 
+    productList.filter((product) => product.productName.includes(searchBoxContent))
+    : [];
+
+    // Jsx ------------------------------>
     return (
         <div className='bg-red-950 p-1'>
+            <div className='w-screen'>
+                <div className='ml-auto w-fit p-5'>                    
+                    <input
+                        type='text'
+                        placeholder='Filter products...'
+                        onChange={e => setSearchBoxContent(e.target.value)}                                                        
+                        className='rounded-lg p-1'
+                    />
+                </div>
+            </div>
             {
                 productList === undefined ?
                 (                    
@@ -37,9 +51,18 @@ export default function ProductPage({ idAcct }){
                 )
                 :
                 (
-                    <div className='h-full' key={idAcct}>
-                        <ProductGrid idAccount={idAcct} content={productList}/>
-                    </div>
+                    searchBoxContent.length > 0 ?
+                    (
+                        <div className='h-screen' key={Math.random()}>
+                            <ProductGrid idAccount={idAcct} content={filteredProductList}/>
+                        </div> 
+                    )
+                    :
+                    (
+                        <div className='h-full' key={Math.random()}>
+                            <ProductGrid idAccount={idAcct} content={productList}/>
+                        </div> 
+                    )
                 )
             }
         </div>

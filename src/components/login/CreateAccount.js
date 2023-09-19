@@ -10,12 +10,18 @@ export default function CreateAccount() {
     const api = new AccountController();
     const [validated, setValidated] = useState(false);
 
-    // functions
+    // Ref ------------------------------>
+    const firsNameInputRef = React.useRef(null)
+    const lastNameInputRef = React.useRef(null)
+    const passwordInputRef = React.useRef(null)
+    const userNameInputRef = React.useRef(null)
+
+    // Functions ------------------------------>
     const handleSubmit = () => {                       
-        let firstName = document.querySelector('#validationCustom01').value
-        let lastName = document.querySelector('#validationCustom02').value        
-        let password = document.querySelector('#validationCustom03').value
-        let userName = document.querySelector('#validationCustomUsername').value                        
+        let firstName = firsNameInputRef.current.value
+        let lastName = lastNameInputRef.current.value        
+        let password = passwordInputRef.current.value
+        let userName = userNameInputRef.current.value                      
         
         const res = api.CreateNewAccount(firstName, lastName, userName, password)
         res.then((response) => {
@@ -26,7 +32,7 @@ export default function CreateAccount() {
         })          
     }
 
-    // jsx
+    // Jsx ------------------------------>
     return (
         validated ? 
         (
@@ -74,7 +80,8 @@ export default function CreateAccount() {
                             <Form.Control
                                 required
                                 type="text"
-                                placeholder="First name"                                
+                                placeholder="First name"       
+                                ref={firsNameInputRef}                         
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                         </Form.Group>
@@ -84,6 +91,7 @@ export default function CreateAccount() {
                                 required
                                 type="text"
                                 placeholder="Last name"                                
+                                ref={lastNameInputRef}
                             />
                             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>  
                         </Form.Group>
@@ -92,10 +100,11 @@ export default function CreateAccount() {
                             <InputGroup hasValidation>
                                 <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
                                 <Form.Control
-                                type="text"
-                                placeholder="Username"                                
-                                aria-describedby="inputGroupPrepend"
-                                required
+                                    type="text"
+                                    placeholder="Username"                                
+                                    aria-describedby="inputGroupPrepend"
+                                    required
+                                    ref={userNameInputRef}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                 Please choose a username.
@@ -106,7 +115,12 @@ export default function CreateAccount() {
                     <Row className="mb-3">
                         <Form.Group as={Col} md="6" controlId="validationCustom03">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="text" placeholder="Password" required />
+                            <Form.Control 
+                                type="text" 
+                                placeholder="Password" 
+                                required 
+                                ref={passwordInputRef}
+                            />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a valid password.
                             </Form.Control.Feedback>

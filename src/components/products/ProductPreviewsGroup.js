@@ -1,15 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import Product from "./Product"
 
 export default function ProductPreviewsGroup({ idAccount, content }){    
-    const [key, setKey] = useState(0)
-    const handleSetKey = () => {
-        setKey(key+1)
-        console.log(key)
-        return key
-    }
-
-    // jsx
+    // Jsx ------------------------------>
     return(                            
         <div className="w-screen bg-red-950 p-17">
             <div className="p-10">
@@ -25,9 +18,7 @@ export default function ProductPreviewsGroup({ idAccount, content }){
                                         <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                                             <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                                            <div className='ml-10'>
-                                                Loading...
-                                            </div>
+                                            <span className='ml-10'>Loading...</span>
                                         </span>                                   
                                     </div>
                                 )

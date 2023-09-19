@@ -1,20 +1,14 @@
 import React from "react";
-import toyLandLogo from '../assets/toyland-logo.png'
-import monsterLogo from '../assets/scary-monster-white.png'
+import toyLandLogo from '../assets/toyland-logo.png';
+import monsterLogo from '../assets/scary-monster-white.png';
+import './css/componentsCss.css';
 
-export default function LogoNav(){        
-    const styles = {
-        letterLogoStyle : {
-            width: '150px',
-            height: '50px',
-        }
-    }
-
-    // jsx
+export default function LogoNav() {        
+    // Jsx ------------------------------>
     return(        
         <div className="flex items-center">        
             <img
-                style={styles.letterLogoStyle}
+                id='letterLogoStyle'            
                 src={toyLandLogo}
             >
             </img>                    

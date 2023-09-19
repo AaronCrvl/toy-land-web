@@ -5,11 +5,12 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function Order({ idClientOrder, idAcct, idProduct }){
-    const orderApi = new ClientOrderController()
+    const orderApi = new ClientOrderController()    
+
+    // Hooks ------------------------------>
     const [order, setOrder] = useState()   
     const [color, setColor]  = useState('darkgreen')
 
-    // useEffect
     useEffect(() => {
         if(order === undefined)
         {
@@ -33,22 +34,9 @@ export default function Order({ idClientOrder, idAcct, idProduct }){
                 }
             })
         }        
-    })
+    })    
 
-    // styles
-    const styles = {
-        carStyle: {
-            padding: '10px',
-            color: 'white',
-            backgroundColor: 'firebrick',
-        },
-        cardHeaderStyle: {
-            color: 'white',
-            backgroundColor: color,
-        }
-    }
-
-    // jsx
+    // Jsx ------------------------------>
     return(
         <div className='p-3 w-full'>
             {
@@ -68,11 +56,11 @@ export default function Order({ idClientOrder, idAcct, idProduct }){
                 (
                     <div>           
                         <Card
-                            style ={styles.carStyle}
+                            id='carStyle'
                         >
                             <Card.Header 
                                 as="h5"
-                                style={styles.cardHeaderStyle}
+                                id='cardHeaderStyle'
                             >
                                 <strong>Order Number: </strong> {order.idClientOrder}
                             </Card.Header>

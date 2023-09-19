@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Product from './Product';
 
 export default function ProductGrid({ idAccount, content }){    
-
-    // useState    
+    // Hooks ------------------------------>
     const [products, setProducts] = useState(content)               
 
-    // jsx
+    // Jsx ------------------------------>
     return (    
         <div className='w-full'>            
             <div className='h-full grid grid-cols-3 gap-3 pl-80 pr-80 pt-20 pb-20'>
@@ -17,9 +16,7 @@ export default function ProductGrid({ idAccount, content }){
                         <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                            <div className='ml-10'>
-                                Loading...
-                            </div>
+                            <span className='ml-10'>Loading...</span>
                         </span>                                   
                     </div>
                 )

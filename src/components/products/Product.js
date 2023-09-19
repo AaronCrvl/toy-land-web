@@ -1,34 +1,27 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
+import '../css/componentsCss.css';
+import { Card } from 'react-bootstrap';
 
 export default function Product({ idAcct, id, name, descripton, imageURL }){  
-
-    // navigation 
-    const navigate = useNavigate();
+    // Navigation ------------------------------>    
+    const navigate = useNavigate()
+    
+    // Functions ------------------------------>
     const navigateBuy = () => {        
-        navigate('/buy', {
+        navigate('/hello/buy', {
             state: {
               productId: id,
               idAccount: idAcct,
             }
           });        
-    }
+    }  
 
-    // styles
-    const styles = {     
-        ImageStyle : {
-            width: '100',
-            height: '180px',
-        }
-    }
-
-    // jsx
+    // Jsx ------------------------------>
     return (
         <div className="grid p-1 w-full h-full">
             <div className='bg-red-800 hover:bg-red-700 text-white p-2 w-full h-full rounded'>
                 <div className='p-5 bg-white rounded mb-2'>
-                    <Card.Img variant="top" src={imageURL} style={styles.ImageStyle} />
+                    <Card.Img variant="top" src={imageURL} id='ImageStyle' />
                 </div>
                 <div className='container font-sans'>
                     <div className='p-3'>

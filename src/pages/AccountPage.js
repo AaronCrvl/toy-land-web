@@ -12,11 +12,10 @@ export default function AccountPage(){
     const location = useLocation()                
     const api = new AccountController()   
 
-    // useState   
+    // Hooks ------------------------------>
     const [id, setId] = useState(-1)
     const [account_, setAccount] = useState()                  
-    
-    // useEffect             
+                  
     useEffect(() => {             
         setId(location.state.accountId === undefined ? -1 : location.state.accountId)
         if(id !== -1){
@@ -30,7 +29,7 @@ export default function AccountPage(){
         }            
     })    
 
-    // jsx
+    // Jsx ------------------------------>
     return(     
         <div className='w-screen h-screen bg-red-900'>
             {
@@ -40,9 +39,7 @@ export default function AccountPage(){
                         <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                            <div className='ml-10'>
-                                Loading...
-                            </div>
+                            <span className='ml-10'>Loading...</span>
                         </span>                                   
                     </div>
                 )

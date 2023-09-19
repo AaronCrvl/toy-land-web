@@ -5,7 +5,6 @@ import Footer from '../Footer';
 import NavBar from '../NavBar';
 import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
-import textValidator from '../../validation/textValidator';
 import toyLandLetterLogo from '../../assets/toyland-logo-black.png';
 import monsterLogo from '../../assets/scary-monster.png';
 
@@ -13,27 +12,31 @@ export default function LoginComponent() {
     const navigate = useNavigate()
     const authApi = new AuthController()    
 
-    // useState
+    // Hooks ------------------------------>
     const [idUser, setIdUser] = useState(-1)
     const [userName, setUsername] = useState('')
     const [loginInfo, setLoginInfo] = useState('')            
     const [homePage, setHomePage] = useState(false)
     const [logggedInUser, setLoggedInUser] = useState(false)
      
-    // functions
+    // Functions ------------------------------>
     const navigateToMainPage = () => {        
-        navigate('/main', {
+        navigate('/hello/main', {
             state: {
               accountId: idUser,
             }
           })        
     }        
+
     const handleLogged = () => {
         setLoggedInUser(!logggedInUser)    
         navigateToMainPage()    
     }    
+
     const navigateUserToHomePage = () => {    
-        setHomePage(true)            
+        setHomePage(true)         
+        let form = new FormData(document.userData)
+        console.log(form.forEach(a => console.log(a.name + a.caller)))
         let username = document.getElementsByTagName("input")[0].value
         let password = document.getElementsByTagName("input")[1].value
         if(username === undefined || password === undefined){
@@ -42,33 +45,33 @@ export default function LoginComponent() {
 
         const response = authApi.Validate(username, password)                  
         response.then(
-            data=>{                
+            data =>{                
                 if(data !== undefined)
                 {                    
                     setIdUser(data.IdAccount)                   
                     setUsername(data.UserName)
                     handleLogged()       
                 }
-                else{
+                else {
                     setHomePage(false)
                     setLoginInfo("Fail to login")
                 }
         })                                      
     }       
 
-    // jsx
+    // Jsx ------------------------------>
     return(
         <div>
             {
                 logggedInUser ?
                 (            
-                    <div>                
+                    <React.Fragment>                
                         <NavBar className='mb-auto'
                             idUser={idUser}
                             userName={userName}
                         />                        
                         <Footer/>
-                    </div>
+                    </React.Fragment>
                 )
                 :
                 (
@@ -114,23 +117,25 @@ export default function LoginComponent() {
                                     )
                                 }
                             </div>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control type="text" placeholder="Enter username" />
-                                <Form.Text className="text-muted">
-                                    user: Test
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
-                                <Form.Text>
-                                    password: 1
-                                </Form.Text>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Check me out" />
-                            </Form.Group>
+                            <Form name="userData">
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control type="text" placeholder="Enter username" />
+                                    <Form.Text className="text-muted">
+                                        user: Test
+                                    </Form.Text>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control type="password" placeholder="Password" />
+                                    <Form.Text>
+                                        password: 1
+                                    </Form.Text>
+                                </Form.Group>
+                                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                                    <Form.Check type="checkbox" label="Check me out" />
+                                </Form.Group>
+                            </Form>
                             <div                                 
                                 className='btn text-white bg-black flex justify-center items-center' 
                                 onClick={()=>navigateUserToHomePage()} 

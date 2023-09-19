@@ -8,12 +8,11 @@ import BrandsView from "../components/visual/BrandsView";
 export default function MainPage({ id }) {         
     const api = new ProductController() 
 
-    // useState
+    // Hooks ------------------------------>
     const [productList, setProductList] = useState()    
 
-    // useEffect
     useEffect(() => {          
-        if(productList === undefined){
+        if(productList === undefined) {
             const response = api.GetProductsByRegisterQuantity(4)     
             response.then(data => {            
                 setProductList(data)                        
@@ -21,7 +20,7 @@ export default function MainPage({ id }) {
         }
     })    
 
-    // jsx
+    // Jsx ------------------------------>
     return(
         <div className="w-screen">     
             <Presentation/>
@@ -31,5 +30,5 @@ export default function MainPage({ id }) {
             />            
             <BrandsView />         
         </div>  
-    );    
+    )
 }

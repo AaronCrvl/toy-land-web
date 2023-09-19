@@ -1,22 +1,12 @@
 import React from "react";
 import Spinner from 'react-bootstrap/Spinner';
+import './css/pagesCss.css'
 
-export default function AboutPage(){
-    // styles
-    const spinnerStyle = {
-        width:  '70vh',
-        height:  '70vh',
-        padding: '300px',
-        marginTop:'150px',
-        marginBottom:'150px',
-        marginLeft:'500px',
-        'text-align':'center',
-    }
-    
-    // jsx
+export default function AboutPage(){            
+    // Jsx ------------------------------>
     return(
-        <Spinner  animation="border" role="status" style={spinnerStyle}>
+        <Spinner id='Spinner' animation="border" role="status" style={spinnerStyle}>
             <span className="visually-hidden" >Loading About Page...</span>
         </Spinner>  
-    );
+    )
 }

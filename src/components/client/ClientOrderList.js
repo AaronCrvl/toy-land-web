@@ -4,11 +4,12 @@ import Order from './order/Order';
 import ClientOrderController from '../../controllers/ClientOrderController';
 
 export default function ClientOrderList({ idAccout }) {
-    const ordersApi = new ClientOrderController()    
+    const ordersApi = new ClientOrderController()        
+
+    // Hooks ------------------------------>
     const [orders, setOrders] = useState()
     const [hasOrders, setHasOrders] = useState(false)
 
-    // useEffect
     useEffect(() => {
         if(orders === undefined)
         {
@@ -27,7 +28,7 @@ export default function ClientOrderList({ idAccout }) {
         }        
     })        
 
-    // jsx        
+    // Jsx ------------------------------>
     return(
         <div className='h-screen w-screen'>
             {
@@ -37,9 +38,7 @@ export default function ClientOrderList({ idAccout }) {
                         <span className="relative flex w-10 h-70 mt-80 ml-auto mr-auto text-center justify-center items-center">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-10 w-10 bg-rose-500"></span>
-                            <div className='ml-10'>
-                                Loading...
-                            </div>
+                            <span className='ml-10'>Loading...</span>
                         </span>                                   
                     </div>
                 )

@@ -4,7 +4,8 @@ import banner1 from '../../assets/banner1.jpg'
 import banner2 from '../../assets/banner2.jpg'
 import banner3 from '../../assets/banner3.jpg'
 
-export default function BrandsView(){
+export default function BrandsView() {
+    // Jsx ------------------------------>
     return(
         <div className='bg-red-950 rounded p-10'>
             <div className="text-6xl text-white font-sans font-bold p-1">                    

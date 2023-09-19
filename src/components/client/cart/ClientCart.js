@@ -7,10 +7,17 @@ import ClientCartController from '../../../controllers/ClientCartController';
 export default function ClientCart({ idUser }){
     const api = new ClientCartController()
 
-    // useState
+    // Hooks ------------------------------>
     const [cartProducts, setCartProducts] = useState()
+
+    useEffect(() => {
+        if(cartProducts === undefined && idUser != undefined)
+        {
+            getClientCartInfo()
+        }
+    })    
     
-    // functions
+    // Functions ------------------------------>
     const getClientCartInfo = () =>{        
         let data = api.GetCartProducts(idUser)
         data.then((result)=>{
@@ -24,17 +31,9 @@ export default function ClientCart({ idUser }){
             console.log(result)
             getClientCartInfo()
         })
-    }
+    }      
 
-    // useEffect
-    useEffect(() => {
-        if(cartProducts === undefined && idUser != undefined)
-        {
-            getClientCartInfo()
-        }
-    })
-
-    // jsx
+    // Jsx ------------------------------>
     return(                    
         <div className='flex'>
             <div className='list overflow-y-auto bg-orange-950 p-5 w-1/2'>
@@ -50,9 +49,9 @@ export default function ClientCart({ idUser }){
                                 >
                                     <div className='flex'>
                                         <div className='flex w-1/2'>                                            
-                                            <div>                                                        
+                                            <React.Fragment>                                                        
                                                 <div className='h-48 w-48'><img src={product.imageUrl}></img></div>                                                        
-                                            </div>        
+                                            </React.Fragment>        
                                             <div className='card-text text-white p-1 ml-2'>
                                                 <div className='text-4xl font-semibold'>
                                                     {product.productName}
@@ -77,15 +76,15 @@ export default function ClientCart({ idUser }){
                     )
                     :
                     (
-                        <div>No items to display.</div>
+                        <React.Fragment>No items to display.</React.Fragment>
                     )
                 } 
                     
             </div>
             <div className='bg-orange-950 p-5 w-1/2'>
-                <div>
+                <React.Fragment>
                     <div className='text-4xl text-white font-bold'>Totals</div>
-                </div>                
+                </React.Fragment>                
             </div>  
         </div>
     );
