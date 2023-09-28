@@ -13,12 +13,6 @@ This is a E-commerce website, made using *React Js (Javascript)*. The main goal 
 - See your account for product pre-orders.
 
 ## Execution
-The api mentioned earlier need to bee active if you want to try it out, on the code it is running on port 44393.
-To debug run this app with the Nodemon tool and the command below.
-
-```Javascript
-package.json:  "..."scripts": { "dev": "nodemon Server.js", ... }",
-```
 
 ```Javascript
 on the npm terminal: npm start dev
@@ -26,29 +20,34 @@ on the npm terminal: npm start dev
 
 # Prints
 ## Main Page
-### Main Page
-![Main Page 1](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/main/main-page1.jpg?raw=true)
-### Main Page - Scrolled
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/main/main-page2.jpg?raw=true)
+> **Main Page**:
+> ![Main Page 1](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/main/main-page1.jpg?raw=true)
+
+> **Main Page - Scroll**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/main/main-page2.jpg?raw=true)
 
 ## Products Page
-### Product Page
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/products/product-page1.jpg?raw=true)
-### Product Page - Scrolled
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/products/product-page2.jpg?raw=true)
+> **Product Page**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/products/product-page1.jpg?raw=true)
+> **Product Page - Scroll**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/products/product-page2.jpg?raw=true)
 
 ## Buy Page
-### Buy Page
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/buy-page1.jpg?raw=true)
-### Buy Page - Buy Button Click
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/buy-page2.jpg?raw=true)
-### Buy Page - Buy Button Click - Product Pre Order Click
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/order/order-created.jpg?raw=true)
+> **Buy Page**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/buy-page1.jpg?raw=true)
+
+> **Buy Page - Buy Button Click**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/buy-page2.jpg?raw=true)
+
+> **Buy Page - Buy Button Click - Product Pre Order Click**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/buy/order/order-created.jpg?raw=true)
 
 ## Account Page
-### Account Page - Profile Tab Selected
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/account-page1.jpg?raw=true)
-### Account Page - Profile Tab Selected - Profile Updated
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/profile-updated.jpg?raw=true)
-### Account Page - Orders Tab Selected
-![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/account-page2.jpg?raw=true)
+> **Account Page - Profile Tab Selected**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/account-page1.jpg?raw=true)
+
+> **Account Page - Profile Tab Selected - Profile Updated**:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/profile-updated.jpg?raw=true)
+
+> **Account Page - Orders Tab Selected*:
+> ![alt text](https://github.com/AaronCrvl/toy-land-web/blob/main/src/assets/prints/pages/account/account-page2.jpg?raw=true)
